@@ -1,0 +1,550 @@
+<!DOCTYPE html><html lang="vi" data-beasties-container><head>
+  <meta charset="utf-8">
+  <title>DevOps từ Frontend — portfolio, chứng chỉ, CV · Hướng dẫn · Interview Hub</title>
+  <base href="/interview-hub/">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Phòng tập phỏng vấn: Angular, Java/Spring Boot, DevOps, Data — tình huống thật trong dự án enterprise, bank, bảo hiểm.">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script>
+    /*
+     * Dat theme TRUOC khi paint. Trang duoc prerender thanh HTML tinh (khong co
+     * class .dark), nen neu doi ThemeService chay sau hydration thi may dat theme
+     * toi se nhay trang mot nhip. Script nay chay sync trong <head> nen khong co
+     * nhip nao bi nhay. Giu dong bo voi ThemeService (khoa 'ih.theme').
+     */
+    (function () {
+      try {
+        var mode = localStorage.getItem('ih.theme') || 'system';
+        var dark = mode === 'dark' || (mode === 'system' && matchMedia('(prefers-color-scheme: dark)').matches);
+        if (dark) document.documentElement.classList.add('dark');
+      } catch (e) {
+        /* localStorage bi chan (private mode): bo qua, mac dinh sang */
+      }
+    })();
+  </script>
+<style>@layer properties;@layer theme,base,components,utilities;@layer theme{:root{--font-sans: "Be Vietnam Pro", ui-sans-serif, system-ui, sans-serif;--font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;--color-white: #fff;--spacing: .25rem;--container-xl: 36rem;--text-xs: .75rem;--text-xs--line-height: calc(1 / .75);--text-sm: .875rem;--text-sm--line-height: calc(1.25 / .875);--text-base: 1rem;--text-base--line-height: 1.5 ;--text-lg: 1.125rem;--text-lg--line-height: calc(1.75 / 1.125);--font-weight-normal: 400;--font-weight-medium: 500;--font-weight-semibold: 600;--font-weight-bold: 700;--leading-tight: 1.25;--leading-snug: 1.375;--leading-relaxed: 1.625;--radius-md: .375rem;--radius-lg: .5rem;--radius-xl: .75rem;--radius-2xl: 1rem;--aspect-video: 16 / 9;--default-transition-duration: .15s;--default-transition-timing-function: cubic-bezier(.4, 0, .2, 1);--default-font-family: var(--font-sans);--default-mono-font-family: var(--font-mono);--font-display: "Be Vietnam Pro", ui-sans-serif, system-ui, sans-serif;--color-surface: var(--ih-surface);--color-muted: var(--ih-muted);--color-accent: var(--ih-accent)}}@layer base{*,:after,:before{box-sizing:border-box;margin:0;padding:0;border:0 solid}html{line-height:1.5;-webkit-text-size-adjust:100%;tab-size:4;font-family:var(--default-font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji");font-feature-settings:var(--default-font-feature-settings, normal);font-variation-settings:var(--default-font-variation-settings, normal);-webkit-tap-highlight-color:transparent}h1,h2{font-size:inherit;font-weight:inherit}a{color:inherit;-webkit-text-decoration:inherit;text-decoration:inherit}strong{font-weight:bolder}code,pre{font-family:var(--default-mono-font-family, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace);font-feature-settings:var(--default-mono-font-feature-settings, normal);font-variation-settings:var(--default-mono-font-variation-settings, normal);font-size:1em}table{text-indent:0;border-color:inherit;border-collapse:collapse}summary{display:list-item}ol,ul{list-style:none}svg{display:block;vertical-align:middle}button{font:inherit;font-feature-settings:inherit;font-variation-settings:inherit;letter-spacing:inherit;color:inherit;border-radius:0;background-color:transparent;opacity:1}button{appearance:button}}@layer utilities{.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border-width:0}.sticky{position:sticky}.top-6{top:calc(var(--spacing) * 6)}.mx-auto{margin-inline:auto}.mt-0\.5{margin-top:calc(var(--spacing) * .5)}.mt-1\.5{margin-top:calc(var(--spacing) * 1.5)}.mt-2{margin-top:calc(var(--spacing) * 2)}.mt-3{margin-top:calc(var(--spacing) * 3)}.mt-6{margin-top:calc(var(--spacing) * 6)}.flex{display:flex}.grid{display:grid}.hidden{display:none}.inline-flex{display:inline-flex}.max-w-\[66ch\]{max-width:66ch}.max-w-\[68ch\]{max-width:68ch}.max-w-\[1180px\]{max-width:1180px}.min-w-0{min-width:0px}.flex-1{flex:1}.shrink-0{flex-shrink:0}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-center{align-items:center}.items-end{align-items:flex-end}.gap-0\.5{gap:calc(var(--spacing) * .5)}.gap-1{gap:var(--spacing)}.gap-1\.5{gap:calc(var(--spacing) * 1.5)}.gap-3{gap:calc(var(--spacing) * 3)}.gap-8{gap:calc(var(--spacing) * 8)}.truncate{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.p-4{padding:calc(var(--spacing) * 4)}.px-4{padding-inline:calc(var(--spacing) * 4)}.py-7{padding-block:calc(var(--spacing) * 7)}.text-left{text-align:left}.text-right{text-align:right}.text-sm{font-size:var(--text-sm);line-height:var(--tw-leading, var(--text-sm--line-height))}.text-xs{font-size:var(--text-xs);line-height:var(--tw-leading, var(--text-xs--line-height))}.text-\[0\.6875rem\]{font-size:.6875rem}.text-\[1\.0625rem\]{font-size:1.0625rem}.font-medium{--tw-font-weight: var(--font-weight-medium);font-weight:var(--font-weight-medium)}.text-faint{color:var(--ih-faint)}.text-ink-2{color:var(--ih-ink-2)}.text-muted{color:var(--ih-muted)}@media(hover:hover){.hover\:text-accent:hover{color:var(--ih-accent)}}@media(width>=40rem){.sm\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.sm\:p-6{padding:calc(var(--spacing) * 6)}.sm\:px-8{padding-inline:calc(var(--spacing) * 8)}}@media(width>=64rem){.lg\:p-7{padding:calc(var(--spacing) * 7)}.lg\:px-10{padding-inline:calc(var(--spacing) * 10)}}@media(width>=80rem){.xl\:block{display:block}.xl\:hidden{display:none}.xl\:grid-cols-\[15rem_minmax\(0\,1fr\)\]{grid-template-columns:15rem minmax(0,1fr)}}}@font-face{font-family:Be Vietnam Pro;font-style:normal;font-display:swap;font-weight:400;src:url("./media/be-vietnam-pro-vietnamese-400-normal-AYP4TBQP.woff2") format("woff2"),url("./media/be-vietnam-pro-vietnamese-400-normal-XCSVBHAH.woff") format("woff");unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB}@font-face{font-family:Be Vietnam Pro;font-style:normal;font-display:swap;font-weight:400;src:url("./media/be-vietnam-pro-latin-ext-400-normal-VIXFGEVI.woff2") format("woff2"),url("./media/be-vietnam-pro-latin-ext-400-normal-H5FLM5EA.woff") format("woff");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:Be Vietnam Pro;font-style:normal;font-display:swap;font-weight:400;src:url("./media/be-vietnam-pro-latin-400-normal-GO7MVAWD.woff2") format("woff2"),url("./media/be-vietnam-pro-latin-400-normal-RVJKSZUF.woff") format("woff");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:Be Vietnam Pro;font-style:normal;font-display:swap;font-weight:500;src:url("./media/be-vietnam-pro-vietnamese-500-normal-4TYGC47D.woff2") format("woff2"),url("./media/be-vietnam-pro-vietnamese-500-normal-X6H4D6SQ.woff") format("woff");unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB}@font-face{font-family:Be Vietnam Pro;font-style:normal;font-display:swap;font-weight:500;src:url("./media/be-vietnam-pro-latin-ext-500-normal-4V547L43.woff2") format("woff2"),url("./media/be-vietnam-pro-latin-ext-500-normal-OT6QGGBR.woff") format("woff");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:Be Vietnam Pro;font-style:normal;font-display:swap;font-weight:500;src:url("./media/be-vietnam-pro-latin-500-normal-ICUK3VUJ.woff2") format("woff2"),url("./media/be-vietnam-pro-latin-500-normal-7QE332AG.woff") format("woff");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:Be Vietnam Pro;font-style:normal;font-display:swap;font-weight:600;src:url("./media/be-vietnam-pro-vietnamese-600-normal-JNWISTGY.woff2") format("woff2"),url("./media/be-vietnam-pro-vietnamese-600-normal-WRJMS4YC.woff") format("woff");unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB}@font-face{font-family:Be Vietnam Pro;font-style:normal;font-display:swap;font-weight:600;src:url("./media/be-vietnam-pro-latin-ext-600-normal-CBJZJMMX.woff2") format("woff2"),url("./media/be-vietnam-pro-latin-ext-600-normal-4EIVITBO.woff") format("woff");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:Be Vietnam Pro;font-style:normal;font-display:swap;font-weight:600;src:url("./media/be-vietnam-pro-latin-600-normal-BUKYBXKC.woff2") format("woff2"),url("./media/be-vietnam-pro-latin-600-normal-3FZKMTWI.woff") format("woff");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:Be Vietnam Pro;font-style:normal;font-display:swap;font-weight:700;src:url("./media/be-vietnam-pro-vietnamese-700-normal-2FUHI57A.woff2") format("woff2"),url("./media/be-vietnam-pro-vietnamese-700-normal-6TZDSQEZ.woff") format("woff");unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB}@font-face{font-family:Be Vietnam Pro;font-style:normal;font-display:swap;font-weight:700;src:url("./media/be-vietnam-pro-latin-ext-700-normal-O2T6GATN.woff2") format("woff2"),url("./media/be-vietnam-pro-latin-ext-700-normal-RSM77A7Z.woff") format("woff");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:Be Vietnam Pro;font-style:normal;font-display:swap;font-weight:700;src:url("./media/be-vietnam-pro-latin-700-normal-D4XLH5H5.woff2") format("woff2"),url("./media/be-vietnam-pro-latin-700-normal-T76PCEOT.woff") format("woff");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:JetBrains Mono;font-style:normal;font-display:swap;font-weight:400;src:url("./media/jetbrains-mono-cyrillic-ext-400-normal-C7IFWGF6.woff2") format("woff2"),url("./media/jetbrains-mono-cyrillic-ext-400-normal-PWXUA557.woff") format("woff");unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}@font-face{font-family:JetBrains Mono;font-style:normal;font-display:swap;font-weight:400;src:url("./media/jetbrains-mono-cyrillic-400-normal-C5JECUCT.woff2") format("woff2"),url("./media/jetbrains-mono-cyrillic-400-normal-FGCZYWMY.woff") format("woff");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}@font-face{font-family:JetBrains Mono;font-style:normal;font-display:swap;font-weight:400;src:url("./media/jetbrains-mono-greek-400-normal-O7JTTR3P.woff2") format("woff2"),url("./media/jetbrains-mono-greek-400-normal-JJNQZMPZ.woff") format("woff");unicode-range:U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF}@font-face{font-family:JetBrains Mono;font-style:normal;font-display:swap;font-weight:400;src:url("./media/jetbrains-mono-vietnamese-400-normal-KU7YLUPA.woff2") format("woff2"),url("./media/jetbrains-mono-vietnamese-400-normal-7ULXAK72.woff") format("woff");unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB}@font-face{font-family:JetBrains Mono;font-style:normal;font-display:swap;font-weight:400;src:url("./media/jetbrains-mono-latin-ext-400-normal-JVR3IR4Z.woff2") format("woff2"),url("./media/jetbrains-mono-latin-ext-400-normal-55RNMRQS.woff") format("woff");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:JetBrains Mono;font-style:normal;font-display:swap;font-weight:400;src:url("./media/jetbrains-mono-latin-400-normal-3OOWLGQ2.woff2") format("woff2"),url("./media/jetbrains-mono-latin-400-normal-WDD34GPP.woff") format("woff");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:JetBrains Mono;font-style:normal;font-display:swap;font-weight:600;src:url("./media/jetbrains-mono-cyrillic-ext-600-normal-HKBRUTLC.woff2") format("woff2"),url("./media/jetbrains-mono-cyrillic-ext-600-normal-5QNCOHRJ.woff") format("woff");unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}@font-face{font-family:JetBrains Mono;font-style:normal;font-display:swap;font-weight:600;src:url("./media/jetbrains-mono-cyrillic-600-normal-IC2P33CI.woff2") format("woff2"),url("./media/jetbrains-mono-cyrillic-600-normal-N3RL4S3I.woff") format("woff");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}@font-face{font-family:JetBrains Mono;font-style:normal;font-display:swap;font-weight:600;src:url("./media/jetbrains-mono-greek-600-normal-MQRRJYKT.woff2") format("woff2"),url("./media/jetbrains-mono-greek-600-normal-IGJJY4I4.woff") format("woff");unicode-range:U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF}@font-face{font-family:JetBrains Mono;font-style:normal;font-display:swap;font-weight:600;src:url("./media/jetbrains-mono-vietnamese-600-normal-5QHQ2LOD.woff2") format("woff2"),url("./media/jetbrains-mono-vietnamese-600-normal-GHFUHINE.woff") format("woff");unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB}@font-face{font-family:JetBrains Mono;font-style:normal;font-display:swap;font-weight:600;src:url("./media/jetbrains-mono-latin-ext-600-normal-Y3NFETVK.woff2") format("woff2"),url("./media/jetbrains-mono-latin-ext-600-normal-2YWDXQ5Z.woff") format("woff");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:JetBrains Mono;font-style:normal;font-display:swap;font-weight:600;src:url("./media/jetbrains-mono-latin-600-normal-5PVSJ4PH.woff2") format("woff2"),url("./media/jetbrains-mono-latin-600-normal-DJM6S6N3.woff") format("woff");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}:root{--ih-ground: #f4f5f8;--ih-surface: #ffffff;--ih-raised: #f7f8fb;--ih-sunken: #e9ebf1;--ih-border: #e3e6ed;--ih-border-strong: #8b92a1;--ih-ink: #12141a;--ih-ink-2: #2b2f3a;--ih-muted: #576072;--ih-faint: #646c7d;--ih-accent: #4f46e5;--ih-accent-solid: #4f46e5;--ih-accent-ink: #3b33c4;--ih-accent-soft: #eeedfd;--ih-accent-tint: #f5f4ff;--ih-accent-line: #c9c6f7;--ih-on-accent: #ffffff;--ih-done: #17804a;--ih-done-soft: #e6f4ec;--ih-done-line: #a3d3b7;--ih-warn: #a85a00;--ih-warn-ink: #8a4b00;--ih-warn-soft: #fdf1e1;--ih-warn-line: #e9be7f;--ih-bad: #b42318;--ih-bad-ink: #8f1d13;--ih-bad-soft: #fdecea;--ih-bad-tint: #fff8f7;--ih-bad-line: #f3b8b2;--ih-l1-bg: #dde3ff;--ih-l1-fg: #2e2a86;--ih-l2-bg: #b9c3fd;--ih-l2-fg: #1f1b5e;--ih-l3-bg: #8c93f5;--ih-l3-fg: #17154a;--ih-l4-bg: #5b52e8;--ih-l4-fg: #ffffff;--ih-l5-bg: #2a2577;--ih-l5-fg: #ffffff;--ih-off: #dcdfe7;--ih-hero: #2a2577;--ih-hero-ink: #ffffff;--ih-hero-muted: #c9c6f7;--ih-code-bg: #161826;--ih-code-head: #10121c;--ih-code-line: #262a3b;--ih-shadow: 0 1px 2px rgb(18 20 26 / .04);--ih-shadow-lift: 0 10px 28px -16px rgb(42 37 119 / .35);color-scheme:light}@layer base{*,:before,:after{border-color:var(--ih-border)}html{-webkit-text-size-adjust:100%}body{background:var(--ih-ground);color:var(--ih-ink);font-family:var(--font-sans);font-size:.9375rem;line-height:1.55;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}h1,h2{text-wrap:balance}code,pre{font-variant-ligatures:none;font-feature-settings:"liga" 0,"calt" 0}@media(prefers-reduced-motion:reduce){*,:before,:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}}@layer components{.ih-h1{font-family:var(--font-display);font-weight:700;font-size:clamp(1.75rem,1.4rem + 1.2vw,2rem);letter-spacing:-.015em;line-height:1.2}.ih-num{font-variant-numeric:tabular-nums}.ih-card{background:var(--ih-surface);border:1px solid var(--ih-border);border-radius:1.25rem;box-shadow:var(--ih-shadow)}a.ih-card-link{display:flex;text-align:left;color:inherit;transition:border-color .12s ease,box-shadow .12s ease}.ih-card-link:hover{border-color:var(--ih-accent-line);box-shadow:var(--ih-shadow-lift)}.ih-mono{display:inline-flex;align-items:center;justify-content:center;flex:none;width:1.75rem;height:1.75rem;border-radius:.5rem;color:#fff;font-size:.6875rem;font-weight:700;letter-spacing:.02em}.ih-mono[data-size=sm]{width:1.375rem;height:1.375rem;border-radius:.375rem;font-size:.5625rem}.ih-subnav{font-size:.875rem}aside .ih-subnav{max-height:calc(100vh - 3rem);overflow-y:auto;overscroll-behavior:contain;padding-right:.25rem}.ih-subnav-group{display:flex;align-items:center;gap:.5rem;width:100%;min-height:2.25rem;padding:0 .625rem;border-radius:.5rem;color:var(--ih-ink-2);font-size:.875rem;font-weight:600;text-align:left}.ih-subnav-group:hover{background:var(--ih-sunken);color:var(--ih-ink)}.ih-subnav-caret{transition:transform .15s ease}.ih-subnav-caret-open{transform:rotate(180deg)}.ih-subnav-link{display:block;padding:.45rem .625rem;border-radius:.5rem;color:var(--ih-ink-2);font-weight:500;line-height:1.35}.ih-subnav-link:hover{background:var(--ih-sunken);color:var(--ih-ink)}.ih-subnav-link[aria-current=page]{background:var(--ih-accent-soft);color:var(--ih-accent-ink);font-weight:600}.ih-subnav-toc{display:flex;flex-direction:column;gap:.125rem;margin:.25rem 0 .5rem .875rem;padding-left:.625rem;border-left:1px solid var(--ih-border)}.ih-subnav-toc-link{display:block;padding:.25rem .375rem;border-radius:.375rem;color:var(--ih-muted);font-size:.8125rem;line-height:1.35}.ih-subnav-toc-link:hover{background:var(--ih-sunken);color:var(--ih-accent-ink)}.ih-subnav-mobile{margin-bottom:1.5rem;padding:.25rem;border:1px solid var(--ih-border);border-radius:.875rem;background:var(--ih-surface)}.ih-subnav-mobile>summary{display:flex;align-items:center;gap:.5rem;min-height:2.75rem;padding:0 .625rem;border-radius:.625rem;cursor:pointer;font-weight:500;list-style:none}.ih-subnav-mobile>summary::-webkit-details-marker{display:none}.ih-pop{position:relative}.ih-prose{font-size:1rem;line-height:1.7;color:var(--ih-ink);overflow-wrap:anywhere}.ih-prose>*+*{margin-top:.85rem}.ih-prose>h2{margin-top:1.5rem;font-weight:600}.ih-prose h2{font-family:var(--font-display);font-size:1.25rem;line-height:1.3;margin-top:2rem;scroll-margin-top:4.5rem}.ih-prose ul,.ih-prose ol{padding-left:1.25rem;display:flex;flex-direction:column;gap:.45rem}.ih-prose ul{list-style:disc}.ih-prose ol{list-style:decimal}.ih-prose li::marker{color:var(--ih-accent)}.ih-prose a{color:var(--ih-accent);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:2px}.ih-prose a:hover{color:var(--ih-accent-ink)}.ih-prose strong{font-weight:600}.ih-prose code:not(pre code){font-family:var(--font-mono);font-size:.86em;background:var(--ih-sunken);border-radius:.3rem;padding:.08em .35em}.ih-prose blockquote{border-left:3px solid var(--ih-accent-line);padding:.1rem 0 .1rem .9rem;color:var(--ih-muted);display:flex;flex-direction:column;gap:.5rem}.ih-prose table{display:block;max-width:100%;overflow-x:auto;border-collapse:collapse;font-size:.875rem;overflow-wrap:normal}.ih-prose td,.ih-prose th{min-width:7rem}.ih-prose td:first-child,.ih-prose th:first-child{min-width:0}.ih-prose th,.ih-prose td{border:1px solid var(--ih-border);padding:.5rem .7rem;text-align:left;vertical-align:top}.ih-prose th{background:var(--ih-raised);font-weight:600}.ih-prose ul:has(>li.ih-task-item){padding-left:0;gap:0}.ih-code{position:relative;border:1px solid var(--ih-code-line);border-radius:.75rem;overflow:hidden;background:var(--ih-code-bg)}.ih-code>.shiki{margin:0;padding:.95rem 1.1rem;overflow-x:auto;background:transparent!important;font-family:var(--font-mono);font-size:.8125rem;line-height:1.7;tab-size:2}.ih-code .shiki,.ih-code .shiki span{color:var(--shiki-dark)!important;font-style:var(--shiki-dark-font-style)!important;font-weight:var(--shiki-dark-font-weight)!important;text-decoration:var(--shiki-dark-text-decoration)!important}.ih-code:after{content:attr(data-lang);position:absolute;top:.4rem;right:.6rem;font-family:var(--font-mono);font-size:.625rem;letter-spacing:.06em;text-transform:uppercase;color:#8089a0;pointer-events:none;transition:opacity .12s ease}.ih-code[data-lang=text]:after{content:""}.ih-code:hover:after{opacity:0}.ih-kbd{display:inline-flex;align-items:center;min-width:1.4rem;justify-content:center;padding:.05rem .35rem;border:1px solid var(--ih-border-strong);border-bottom-width:2px;border-radius:.3rem;background:var(--ih-surface);color:var(--ih-ink-2);font-family:var(--font-mono);font-size:.6875rem;line-height:1.4}}@media print{.ih-no-print{display:none!important}body{background:#fff;color:#000;font-size:11pt}.ih-card{border-color:#ccc;box-shadow:none;break-inside:avoid}}@property --tw-translate-x{syntax: "*"; inherits: false; initial-value: 0;}@property --tw-translate-y{syntax: "*"; inherits: false; initial-value: 0;}@property --tw-translate-z{syntax: "*"; inherits: false; initial-value: 0;}@property --tw-rotate-x{syntax: "*"; inherits: false;}@property --tw-rotate-y{syntax: "*"; inherits: false;}@property --tw-rotate-z{syntax: "*"; inherits: false;}@property --tw-skew-x{syntax: "*"; inherits: false;}@property --tw-skew-y{syntax: "*"; inherits: false;}@property --tw-divide-y-reverse{syntax: "*"; inherits: false; initial-value: 0;}@property --tw-border-style{syntax: "*"; inherits: false; initial-value: solid;}@property --tw-leading{syntax: "*"; inherits: false;}@property --tw-font-weight{syntax: "*"; inherits: false;}@property --tw-ordinal{syntax: "*"; inherits: false;}@property --tw-slashed-zero{syntax: "*"; inherits: false;}@property --tw-numeric-figure{syntax: "*"; inherits: false;}@property --tw-numeric-spacing{syntax: "*"; inherits: false;}@property --tw-numeric-fraction{syntax: "*"; inherits: false;}@property --tw-shadow{syntax: "*"; inherits: false; initial-value: 0 0 #0000;}@property --tw-shadow-color{syntax: "*"; inherits: false;}@property --tw-shadow-alpha{syntax: "<percentage>"; inherits: false; initial-value: 100%;}@property --tw-inset-shadow{syntax: "*"; inherits: false; initial-value: 0 0 #0000;}@property --tw-inset-shadow-color{syntax: "*"; inherits: false;}@property --tw-inset-shadow-alpha{syntax: "<percentage>"; inherits: false; initial-value: 100%;}@property --tw-ring-color{syntax: "*"; inherits: false;}@property --tw-ring-shadow{syntax: "*"; inherits: false; initial-value: 0 0 #0000;}@property --tw-inset-ring-color{syntax: "*"; inherits: false;}@property --tw-inset-ring-shadow{syntax: "*"; inherits: false; initial-value: 0 0 #0000;}@property --tw-ring-inset{syntax: "*"; inherits: false;}@property --tw-ring-offset-width{syntax: "<length>"; inherits: false; initial-value: 0px;}@property --tw-ring-offset-color{syntax: "*"; inherits: false; initial-value: #fff;}@property --tw-ring-offset-shadow{syntax: "*"; inherits: false; initial-value: 0 0 #0000;}@property --tw-outline-style{syntax: "*"; inherits: false; initial-value: solid;}@property --tw-blur{syntax: "*"; inherits: false;}@property --tw-brightness{syntax: "*"; inherits: false;}@property --tw-contrast{syntax: "*"; inherits: false;}@property --tw-grayscale{syntax: "*"; inherits: false;}@property --tw-hue-rotate{syntax: "*"; inherits: false;}@property --tw-invert{syntax: "*"; inherits: false;}@property --tw-opacity{syntax: "*"; inherits: false;}@property --tw-saturate{syntax: "*"; inherits: false;}@property --tw-sepia{syntax: "*"; inherits: false;}@property --tw-drop-shadow{syntax: "*"; inherits: false;}@property --tw-drop-shadow-color{syntax: "*"; inherits: false;}@property --tw-drop-shadow-alpha{syntax: "<percentage>"; inherits: false; initial-value: 100%;}@property --tw-drop-shadow-size{syntax: "*"; inherits: false;}@property --tw-backdrop-blur{syntax: "*"; inherits: false;}@property --tw-backdrop-brightness{syntax: "*"; inherits: false;}@property --tw-backdrop-contrast{syntax: "*"; inherits: false;}@property --tw-backdrop-grayscale{syntax: "*"; inherits: false;}@property --tw-backdrop-hue-rotate{syntax: "*"; inherits: false;}@property --tw-backdrop-invert{syntax: "*"; inherits: false;}@property --tw-backdrop-opacity{syntax: "*"; inherits: false;}@property --tw-backdrop-saturate{syntax: "*"; inherits: false;}@property --tw-backdrop-sepia{syntax: "*"; inherits: false;}@layer properties{@supports ((-webkit-hyphens: none) and (not (margin-trim: block))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))){*,:before,:after{--tw-translate-x: 0;--tw-translate-y: 0;--tw-translate-z: 0;--tw-rotate-x: initial;--tw-rotate-y: initial;--tw-rotate-z: initial;--tw-skew-x: initial;--tw-skew-y: initial;--tw-divide-y-reverse: 0;--tw-border-style: solid;--tw-leading: initial;--tw-font-weight: initial;--tw-ordinal: initial;--tw-slashed-zero: initial;--tw-numeric-figure: initial;--tw-numeric-spacing: initial;--tw-numeric-fraction: initial;--tw-shadow: 0 0 #0000;--tw-shadow-color: initial;--tw-shadow-alpha: 100%;--tw-inset-shadow: 0 0 #0000;--tw-inset-shadow-color: initial;--tw-inset-shadow-alpha: 100%;--tw-ring-color: initial;--tw-ring-shadow: 0 0 #0000;--tw-inset-ring-color: initial;--tw-inset-ring-shadow: 0 0 #0000;--tw-ring-inset: initial;--tw-ring-offset-width: 0px;--tw-ring-offset-color: #fff;--tw-ring-offset-shadow: 0 0 #0000;--tw-outline-style: solid;--tw-blur: initial;--tw-brightness: initial;--tw-contrast: initial;--tw-grayscale: initial;--tw-hue-rotate: initial;--tw-invert: initial;--tw-opacity: initial;--tw-saturate: initial;--tw-sepia: initial;--tw-drop-shadow: initial;--tw-drop-shadow-color: initial;--tw-drop-shadow-alpha: 100%;--tw-drop-shadow-size: initial;--tw-backdrop-blur: initial;--tw-backdrop-brightness: initial;--tw-backdrop-contrast: initial;--tw-backdrop-grayscale: initial;--tw-backdrop-hue-rotate: initial;--tw-backdrop-invert: initial;--tw-backdrop-opacity: initial;--tw-backdrop-saturate: initial;--tw-backdrop-sepia: initial}}}
+</style><link rel="stylesheet" href="styles-WKOWS4ZK.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="styles-WKOWS4ZK.css"></noscript><style ng-app-id="ng">.ih-skip[_ngcontent-ng-c604673181]{position:absolute;left:-9999px;z-index:60}.ih-skip[_ngcontent-ng-c604673181]:focus{left:.75rem;top:.75rem;padding:.5rem .75rem;border-radius:.5rem;background:var(--ih-surface);border:1px solid var(--ih-border-strong)}.ih-bar[_ngcontent-ng-c604673181]{position:sticky;top:0;z-index:30;border-bottom:1px solid var(--ih-border);background:color-mix(in oklab,var(--ih-surface) 94%,transparent);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}.ih-bar-inner[_ngcontent-ng-c604673181]{max-width:1180px;margin:0 auto;min-height:3.5rem;padding:0 .75rem 0 1rem;display:flex;align-items:center;gap:1rem}@media(min-width:640px){.ih-bar-inner[_ngcontent-ng-c604673181]{padding:0 2rem}}@media(min-width:1024px){.ih-bar-inner[_ngcontent-ng-c604673181]{min-height:4rem;padding:0 2.5rem;gap:2rem}}.ih-brand[_ngcontent-ng-c604673181]{display:inline-flex;align-items:center;gap:.6rem;font-size:1rem;font-weight:700;letter-spacing:-.01em;white-space:nowrap}.ih-brand-mark[_ngcontent-ng-c604673181]{display:inline-flex;align-items:center;justify-content:center;width:2rem;height:2rem;border-radius:.5rem;background:var(--ih-hero);color:var(--ih-hero-ink)}.ih-mainnav[_ngcontent-ng-c604673181]{display:none}@media(min-width:1024px){.ih-mainnav[_ngcontent-ng-c604673181]{display:flex;align-self:stretch;gap:.25rem}}.ih-mainnav-link[_ngcontent-ng-c604673181]{display:inline-flex;align-items:center;padding:0 .75rem;border-bottom:2px solid transparent;margin-bottom:-1px;color:var(--ih-muted);font-size:.9375rem;font-weight:500;white-space:nowrap;transition:color .12s ease,border-color .12s ease}.ih-mainnav-link[_ngcontent-ng-c604673181]:hover{color:var(--ih-ink)}.ih-mainnav-link[aria-current=page][_ngcontent-ng-c604673181]{color:var(--ih-ink);font-weight:600;border-bottom-color:var(--ih-accent)}.ih-bar-tools[_ngcontent-ng-c604673181]{margin-left:auto;display:flex;align-items:center;gap:.375rem}@media(min-width:640px){.ih-bar-tools[_ngcontent-ng-c604673181]{gap:.5rem}}.ih-bar-btn[_ngcontent-ng-c604673181]{display:inline-flex;align-items:center;gap:.5rem;min-height:2.75rem;padding:0 .625rem;border:1px solid var(--ih-border);border-radius:.625rem;background:var(--ih-surface);color:var(--ih-ink);font-family:inherit;font-size:.875rem;font-weight:500;cursor:pointer;transition:border-color .12s ease}.ih-bar-btn[_ngcontent-ng-c604673181]:hover{border-color:var(--ih-border-strong)}.ih-bar-btn[aria-expanded=true][_ngcontent-ng-c604673181]{border-color:var(--ih-accent)}@media(min-width:1024px){.ih-bar-btn[_ngcontent-ng-c604673181]{min-height:2.5rem}}.ih-bar-btn-label[_ngcontent-ng-c604673181]{display:none}@media(min-width:640px){.ih-bar-btn-label[_ngcontent-ng-c604673181]{display:inline}}.ih-bar-icon[_ngcontent-ng-c604673181]{justify-content:center;width:2.75rem;padding:0}@media(min-width:1024px){.ih-bar-icon[_ngcontent-ng-c604673181]{width:2.5rem}}.ih-bar-search[_ngcontent-ng-c604673181]{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;min-height:2.75rem;min-width:2.75rem;padding:0 .75rem;border:1px solid var(--ih-border);border-radius:.625rem;background:var(--ih-raised);color:var(--ih-muted);font-family:inherit;font-size:.875rem;cursor:pointer}.ih-bar-search[_ngcontent-ng-c604673181]:hover{border-color:var(--ih-border-strong);color:var(--ih-ink)}@media(min-width:1024px){.ih-bar-search[_ngcontent-ng-c604673181]{min-height:2.5rem;min-width:13rem;justify-content:flex-start}}.ih-bar-search-label[_ngcontent-ng-c604673181], .ih-bar-search-kbd[_ngcontent-ng-c604673181]{display:none}@media(min-width:1024px){.ih-bar-search-label[_ngcontent-ng-c604673181], .ih-bar-search-kbd[_ngcontent-ng-c604673181]{display:inline-flex}}.ih-bar-search-label[_ngcontent-ng-c604673181]{flex:1}.ih-main[_ngcontent-ng-c604673181]{min-width:0;padding-bottom:calc(4.5rem + env(safe-area-inset-bottom))}@media(min-width:1024px){.ih-main[_ngcontent-ng-c604673181]{padding-bottom:0}}.ih-tabbar[_ngcontent-ng-c604673181]{position:fixed;z-index:30;inset:auto 0 0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));padding-bottom:env(safe-area-inset-bottom);border-top:1px solid var(--ih-border);background:color-mix(in oklab,var(--ih-surface) 96%,transparent);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}@media(min-width:1024px){.ih-tabbar[_ngcontent-ng-c604673181]{display:none}}.ih-tab[_ngcontent-ng-c604673181]{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.2rem;min-height:3.75rem;color:var(--ih-muted);font-size:.75rem;font-weight:500}.ih-tab[aria-current=page][_ngcontent-ng-c604673181]{color:var(--ih-accent);font-weight:600}</style></head>
+<body><!--nghm--><script type="text/javascript" id="ng-event-dispatch-contract">(()=>{function p(t,n,r,o,e,i,f,m){return{eventType:t,event:n,targetElement:r,eic:o,timeStamp:e,eia:i,eirp:f,eiack:m}}function u(t){let n=[],r=e=>{n.push(e)};return{c:t,q:n,et:[],etc:[],d:r,h:e=>{r(p(e.type,e,e.target,t,Date.now()))}}}function s(t,n,r){for(let o=0;o<n.length;o++){let e=n[o];(r?t.etc:t.et).push(e),t.c.addEventListener(e,t.h,r)}}function c(t,n,r,o,e=window){let i=u(t);e._ejsas||(e._ejsas={}),e._ejsas[n]=i,s(i,r),s(i,o,!0)}window.__jsaction_bootstrap=c;})();
+</script><script>window.__jsaction_bootstrap(document.body,"ng",["click"],[]);</script>
+  <ih-root ng-version="21.2.26" _nghost-ng-c604673181 ngh="4" ng-server-context="ssg"><a _ngcontent-ng-c604673181 href="#ih-main" class="ih-skip">Bỏ qua điều hướng</a><!----><header _ngcontent-ng-c604673181 class="ih-bar ih-no-print"><div _ngcontent-ng-c604673181 class="ih-bar-inner"><a _ngcontent-ng-c604673181 routerlink="/" class="ih-brand" href="/interview-hub/" jsaction="click:;"><span _ngcontent-ng-c604673181 class="ih-brand-mark"><ih-icon _ngcontent-ng-c604673181 name="ladder" class="inline-flex shrink-0" ngh="0"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 21V3M17 21V3M7 7h10M7 12h10M7 17h10"/><!----></svg></ih-icon></span><span _ngcontent-ng-c604673181>Interview Hub</span></a><nav _ngcontent-ng-c604673181 aria-label="Điều hướng chính" class="ih-mainnav"><a _ngcontent-ng-c604673181 class="ih-mainnav-link" href="/interview-hub/" jsaction="click:;"> Hôm nay </a><a _ngcontent-ng-c604673181 class="ih-mainnav-link" href="/interview-hub/ly-thuyet" jsaction="click:;"> Luyện tập </a><a _ngcontent-ng-c604673181 class="ih-mainnav-link" href="/interview-hub/lo-trinh" jsaction="click:;"> Lộ trình </a><a _ngcontent-ng-c604673181 class="ih-mainnav-link" href="/interview-hub/huong-dan" aria-current="page" jsaction="click:;"> Hướng dẫn </a><!----></nav><div _ngcontent-ng-c604673181 class="ih-bar-tools"><div _ngcontent-ng-c604673181 data-pop class="ih-pop"><button _ngcontent-ng-c604673181 type="button" aria-haspopup="true" aria-controls="ih-track-menu" class="ih-bar-btn" aria-expanded="false" aria-label="Đổi ngôn ngữ, đang chọn Angular" jsaction="click:;"><ih-track-mono _ngcontent-ng-c604673181 size="sm" class="inline-flex" ngh="1"><span aria-hidden="true" class="ih-mono" style="background: #D6264F;" data-size="sm">NG</span></ih-track-mono><span _ngcontent-ng-c604673181 class="ih-bar-btn-label">Angular</span><ih-icon _ngcontent-ng-c604673181 name="chevron-down" class="inline-flex shrink-0" ngh="0"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/><!----></svg></ih-icon></button><!----></div><button _ngcontent-ng-c604673181 type="button" class="ih-bar-search" jsaction="click:;"><ih-icon _ngcontent-ng-c604673181 name="search" class="inline-flex shrink-0" ngh="2"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14Z"/><path d="m20 20-3.5-3.5"/><!----></svg></ih-icon><span _ngcontent-ng-c604673181 class="ih-bar-search-label">Tìm câu hỏi</span><span _ngcontent-ng-c604673181 class="ih-kbd ih-bar-search-kbd">⌘K</span><span _ngcontent-ng-c604673181 class="sr-only">(phím tắt Command hoặc Ctrl cộng K)</span></button><div _ngcontent-ng-c604673181 data-pop class="ih-pop"><button _ngcontent-ng-c604673181 type="button" aria-haspopup="true" aria-controls="ih-settings-menu" aria-label="Giao diện sáng, tối" class="ih-bar-btn ih-bar-icon" aria-expanded="false" jsaction="click:;"><ih-icon _ngcontent-ng-c604673181 class="inline-flex shrink-0" ngh="2"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/><!----></svg></ih-icon></button><!----></div></div></div></header><main _ngcontent-ng-c604673181 id="ih-main" class="ih-main"><router-outlet _ngcontent-ng-c604673181></router-outlet><ih-guide-page ngh="3"><div class="mx-auto grid max-w-[1180px] gap-8 px-4 py-7 sm:px-8 lg:px-10 xl:grid-cols-[15rem_minmax(0,1fr)]"><aside class="ih-no-print hidden xl:block"><nav aria-label="Menu hướng dẫn" class="ih-subnav sticky top-6"><a routerlink="/huong-dan" class="ih-subnav-link" href="/interview-hub/huong-dan" jsaction="click:;"> Tổng quan </a><section class="mt-3"><button type="button" class="ih-subnav-group" aria-expanded="false" aria-controls="d-sub-cach-dung" jsaction="click:;"><span class="flex-1 text-left">Cách ôn &amp; cách dùng</span><span class="ih-num text-[0.6875rem] text-faint">5</span><ih-icon name="chevron-down" class="inline-flex shrink-0 ih-subnav-caret" ngh="0"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m6 9 6 6 6-6"/><!----></svg></ih-icon></button><!----></section><section class="mt-3"><button type="button" class="ih-subnav-group" aria-expanded="false" aria-controls="d-sub-theo-mang" jsaction="click:;"><span class="flex-1 text-left">Lộ trình &amp; checklist theo mảng</span><span class="ih-num text-[0.6875rem] text-faint">5</span><ih-icon name="chevron-down" class="inline-flex shrink-0 ih-subnav-caret" ngh="0"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m6 9 6 6 6-6"/><!----></svg></ih-icon></button><!----></section><section class="mt-3"><button type="button" class="ih-subnav-group" aria-expanded="false" aria-controls="d-sub-java" jsaction="click:;"><span class="flex-1 text-left">Java Spring Boot từ con số 0</span><span class="ih-num text-[0.6875rem] text-faint">6</span><ih-icon name="chevron-down" class="inline-flex shrink-0 ih-subnav-caret" ngh="0"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m6 9 6 6 6-6"/><!----></svg></ih-icon></button><!----></section><section class="mt-3"><button type="button" class="ih-subnav-group" aria-expanded="false" aria-controls="d-sub-sql" jsaction="click:;"><span class="flex-1 text-left">SQL từ con số 0</span><span class="ih-num text-[0.6875rem] text-faint">6</span><ih-icon name="chevron-down" class="inline-flex shrink-0 ih-subnav-caret" ngh="0"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m6 9 6 6 6-6"/><!----></svg></ih-icon></button><!----></section><section class="mt-3"><button type="button" class="ih-subnav-group" aria-expanded="true" aria-controls="d-sub-devops" jsaction="click:;"><span class="flex-1 text-left">DevOps từ Frontend</span><span class="ih-num text-[0.6875rem] text-faint">8</span><ih-icon name="chevron-down" class="inline-flex shrink-0 ih-subnav-caret ih-subnav-caret-open" ngh="0"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m6 9 6 6 6-6"/><!----></svg></ih-icon></button><ul class="mt-0.5 flex flex-col gap-0.5" id="d-sub-devops"><li><a class="ih-subnav-link" href="/interview-hub/huong-dan/devops-dinh-vi" jsaction="click:;"> Thị trường &amp; định vị </a><!----></li><li><a class="ih-subnav-link" href="/interview-hub/huong-dan/devops-tu-con-so-0" jsaction="click:;"> Lộ trình 10 giai đoạn </a><!----></li><li><a class="ih-subnav-link" href="/interview-hub/huong-dan/devops-tai-lieu-theo-level" jsaction="click:;"> Tài liệu theo level </a><!----></li><li><a class="ih-subnav-link" aria-current="page" href="/interview-hub/huong-dan/devops-portfolio-chung-chi" jsaction="click:;"> Portfolio, chứng chỉ, CV </a><ul aria-label="Các mục trong bài" class="ih-subnav-toc"><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/devops-portfolio-chung-chi#devops-portfolio-chung-chi--nha-tuyen-dung-nhin-ho-so-chuyen-nganh-the-nao" jsaction="click:;"> Nhà tuyển dụng nhìn hồ sơ chuyển ngành thế nào </a></li><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/devops-portfolio-chung-chi#devops-portfolio-chung-chi--cau-truc-repo" jsaction="click:;"> Cấu trúc repo </a></li><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/devops-portfolio-chung-chi#devops-portfolio-chung-chi--nam-du-an-portfolio" jsaction="click:;"> Năm dự án portfolio </a></li><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/devops-portfolio-chung-chi#devops-portfolio-chung-chi--du-an-1-tu-vm-toi-container" jsaction="click:;"> Dự án 1 — Từ VM tới container </a></li><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/devops-portfolio-chung-chi#devops-portfolio-chung-chi--du-an-2-pipeline-ngan-hang-thu-nho" jsaction="click:;"> Dự án 2 — Pipeline ngân hàng thu nhỏ </a></li><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/devops-portfolio-chung-chi#devops-portfolio-chung-chi--du-an-3-kubernetes-co-quan-sat" jsaction="click:;"> Dự án 3 — Kubernetes có quan sát </a></li><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/devops-portfolio-chung-chi#devops-portfolio-chung-chi--du-an-4-ha-tang-aws-bang-code" jsaction="click:;"> Dự án 4 — Hạ tầng AWS bằng code </a></li><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/devops-portfolio-chung-chi#devops-portfolio-chung-chi--du-an-5-phat-hanh-chuan-ngan-hang-va-game-day" jsaction="click:;"> Dự án 5 — Phát hành chuẩn ngân hàng và game day </a></li><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/devops-portfolio-chung-chi#devops-portfolio-chung-chi--viec-that-o-du-an-ke-the-nao-ma-khong-lo-thong" jsaction="click:;"> Việc thật ở dự án — kể thế nào mà không lộ thông tin </a></li><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/devops-portfolio-chung-chi#devops-portfolio-chung-chi--chung-chi-cai-nao-dang-cai-nao-khong-bat-buoc" jsaction="click:;"> Chứng chỉ — cái nào đáng, cái nào không bắt buộc </a></li><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/devops-portfolio-chung-chi#devops-portfolio-chung-chi--ke-hoach-chung-chi-khi-chi-dung-tai-nguyen-mien" jsaction="click:;"> Kế hoạch chứng chỉ khi chỉ dùng tài nguyên miễn phí </a></li><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/devops-portfolio-chung-chi#devops-portfolio-chung-chi--cv-cho-vi-tri-devops" jsaction="click:;"> CV cho vị trí DevOps </a></li><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/devops-portfolio-chung-chi#devops-portfolio-chung-chi--github-va-linkedin" jsaction="click:;"> GitHub và LinkedIn </a></li><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/devops-portfolio-chung-chi#devops-portfolio-chung-chi--bien-kinh-nghiem-frontend-thanh-diem-cong" jsaction="click:;"> Biến kinh nghiệm Frontend thành điểm cộng </a></li><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/devops-portfolio-chung-chi#devops-portfolio-chung-chi--nguon" jsaction="click:;"> Nguồn </a></li><!----></ul><!----></li><li><a class="ih-subnav-link" href="/interview-hub/huong-dan/devops-phong-van-junior" jsaction="click:;"> Câu hỏi Junior </a><!----></li><li><a class="ih-subnav-link" href="/interview-hub/huong-dan/devops-phong-van-middle" jsaction="click:;"> Câu hỏi Middle </a><!----></li><li><a class="ih-subnav-link" href="/interview-hub/huong-dan/devops-phong-van-senior" jsaction="click:;"> Câu hỏi Senior </a><!----></li><li><a class="ih-subnav-link" href="/interview-hub/huong-dan/devops-danh-gia-lo-trinh" jsaction="click:;"> Đánh giá best practice </a><!----></li><!----></ul><!----></section><!----><!----></nav></aside><div class="min-w-0"><details class="ih-subnav-mobile ih-no-print xl:hidden"><summary><ih-icon name="menu" class="inline-flex shrink-0" ngh="0"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6h18M3 12h18M3 18h18"/><!----></svg></ih-icon><span class="min-w-0 flex-1 truncate"><span class="text-muted">Hướng dẫn:</span> Portfolio, chứng chỉ, CV </span><ih-icon name="chevron-down" class="inline-flex shrink-0 ih-subnav-caret" ngh="0"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m6 9 6 6 6-6"/><!----></svg></ih-icon></summary><nav aria-label="Menu hướng dẫn" class="ih-subnav mt-2" jsaction="click:;"><a routerlink="/huong-dan" class="ih-subnav-link" href="/interview-hub/huong-dan" jsaction="click:;"> Tổng quan </a><section class="mt-3"><button type="button" class="ih-subnav-group" aria-expanded="false" aria-controls="m-sub-cach-dung" jsaction="click:;"><span class="flex-1 text-left">Cách ôn &amp; cách dùng</span><span class="ih-num text-[0.6875rem] text-faint">5</span><ih-icon name="chevron-down" class="inline-flex shrink-0 ih-subnav-caret" ngh="0"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m6 9 6 6 6-6"/><!----></svg></ih-icon></button><!----></section><section class="mt-3"><button type="button" class="ih-subnav-group" aria-expanded="false" aria-controls="m-sub-theo-mang" jsaction="click:;"><span class="flex-1 text-left">Lộ trình &amp; checklist theo mảng</span><span class="ih-num text-[0.6875rem] text-faint">5</span><ih-icon name="chevron-down" class="inline-flex shrink-0 ih-subnav-caret" ngh="0"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m6 9 6 6 6-6"/><!----></svg></ih-icon></button><!----></section><section class="mt-3"><button type="button" class="ih-subnav-group" aria-expanded="false" aria-controls="m-sub-java" jsaction="click:;"><span class="flex-1 text-left">Java Spring Boot từ con số 0</span><span class="ih-num text-[0.6875rem] text-faint">6</span><ih-icon name="chevron-down" class="inline-flex shrink-0 ih-subnav-caret" ngh="0"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m6 9 6 6 6-6"/><!----></svg></ih-icon></button><!----></section><section class="mt-3"><button type="button" class="ih-subnav-group" aria-expanded="false" aria-controls="m-sub-sql" jsaction="click:;"><span class="flex-1 text-left">SQL từ con số 0</span><span class="ih-num text-[0.6875rem] text-faint">6</span><ih-icon name="chevron-down" class="inline-flex shrink-0 ih-subnav-caret" ngh="0"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m6 9 6 6 6-6"/><!----></svg></ih-icon></button><!----></section><section class="mt-3"><button type="button" class="ih-subnav-group" aria-expanded="true" aria-controls="m-sub-devops" jsaction="click:;"><span class="flex-1 text-left">DevOps từ Frontend</span><span class="ih-num text-[0.6875rem] text-faint">8</span><ih-icon name="chevron-down" class="inline-flex shrink-0 ih-subnav-caret ih-subnav-caret-open" ngh="0"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m6 9 6 6 6-6"/><!----></svg></ih-icon></button><ul class="mt-0.5 flex flex-col gap-0.5" id="m-sub-devops"><li><a class="ih-subnav-link" href="/interview-hub/huong-dan/devops-dinh-vi" jsaction="click:;"> Thị trường &amp; định vị </a><!----></li><li><a class="ih-subnav-link" href="/interview-hub/huong-dan/devops-tu-con-so-0" jsaction="click:;"> Lộ trình 10 giai đoạn </a><!----></li><li><a class="ih-subnav-link" href="/interview-hub/huong-dan/devops-tai-lieu-theo-level" jsaction="click:;"> Tài liệu theo level </a><!----></li><li><a class="ih-subnav-link" aria-current="page" href="/interview-hub/huong-dan/devops-portfolio-chung-chi" jsaction="click:;"> Portfolio, chứng chỉ, CV </a><ul aria-label="Các mục trong bài" class="ih-subnav-toc"><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/devops-portfolio-chung-chi#devops-portfolio-chung-chi--nha-tuyen-dung-nhin-ho-so-chuyen-nganh-the-nao" jsaction="click:;"> Nhà tuyển dụng nhìn hồ sơ chuyển ngành thế nào </a></li><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/devops-portfolio-chung-chi#devops-portfolio-chung-chi--cau-truc-repo" jsaction="click:;"> Cấu trúc repo </a></li><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/devops-portfolio-chung-chi#devops-portfolio-chung-chi--nam-du-an-portfolio" jsaction="click:;"> Năm dự án portfolio </a></li><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/devops-portfolio-chung-chi#devops-portfolio-chung-chi--du-an-1-tu-vm-toi-container" jsaction="click:;"> Dự án 1 — Từ VM tới container </a></li><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/devops-portfolio-chung-chi#devops-portfolio-chung-chi--du-an-2-pipeline-ngan-hang-thu-nho" jsaction="click:;"> Dự án 2 — Pipeline ngân hàng thu nhỏ </a></li><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/devops-portfolio-chung-chi#devops-portfolio-chung-chi--du-an-3-kubernetes-co-quan-sat" jsaction="click:;"> Dự án 3 — Kubernetes có quan sát </a></li><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/devops-portfolio-chung-chi#devops-portfolio-chung-chi--du-an-4-ha-tang-aws-bang-code" jsaction="click:;"> Dự án 4 — Hạ tầng AWS bằng code </a></li><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/devops-portfolio-chung-chi#devops-portfolio-chung-chi--du-an-5-phat-hanh-chuan-ngan-hang-va-game-day" jsaction="click:;"> Dự án 5 — Phát hành chuẩn ngân hàng và game day </a></li><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/devops-portfolio-chung-chi#devops-portfolio-chung-chi--viec-that-o-du-an-ke-the-nao-ma-khong-lo-thong" jsaction="click:;"> Việc thật ở dự án — kể thế nào mà không lộ thông tin </a></li><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/devops-portfolio-chung-chi#devops-portfolio-chung-chi--chung-chi-cai-nao-dang-cai-nao-khong-bat-buoc" jsaction="click:;"> Chứng chỉ — cái nào đáng, cái nào không bắt buộc </a></li><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/devops-portfolio-chung-chi#devops-portfolio-chung-chi--ke-hoach-chung-chi-khi-chi-dung-tai-nguyen-mien" jsaction="click:;"> Kế hoạch chứng chỉ khi chỉ dùng tài nguyên miễn phí </a></li><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/devops-portfolio-chung-chi#devops-portfolio-chung-chi--cv-cho-vi-tri-devops" jsaction="click:;"> CV cho vị trí DevOps </a></li><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/devops-portfolio-chung-chi#devops-portfolio-chung-chi--github-va-linkedin" jsaction="click:;"> GitHub và LinkedIn </a></li><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/devops-portfolio-chung-chi#devops-portfolio-chung-chi--bien-kinh-nghiem-frontend-thanh-diem-cong" jsaction="click:;"> Biến kinh nghiệm Frontend thành điểm cộng </a></li><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/devops-portfolio-chung-chi#devops-portfolio-chung-chi--nguon" jsaction="click:;"> Nguồn </a></li><!----></ul><!----></li><li><a class="ih-subnav-link" href="/interview-hub/huong-dan/devops-phong-van-junior" jsaction="click:;"> Câu hỏi Junior </a><!----></li><li><a class="ih-subnav-link" href="/interview-hub/huong-dan/devops-phong-van-middle" jsaction="click:;"> Câu hỏi Middle </a><!----></li><li><a class="ih-subnav-link" href="/interview-hub/huong-dan/devops-phong-van-senior" jsaction="click:;"> Câu hỏi Senior </a><!----></li><li><a class="ih-subnav-link" href="/interview-hub/huong-dan/devops-danh-gia-lo-trinh" jsaction="click:;"> Đánh giá best practice </a><!----></li><!----></ul><!----></section><!----><!----></nav></details><!----><!----><nav aria-label="Vị trí" class="flex flex-wrap items-center gap-1.5 text-sm text-muted"><a routerlink="/huong-dan" class="hover:text-accent" href="/interview-hub/huong-dan" jsaction="click:;">Hướng dẫn</a><span aria-hidden="true">›</span><span>DevOps từ Frontend</span><!----></nav><h1 class="ih-h1 mt-1.5">DevOps từ Frontend — portfolio, chứng chỉ, CV</h1><p class="mt-2 max-w-[66ch] text-[1.0625rem] text-ink-2">Phần 3 của lộ trình DevOps — 5 dự án portfolio tăng dần độ khó (mục tiêu, công nghệ, các bước, bằng chứng nghiệm thu, câu chuyện phỏng vấn), cách kể việc thật ở dự án mà không lộ thông tin; chứng chỉ nào đáng, nào không bắt buộc (giá và thời hạn đối chiếu 15/11/2026) và kế hoạch khi chỉ dùng tài nguyên miễn phí; cách viết CV, GitHub, LinkedIn cho vị trí DevOps và biến kinh nghiệm Frontend thành điểm cộng.</p><!----><article class="ih-card mt-6 p-4 sm:p-6 lg:p-7"><div ihinternallinks class="ih-prose max-w-[68ch]" jsaction="click:;"><p>Trang này là <strong>Phần 3</strong> của lộ trình <a href="huong-dan/devops-tu-con-so-0">DevOps từ con số 0</a>: biến những gì đã học thành <strong>bằng chứng</strong> mà nhà tuyển dụng tin được. Đọc sau <a href="huong-dan/devops-dinh-vi">Thị trường và định vị</a>; tài liệu học ở <a href="huong-dan/devops-tai-lieu-theo-level">Tài liệu theo level</a>.</p>
+<p><strong>Điều kiện đã chốt:</strong> ngân sách chỉ dùng tài nguyên miễn phí; con đường C → B → DevOps/Platform; dự án hiện tại dùng Jenkins, GitLab CI, Docker; nhắm ngân hàng, bảo hiểm ở Việt Nam.</p>
+<h2 id="devops-portfolio-chung-chi--nha-tuyen-dung-nhin-ho-so-chuyen-nganh-the-nao">Nhà tuyển dụng nhìn hồ sơ chuyển ngành thế nào</h2>
+<p>Khi bạn chưa từng giữ title DevOps, người tuyển dụng ngân hàng lọc theo ba lớp:</p>
+<ol>
+<li><strong>Lọc CV (HR, hệ thống lọc tự động):</strong> số năm, từ khoá (Linux, Docker, Kubernetes, CI/CD, Jenkins, GitLab, Terraform, AWS, OpenShift), chứng chỉ ở mục "ưu tiên". Ở lớp này <strong>từ khoá và chứng chỉ có tác dụng nhiều nhất</strong>.</li>
+<li><strong>Đọc hồ sơ (trưởng nhóm kỹ thuật):</strong> 2–3 phút. Họ mở <strong>một</strong> repo, đọc README, xem có số đo, sơ đồ, runbook không. Repo không có README hoặc chép tutorial bị loại ngay.</li>
+<li><strong>Phỏng vấn:</strong> hỏi sâu vào chính dự án bạn ghi — "vì sao chọn cách này", "khi nó hỏng thì sao", "đo thế nào". Ở lớp này <strong>chỉ câu chuyện thật có số liệu mới đứng vững</strong>.</li>
+</ol>
+<p>Từ đó có ba nguyên tắc cho portfolio:</p>
+<ul>
+<li><strong>Ít mà sâu:</strong> 1 dự án lớn dần, cộng vài repo vệ tinh — tốt hơn 10 repo tutorial.</li>
+<li><strong>Bằng chứng trước, công nghệ sau:</strong> mỗi dự án phải trả lời được "bạn đã đo được gì, đã làm hỏng gì, đã sửa thế nào".</li>
+<li><strong>Trung thực về phạm vi:</strong> lab là lab. Ghi "tái hiện trong lab với số đo X", không ghi "vận hành production".</li>
+</ul>
+<h2 id="devops-portfolio-chung-chi--cau-truc-repo">Cấu trúc repo</h2>
+<p>Tách repo theo đúng cách các team thật tách — chính cách tách này là một câu chuyện phỏng vấn:</p>
+<div class="ih-code" data-lang="text"><pre class="shiki shiki-themes github-light github-dark" style="background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8" tabindex="0"><code><span class="line"><span>mini-bank-app/      code Frontend + API, Dockerfile, .gitlab-ci.yml, Jenkinsfile</span></span>
+<span class="line"><span>mini-bank-infra/    Terraform (module + môi trường sit/prod), playbook Ansible</span></span>
+<span class="line"><span>mini-bank-gitops/   Helm values / Kustomize overlay cho Argo CD</span></span>
+<span class="line"><span>devops-journey/     nhật ký học, lab từng giai đoạn, runbook, postmortem, ADR</span></span>
+<span class="line"><span></span></span></code></pre></div><ul>
+<li><strong>Đặt repo trên GitLab.com (public)</strong> để pipeline là GitLab CI, giống dự án ở công ty; bật <strong>push mirror</strong> sang GitHub (có ở gói Free) để nhà tuyển dụng dễ xem, rồi ghim 4 repo này trên GitHub profile.</li>
+<li>Mỗi repo có <code>README.md</code> theo mẫu ở mục GitHub bên dưới, thư mục <code>docs/</code> chứa sơ đồ, ADR, runbook, postmortem và ảnh chụp.</li>
+<li>Chạy <strong>gitleaks trong CI</strong> cho cả 4 repo: repo portfolio lộ secret là điểm trừ lớn nhất có thể có.</li>
+</ul>
+<h2 id="devops-portfolio-chung-chi--nam-du-an-portfolio">Năm dự án portfolio</h2>
+<p>Năm dự án là năm chặng của <strong>mini-bank</strong> trong lộ trình, gom lại để mỗi chặng thành một câu chuyện đứng riêng được.</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Dự án</th>
+<th>Giai đoạn</th>
+<th>Mini-bank</th>
+<th>Độ khó</th>
+<th>Kể được cho level</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Từ VM tới container</td>
+<td>1–4</td>
+<td>v1–v2</td>
+<td>★</td>
+<td>Newbie → Junior</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Pipeline ngân hàng thu nhỏ</td>
+<td>5</td>
+<td>v3</td>
+<td>★★</td>
+<td>Junior</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Kubernetes có quan sát</td>
+<td>6–7</td>
+<td>v4–v5</td>
+<td>★★★</td>
+<td>Junior</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Hạ tầng AWS bằng code</td>
+<td>8</td>
+<td>v6</td>
+<td>★★★</td>
+<td>Junior → Junior+</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Phát hành chuẩn ngân hàng và game day</td>
+<td>9–10</td>
+<td>v7–v8</td>
+<td>★★★★</td>
+<td>Junior+ → Middle</td>
+</tr>
+</tbody>
+</table>
+<p>Dự án tham chiếu trong app: <a href="i/ops-pj-cicd-k8s">Dự án: nền tảng nhỏ đưa Angular + Spring Boot + PostgreSQL lên Kubernetes bằng GitOps — CI, ký image, Argo CD, canary, quan sát, rollback</a>.</p>
+<h2 id="devops-portfolio-chung-chi--du-an-1-tu-vm-toi-container">Dự án 1 — Từ VM tới container</h2>
+<p><strong>Mục tiêu:</strong> chứng minh nền Linux, mạng và Docker — thứ mọi JD ngân hàng ghi đầu tiên.</p>
+<p><strong>Công nghệ:</strong> Ubuntu và Rocky Linux (VM), systemd, Nginx, OpenSSL, ufw/firewalld, Bash, Docker, Docker Compose, Trivy.</p>
+<p><strong>Các bước:</strong></p>
+<ol>
+<li>Dựng 4 VM (<code>lb</code>, <code>web1</code>, <code>web2</code>, <code>bastion</code>); SSH chỉ dùng key qua bastion; firewall mặc định chặn.</li>
+<li>Chạy API bằng systemd dưới user riêng; Nginx cân bằng tải, HTTPS bằng CA nội bộ, cache đúng cho asset Angular.</li>
+<li>Viết <code>deploy.sh</code> có rollback khi health check thất bại.</li>
+<li>Đóng gói Frontend (multi-stage, non-root, config nạp lúc chạy) và API; Compose 4 service, chỉ Nginx publish port.</li>
+<li>Build multi-arch (amd64 + arm64); Trivy tới khi không còn lỗi CRITICAL.</li>
+</ol>
+<p><strong>Bằng chứng nghiệm thu:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Bằng chứng</th>
+<th>Ví dụ cần có trong README</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sơ đồ mạng</td>
+<td>Mermaid hoặc draw.io: VM, port, luồng request</td>
+</tr>
+<tr>
+<td>Bảng số đo</td>
+<td>Kích thước image trước/sau; thời gian build có/không có cache; số CVE CRITICAL trước/sau</td>
+</tr>
+<tr>
+<td>Ghi màn hình</td>
+<td>Đoạn asciinema: tắt <code>web1</code>, traffic vẫn chạy; <code>deploy.sh</code> tự rollback</td>
+</tr>
+<tr>
+<td>Runbook</td>
+<td>3 lỗi tự gây (DNS, firewall, chứng chỉ sai SAN): triệu chứng → lệnh → nguyên nhân → sửa</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Kể khi phỏng vấn:</strong></p>
+<ul>
+<li><em>"Image Frontend từ X MB xuống Y MB nhờ multi-stage và base tối giản; một image chạy cho mọi môi trường vì config nạp lúc khởi động."</em></li>
+<li><em>"Lần đầu đẩy image build trên Mac M3 lên server x86 thì gặp <code>exec format error</code> — tôi chuyển sang <code>buildx</code> multi-arch và thêm kiểm tra manifest trong pipeline."</em></li>
+</ul>
+<p><strong>Làm portfolio yếu đi:</strong> chép <code>docker-compose.yml</code> từ tutorial mà không giải thích; image chạy bằng root; không có số đo.</p>
+<h2 id="devops-portfolio-chung-chi--du-an-2-pipeline-ngan-hang-thu-nho">Dự án 2 — Pipeline ngân hàng thu nhỏ</h2>
+<p><strong>Mục tiêu:</strong> chứng minh bạn hiểu <strong>quy trình phát hành</strong>, không chỉ viết YAML — đúng điều ngân hàng hỏi.</p>
+<p><strong>Công nghệ:</strong> GitLab CI, GitLab Runner tự host, Jenkins (declarative + shared library), GitLab Container Registry, Trivy, Nginx (blue-green, canary).</p>
+<p><strong>Các bước:</strong></p>
+<ol>
+<li>Pipeline: lint → test → build image (tag commit SHA) → quét → deploy SIT tự động → UAT thủ công → PROD thủ công và chỉ từ git tag.</li>
+<li><strong>Build một lần, promote</strong> cùng image qua 4 môi trường; rollback một click bằng tag cũ.</li>
+<li>Làm lại bằng Jenkins, tách phần dùng chung thành shared library cho 2 repo.</li>
+<li>Blue-green và canary 10% trên VM; vòng lặp <code>curl</code> chứng minh không downtime.</li>
+<li>Bật cache npm/Nx; tính 4 chỉ số DORA cho repo trong 1 tháng.</li>
+</ol>
+<p><strong>Bằng chứng nghiệm thu:</strong> ảnh pipeline có cổng duyệt và người duyệt; bảng thời gian pipeline trước/sau cache; log <code>curl</code> khi chuyển blue-green (0 request lỗi); bảng DORA; ADR "vì sao build một lần thay vì build theo môi trường".</p>
+<p><strong>Kể khi phỏng vấn:</strong></p>
+<ul>
+<li><em>"Pipeline giảm từ X phút xuống Y phút nhờ cache và chỉ chạy phần bị ảnh hưởng."</em></li>
+<li><em>"Khi deploy blue-green tôi phát hiện migration database không tương thích ngược — chuyển sang mẫu expand/contract và ghi lại thành ADR."</em></li>
+</ul>
+<p><strong>Làm portfolio yếu đi:</strong> pipeline chỉ có một job <code>deploy</code>; secret hiện trong log; không có cổng duyệt — ngân hàng sẽ hỏi ngay "ai duyệt lên production?".</p>
+<h2 id="devops-portfolio-chung-chi--du-an-3-kubernetes-co-quan-sat">Dự án 3 — Kubernetes có quan sát</h2>
+<p><strong>Mục tiêu:</strong> chứng minh kỹ năng nặng nhất của công việc thật — <strong>gỡ lỗi</strong> — và khả năng đo hệ thống bằng SLO.</p>
+<p><strong>Công nghệ:</strong> kind, Helm, Kustomize, Gateway API, HPA, RBAC, NetworkPolicy, kube-prometheus-stack, Loki + Alloy, OpenTelemetry + Tempo, k6.</p>
+<p><strong>Các bước:</strong></p>
+<ol>
+<li>Helm chart cho mini-bank, 3 namespace sit/uat/prod; probe, resource, RBAC tối thiểu cho CI.</li>
+<li>Rolling update <code>maxUnavailable: 0</code> và rollback; HPA dưới tải k6.</li>
+<li><strong>Phá cố ý 8 lỗi</strong> và viết runbook cho từng lỗi.</li>
+<li>Dashboard RED, log nối trace bằng <code>trace_id</code>, SLO 99,5% với cảnh báo burn rate; tiêm 5% lỗi để cảnh báo bắn.</li>
+</ol>
+<p><strong>Bằng chứng nghiệm thu:</strong> runbook 8 lỗi; ảnh dashboard lúc tiêm lỗi; biểu đồ số replica theo tải; số đo rollback (giây); ảnh cảnh báo kèm link runbook.</p>
+<p><strong>Kể khi phỏng vấn:</strong></p>
+<ul>
+<li><em>"Pod CrashLoopBackOff do liveness kiểm tra database — tôi tách liveness và readiness, ghi lại vì sao liveness không được phụ thuộc hệ thống ngoài."</em></li>
+<li><em>"Từ cảnh báo burn rate tôi lần ra request lỗi qua trace trong dưới 5 phút."</em></li>
+</ul>
+<p><strong>Làm portfolio yếu đi:</strong> cài 15 công cụ CNCF nhưng không giải thích được cái nào giải quyết vấn đề gì; dùng chart Bitnami cũ chạy được nhờ may mắn.</p>
+<h2 id="devops-portfolio-chung-chi--du-an-4-ha-tang-aws-bang-code">Dự án 4 — Hạ tầng AWS bằng code</h2>
+<p><strong>Mục tiêu:</strong> chứng minh bạn dựng được hạ tầng cloud an toàn, lặp lại được và <strong>có kiểm soát chi phí</strong>.</p>
+<p><strong>Công nghệ:</strong> Terraform (module, state S3 có khoá <code>use_lockfile</code>), AWS (VPC, IAM, ALB, ECS Fargate, ECR, S3 + CloudFront), GitLab CI với OIDC, Ansible.</p>
+<p><strong>Các bước:</strong></p>
+<ol>
+<li>Module <code>network</code>, <code>compute</code>, <code>cdn</code>; thư mục <code>sit/</code> và <code>prod/</code> tách riêng.</li>
+<li>Merge Request tự chạy <code>fmt</code>, <code>validate</code>, <code>plan</code> và đăng kết quả <code>plan</code> vào MR; <code>apply</code> thủ công sau khi duyệt.</li>
+<li>CI truy cập AWS bằng OIDC, không có access key dài hạn; IAM policy chỉ đủ quyền cần.</li>
+<li>Angular trên S3 + CloudFront; API trên ECS Fargate sau ALB.</li>
+<li>Ansible cấu hình VM mô phỏng on-premise; lần chạy thứ hai <code>changed=0</code>.</li>
+</ol>
+<p><strong>Bằng chứng nghiệm thu:</strong> sơ đồ VPC; ảnh <code>plan</code> trong MR; bảng chi phí thật lấy từ Billing (mỗi buổi lab tốn bao nhiêu); bản ghi <code>terraform destroy</code>; IAM policy kèm giải thích từng quyền.</p>
+<p><strong>Kể khi phỏng vấn:</strong></p>
+<ul>
+<li><em>"Tôi giữ tổng chi phí lab trong credit bằng cách destroy cuối mỗi buổi và không dùng NAT Gateway ở lab đầu; phát hiện IPv4 public cũng tính phí theo giờ."</em></li>
+<li><em>"Một thay đổi tên resource khiến <code>plan</code> đòi xoá và tạo lại database — tôi dùng <code>moved</code> block để giữ nguyên."</em></li>
+</ul>
+<p><strong>Làm portfolio yếu đi:</strong> state Terraform commit lên Git; access key trong biến CI; dựng bằng tay trên console rồi viết "IaC".</p>
+<h2 id="devops-portfolio-chung-chi--du-an-5-phat-hanh-chuan-ngan-hang-va-game-day">Dự án 5 — Phát hành chuẩn ngân hàng và game day</h2>
+<p><strong>Mục tiêu:</strong> chứng minh bạn hiểu <strong>vận hành và quy trình ngân hàng</strong> — phần phân biệt Junior+ với Junior.</p>
+<p><strong>Công nghệ:</strong> Argo CD, Argo Rollouts, Syft, Cosign, Kyverno, External Secrets hoặc Sealed Secrets, Velero, OpenShift (Developer Sandbox), Nexus.</p>
+<p><strong>Các bước:</strong></p>
+<ol>
+<li>GitOps: CI chỉ cập nhật image tag bằng MR; Argo CD tự sửa khi có người sửa tay.</li>
+<li>Chuỗi cung ứng: SBOM, ký image, Kyverno chặn image chưa ký và container chạy root.</li>
+<li>Viết <strong>change request (RFC)</strong> cho một bản phát hành; canary tự rollback khi error rate vượt ngưỡng.</li>
+<li><strong>Game day:</strong> 3 sự cố (database đầy disk, chứng chỉ hết hạn, bản deploy lỗi) — xử lý theo vai trò, ghi timeline, viết <strong>postmortem không đổ lỗi</strong>.</li>
+<li>Backup và <strong>restore thật</strong> (xoá namespace rồi khôi phục), đo RTO; chạy mini-bank trên OpenShift với SCC mặc định.</li>
+</ol>
+<p><strong>Bằng chứng nghiệm thu:</strong> RFC mẫu; 3 postmortem; số RTO đo được; log Kyverno từ chối image; ảnh Argo CD tự sửa lệch; ghi chú những gì phải sửa để chạy trên OpenShift.</p>
+<p><strong>Kể khi phỏng vấn:</strong></p>
+<ul>
+<li><em>"Trong game day, chứng chỉ hết hạn làm 100% request lỗi — tôi khôi phục trong X phút, postmortem dẫn tới cảnh báo hạn chứng chỉ trước 21 ngày."</em></li>
+<li><em>"Restore namespace mất X phút so với mục tiêu RTO Y phút — tôi chỉ ra bước nào chậm và cách rút ngắn."</em></li>
+</ul>
+<p><strong>Làm portfolio yếu đi:</strong> postmortem đổ lỗi cho người; "đã có backup" nhưng chưa từng restore.</p>
+<h2 id="devops-portfolio-chung-chi--viec-that-o-du-an-ke-the-nao-ma-khong-lo-thong">Việc thật ở dự án — kể thế nào mà không lộ thông tin</h2>
+<p>Việc bạn làm ở dự án (luồng <strong>C → B</strong>) có giá trị <strong>cao hơn mọi lab</strong>, vì đó là kinh nghiệm thật trong môi trường ngân hàng. Kể đúng cách:</p>
+<table>
+<thead>
+<tr>
+<th>Nên</th>
+<th>Không nên</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ghi trên CV bằng số đo: "giảm thời gian pipeline Frontend từ X xuống Y phút"</td>
+<td>Đưa code, cấu hình, log, ảnh màn hình nội bộ lên repo hay CV</td>
+</tr>
+<tr>
+<td>Ẩn tên khách hàng khi cần: "một ngân hàng TMCP", "dự án bảo hiểm"</td>
+<td>Ghi tên hệ thống nội bộ, địa chỉ server, tên người</td>
+</tr>
+<tr>
+<td>Viết lại bài toán thành lab riêng trong <code>devops-journey</code>, dùng dữ liệu giả</td>
+<td>Chép lại pipeline của công ty rồi đổi tên biến</td>
+</tr>
+<tr>
+<td>Hỏi PM có được ghi tên dự án lên CV không (nhiều công ty outsource cho phép ghi tên khách hàng)</td>
+<td>Tự suy ra là được phép</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Điều kiện để được ghi:</strong> chỉ ghi việc <strong>bạn trực tiếp làm</strong>. Việc "phối hợp" hay "hỗ trợ" thì ghi đúng chữ đó.</p>
+<h2 id="devops-portfolio-chung-chi--chung-chi-cai-nao-dang-cai-nao-khong-bat-buoc">Chứng chỉ — cái nào đáng, cái nào không bắt buộc</h2>
+<p><strong>Sự thật về thị trường:</strong> các JD ngân hàng đọc được — SHB, VPBank, FINT (theo tóm tắt kết quả tìm kiếm ngày 15/11/2026) — đều đặt chứng chỉ ở mục <strong>ưu tiên</strong>, không bắt buộc. Chứng chỉ <strong>giúp qua vòng lọc CV</strong>, nhất là khi bạn chưa có title DevOps. Chứng chỉ <strong>không giúp qua phỏng vấn kỹ thuật</strong> — portfolio và câu chuyện mới làm được việc đó.</p>
+<p>Giá và thời hạn đối chiếu 15/11/2026; giá chưa gồm thuế; quy đổi tiền Việt là ước lượng.</p>
+<table>
+<thead>
+<tr>
+<th>Thời điểm</th>
+<th>Chứng chỉ</th>
+<th>Giá</th>
+<th>Hạn</th>
+<th>Mức cần thiết</th>
+<th>Lý do</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sau giai đoạn 6</td>
+<td><a href="https://training.linuxfoundation.org/certification/certified-kubernetes-administrator-cka/" target="_blank" rel="noopener noreferrer"><strong>CKA</strong></a> — Certified Kubernetes Administrator</td>
+<td>445 USD (khoảng 11–12 triệu)</td>
+<td>2 năm</td>
+<td>★★★ <strong>Đáng nhất</strong></td>
+<td>Thi thực hành 2 giờ trên cụm thật (Kubernetes 1.37); phần gỡ lỗi chiếm 30%; gồm 2 lượt thi và 2 buổi luyện killer.sh; được JD ngân hàng và đơn vị phục vụ ngân hàng nhắc tên</td>
+</tr>
+<tr>
+<td>Sau giai đoạn 8</td>
+<td><a href="https://aws.amazon.com/certification/certified-solutions-architect-associate/" target="_blank" rel="noopener noreferrer"><strong>AWS Solutions Architect – Associate</strong></a> (SAA-C03)</td>
+<td>150 USD (khoảng 4 triệu)</td>
+<td>3 năm</td>
+<td>★★ Nên có nếu nhắm ngân hàng dùng AWS</td>
+<td>Chứng chỉ AWS được nhận ra nhiều nhất</td>
+</tr>
+<tr>
+<td>Thay cho SAA (tuỳ chọn)</td>
+<td><a href="https://aws.amazon.com/certification/certified-cloudops-engineer-associate/" target="_blank" rel="noopener noreferrer"><strong>AWS CloudOps Engineer – Associate</strong></a> (SOA-C03)</td>
+<td>150 USD</td>
+<td>3 năm</td>
+<td>★★</td>
+<td>Tên mới của SysOps Administrator từ 9/2025, nay có cả container — sát việc DevOps hơn SAA nhưng ít người tuyển nhận ra hơn</td>
+</tr>
+<tr>
+<td>Bất kỳ lúc nào sau giai đoạn 8</td>
+<td><a href="https://developer.hashicorp.com/certifications/infrastructure-automation" target="_blank" rel="noopener noreferrer"><strong>Terraform Associate (004)</strong></a></td>
+<td>khoảng 70 USD</td>
+<td>2 năm</td>
+<td>★ Có thì tốt</td>
+<td>Rẻ, trắc nghiệm 1 giờ trên Terraform 1.12; bản 003 đã ngừng từ 1/2026. Giá và hạn lấy từ các trang ôn thi — xác nhận trên trang HashiCorp</td>
+</tr>
+<tr>
+<td>Nếu nhắm ngân hàng chạy RHEL</td>
+<td><a href="https://www.redhat.com/en/services/training/ex200-red-hat-certified-system-administrator-rhcsa-exam" target="_blank" rel="noopener noreferrer"><strong>RHCSA</strong></a> (EX200)</td>
+<td>khoảng 500 USD</td>
+<td>3 năm</td>
+<td>★ Tuỳ nơi</td>
+<td>Thi thực hành trên RHEL 10; JD của FINT ưu tiên RHCE/LFCS. Đắt so với giá trị khi bạn đã có CKA</td>
+</tr>
+<tr>
+<td>Khi đã đi làm (Middle)</td>
+<td><a href="https://training.linuxfoundation.org/certification/certified-kubernetes-security-specialist/" target="_blank" rel="noopener noreferrer"><strong>CKS</strong></a></td>
+<td>445 USD</td>
+<td>2 năm</td>
+<td>★★ cho hướng DevSecOps</td>
+<td>Cần CKA còn hạn</td>
+</tr>
+<tr>
+<td>Khi đã đi làm (Middle)</td>
+<td><a href="https://aws.amazon.com/certification/certified-devops-engineer-professional/" target="_blank" rel="noopener noreferrer"><strong>AWS DevOps Engineer – Professional</strong></a></td>
+<td>300 USD</td>
+<td>3 năm</td>
+<td>★★</td>
+<td>Khó, chỉ đáng khi đã làm AWS thật</td>
+</tr>
+<tr>
+<td>Khi làm platform OpenShift</td>
+<td>Red Hat EX280 (OpenShift Administration)</td>
+<td>khoảng 500 USD</td>
+<td>3 năm</td>
+<td>★</td>
+<td>Chỉ khi công ty dùng OpenShift và tài trợ</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Không bắt buộc, có thể bỏ qua:</strong></p>
+<ul>
+<li><strong>KCNA, KCSA</strong> — kiến thức nhập môn; khi đã nhắm CKA thì giá trị tuyển dụng thấp.</li>
+<li><strong>AWS Cloud Practitioner</strong> — bỏ qua nếu sẽ thi Associate.</li>
+<li><strong>CKAD</strong> — sát việc developer hơn; với hướng DevOps/Platform, chọn CKA.</li>
+<li><strong>Docker Certified Associate, chứng chỉ Jenkins, "DevOps Foundation"</strong> — ít người tuyển ở Việt Nam để ý.</li>
+<li><strong>Chứng nhận hoàn thành khoá học</strong> (Udemy, Coursera, khoá miễn phí) — không phải chứng chỉ; ghi ở mục "Khoá học", đừng ghi vào mục "Chứng chỉ".</li>
+</ul>
+<h2 id="devops-portfolio-chung-chi--ke-hoach-chung-chi-khi-chi-dung-tai-nguyen-mien">Kế hoạch chứng chỉ khi chỉ dùng tài nguyên miễn phí</h2>
+<p>Với ngân sách 0 đồng, <strong>không mua bài thi nào trong 12 tháng đầu</strong>. Thay vào đó:</p>
+<ol>
+<li><strong>Ôn như sẽ thi:</strong> dùng <a href="https://github.com/cncf/curriculum" target="_blank" rel="noopener noreferrer">đề cương CKA/CKAD</a> làm checklist kỹ năng; luyện kịch bản <a href="https://killercoda.com/killer-shell-cka" target="_blank" rel="noopener noreferrer">Killer Shell CKA trên Killercoda</a> (miễn phí). Khi có tiền thi, bạn chỉ cần 2–3 tuần ôn lại.</li>
+<li><strong>Xin công ty tài trợ.</strong> Công ty outsource thường có ngân sách chứng chỉ, vì đối tác cloud và khách hàng ngân hàng đánh giá nhà cung cấp theo số nhân sự có chứng chỉ. Hỏi HR hoặc PM trước khi tự bỏ tiền — xem mẫu đề xuất bên dưới.</li>
+<li><strong>Chờ giảm giá.</strong> Linux Foundation thường giảm giá sâu vào các dịp lớn (Black Friday, Cyber Monday cuối tháng 11; một đợt giữa năm 2026 từng hiển thị 267 USD thay vì 445 USD theo một trang tổng hợp). Mua lúc giảm rồi thi trong 12 tháng.</li>
+<li><strong>Credential miễn phí nếu muốn có "badge":</strong> <a href="https://learn.microsoft.com/en-us/credentials/applied-skills/" target="_blank" rel="noopener noreferrer">Microsoft Applied Skills</a> là bài đánh giá thực hành miễn phí, nhưng thiên về Azure và <strong>không phải chứng chỉ</strong> — chỉ đáng làm nếu công ty bạn nhắm dùng Azure.</li>
+</ol>
+<p><strong>Mẫu đề xuất xin tài trợ</strong> (gửi PM/quản lý, sửa cho đúng thực tế):</p>
+<div class="ih-code" data-lang="text"><pre class="shiki shiki-themes github-light github-dark" style="background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8" tabindex="0"><code><span class="line"><span>Chào anh/chị,</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Em đang phụ trách thêm phần build và CI/CD cho Frontend ở dự án [tên dự án]</span></span>
+<span class="line"><span>(đã [kết quả có số đo, ví dụ: giảm thời gian pipeline từ X xuống Y phút]).</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Em xin đề xuất công ty tài trợ bài thi CKA (445 USD, gồm 2 lượt thi,</span></span>
+<span class="line"><span>chứng chỉ có hạn 2 năm). Lợi ích cho dự án và công ty:</span></span>
+<span class="line"><span>- Em có thể hỗ trợ team deploy và điều tra lỗi trên Kubernetes/OpenShift</span></span>
+<span class="line"><span>  ở SIT/UAT, giảm thời gian chờ team hạ tầng.</span></span>
+<span class="line"><span>- Thêm một nhân sự có chứng chỉ Kubernetes cho hồ sơ năng lực khi chào</span></span>
+<span class="line"><span>  dự án ngân hàng.</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Em sẽ thi trong vòng [3] tháng và chia sẻ lại kiến thức cho team</span></span>
+<span class="line"><span>qua [1 buổi demo / tài liệu nội bộ].</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Em cảm ơn anh/chị.</span></span>
+<span class="line"><span></span></span></code></pre></div><h2 id="devops-portfolio-chung-chi--cv-cho-vi-tri-devops">CV cho vị trí DevOps</h2>
+<p><strong>Nguyên tắc:</strong></p>
+<ul>
+<li><strong>1–2 trang.</strong> Hai bản: tiếng Việt cho ngân hàng trong nước, tiếng Anh cho ITviec, LinkedIn và công ty nước ngoài.</li>
+<li><strong>Title là title thật.</strong> Đừng ghi "DevOps Engineer" ở công ty bạn chưa giữ vị trí đó. Hướng đi đặt ở <strong>headline</strong> và <strong>summary</strong>.</li>
+<li><strong>Mỗi gạch đầu dòng = hành động + công cụ + số đo.</strong> Chưa có số thì đo trước (thời gian pipeline, kích thước image, số lần deploy) rồi mới đưa dòng đó vào CV — đừng bịa.</li>
+<li><strong>Từ khoá khớp JD:</strong> Linux, Docker, Kubernetes, CI/CD, GitLab CI, Jenkins, Terraform, Ansible, AWS, Prometheus, Grafana, Helm, Argo CD, OpenShift — chỉ ghi thứ bạn trả lời được 3 câu hỏi đào sâu.</li>
+<li><strong>Không:</strong> thanh phần trăm kỹ năng; liệt kê 40 công cụ; ghi lab là "production"; ghi khoá học vào mục chứng chỉ.</li>
+</ul>
+<p><strong>Khung CV (bản tiếng Anh):</strong></p>
+<div class="ih-code" data-lang="text"><pre class="shiki shiki-themes github-light github-dark" style="background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8" tabindex="0"><code><span class="line"><span>NGUYEN VAN A — Frontend Engineer → DevOps / Platform</span></span>
+<span class="line"><span>CI/CD · Docker · Kubernetes · Terraform · Linux | email · GitHub · LinkedIn</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>SUMMARY</span></span>
+<span class="line"><span>Frontend engineer with ~6 years in banking and insurance projects (Angular,</span></span>
+<span class="line"><span>Nx monorepos, micro-frontends), now owning build &amp; release work: [CI/CD,</span></span>
+<span class="line"><span>container images, deployment to SIT/UAT]. Built a mini banking platform</span></span>
+<span class="line"><span>end-to-end — pipelines, Kubernetes, observability, Terraform on AWS — with</span></span>
+<span class="line"><span>measured results and incident write-ups.</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>SKILLS (chỉ ghi thứ trả lời được 3 câu đào sâu)</span></span>
+<span class="line"><span>Linux (Ubuntu, RHEL/SELinux) · Networking (DNS, TLS, Nginx) · Bash, Python</span></span>
+<span class="line"><span>CI/CD: GitLab CI, Jenkins · Docker · Kubernetes, Helm · Prometheus, Grafana</span></span>
+<span class="line"><span>Terraform, Ansible · AWS (VPC, IAM, ECS) · Git · Angular, TypeScript, Nx</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>EXPERIENCE</span></span>
+<span class="line"><span>[Công ty] — Frontend Engineer (placed at banks and insurers)   [năm]–now</span></span>
+<span class="line"><span>[Dự án] — chỉ ghi việc bạn trực tiếp làm, mỗi dòng có số đo</span></span>
+<span class="line"><span>- Introduced a multi-stage Docker image for the Angular app with runtime</span></span>
+<span class="line"><span>  config; one image promoted SIT → UAT → PROD (image X MB → Y MB).</span></span>
+<span class="line"><span>- Cut the Frontend pipeline from X to Y minutes with npm/Nx caching on</span></span>
+<span class="line"><span>  GitLab CI.</span></span>
+<span class="line"><span>- ...</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>PROJECTS</span></span>
+<span class="line"><span>mini-bank platform — github.com/&lt;you&gt;/mini-bank-app</span></span>
+<span class="line"><span>- GitLab CI + Jenkins pipeline across 4 environments with approval gates,</span></span>
+<span class="line"><span>  build-once promotion, blue-green with 0 failed requests (measured).</span></span>
+<span class="line"><span>- Kubernetes (Helm, Gateway API, HPA) with SLO 99.5% and burn-rate alerts;</span></span>
+<span class="line"><span>  runbook for 8 failure modes; rollback &lt; 1 min.</span></span>
+<span class="line"><span>- Terraform on AWS (VPC, ECS Fargate, CloudFront), OIDC from CI, lab cost</span></span>
+<span class="line"><span>  kept under $X.</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>CERTIFICATIONS (chỉ chứng chỉ thật; "đang ôn" ghi rõ)</span></span>
+<span class="line"><span>EDUCATION</span></span>
+<span class="line"><span></span></span></code></pre></div><p>Các chữ X, Y, $X trong khung là chỗ đặt số bạn tự đo; dòng nào chưa có số đo thật thì bỏ ra khỏi CV.</p>
+<p><strong>Từ kinh nghiệm thật sang dòng CV DevOps:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Dự án trong CV hiện tại</th>
+<th>Góc DevOps có thể kể</th>
+<th>Điều kiện để được ghi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>công ty bảo hiểm C — Angular 21, Nx 22, Module Federation</td>
+<td>Build và release micro-frontend: nhiều remote build/deploy độc lập, cache Nx</td>
+<td>Chỉ phần bạn trực tiếp cấu hình; có số đo</td>
+</tr>
+<tr>
+<td>hệ thống kế toán của công ty bảo hiểm D — thiết kế kiến trúc Angular 20 cho team 6 người</td>
+<td>Tư duy <strong>platform</strong>: chuẩn hoá cấu trúc, quy ước, công cụ cho người khác dùng</td>
+<td>Đã có thật — kể như câu chuyện Platform Engineering</td>
+</tr>
+<tr>
+<td>dự án tra soát của ngân hàng A — Nx 18, Keycloak, phân quyền, duyệt nhiều cấp</td>
+<td>Hiểu OIDC/Keycloak, RBAC, quy trình phê duyệt — nền cho IAM và tách nhiệm vụ</td>
+<td>Ghi đúng phần Frontend đã làm</td>
+</tr>
+<tr>
+<td>ngân hàng A — sửa lỗi SIT/UAT (collateral-remote)</td>
+<td>Quen quy trình môi trường SIT → UAT, làm việc với team vận hành</td>
+<td>Ghi đúng là sửa lỗi ở SIT/UAT</td>
+</tr>
+<tr>
+<td>app doanh nghiệp của ngân hàng B — Nx, micro-frontend, giám sát phía client</td>
+<td>Frontend observability (APM/RUM, source map)</td>
+<td>Chỉ nếu phần giám sát là việc bạn làm</td>
+</tr>
+<tr>
+<td>công ty cũ (khách hàng dầu khí) — backend .NET, Azure DevOps</td>
+<td>Đã làm việc với pipeline Azure DevOps</td>
+<td>Chỉ nếu bạn từng sửa hoặc chạy pipeline</td>
+</tr>
+</tbody>
+</table>
+<h2 id="devops-portfolio-chung-chi--github-va-linkedin">GitHub và LinkedIn</h2>
+<p><strong>GitHub profile README</strong> (repo trùng tên tài khoản):</p>
+<div class="ih-code" data-lang="text"><pre class="shiki shiki-themes github-light github-dark" style="background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8" tabindex="0"><code><span class="line"><span># Hi, I'm A — Frontend → DevOps/Platform</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Angular engineer (6 yrs, banking &amp; insurance) moving into DevOps.</span></span>
+<span class="line"><span>Currently: [giai đoạn đang học], [chứng chỉ đang ôn nếu có].</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Pinned:</span></span>
+<span class="line"><span>- mini-bank-app     — app + GitLab CI/Jenkins pipelines, Docker, Helm</span></span>
+<span class="line"><span>- mini-bank-infra   — Terraform (AWS) + Ansible</span></span>
+<span class="line"><span>- mini-bank-gitops  — Argo CD, Kyverno, supply chain</span></span>
+<span class="line"><span>- devops-journey    — labs, runbooks, postmortems, ADRs</span></span>
+<span class="line"><span></span></span></code></pre></div><p><strong>README mỗi repo nên có 8 mục</strong>, theo thứ tự:</p>
+<ol>
+<li><strong>Vấn đề</strong> — 2–3 câu: repo này giải quyết gì.</li>
+<li><strong>Kiến trúc</strong> — sơ đồ (<a href="https://mermaid.js.org/" target="_blank" rel="noopener noreferrer">Mermaid</a> hiển thị ngay trên GitHub/GitLab, hoặc <a href="https://www.drawio.com/" target="_blank" rel="noopener noreferrer">draw.io</a>).</li>
+<li><strong>Chạy thử</strong> — một lệnh (<code>make up</code> hoặc <code>docker compose up</code>), có điều kiện tiên quyết.</li>
+<li><strong>Đã đo được gì</strong> — bảng số đo trước/sau.</li>
+<li><strong>Quyết định</strong> — link tới các ADR.</li>
+<li><strong>Sự cố đã gặp</strong> — link runbook, postmortem.</li>
+<li><strong>Nếu ở production sẽ làm thêm</strong> — chỗ lab còn đơn giản hoá; thể hiện bạn biết giới hạn.</li>
+<li><strong>Chi phí</strong> — với repo cloud.</li>
+</ol>
+<p><strong>Thêm điểm cộng:</strong> CI badge xanh; release có tag và <code>CHANGELOG</code> theo <a href="https://keepachangelog.com/en/1.1.0/" target="_blank" rel="noopener noreferrer">Keep a Changelog</a>; ghi màn hình terminal bằng <a href="https://asciinema.org/" target="_blank" rel="noopener noreferrer">asciinema</a>; commit message có nghĩa; dùng Issues làm bảng việc. Biểu đồ đóng góp xanh kín <strong>không</strong> quan trọng.</p>
+<p><strong>LinkedIn:</strong> headline giống dòng đầu CV; mục <em>Featured</em> ghim repo mini-bank và một bài viết ngắn về một sự cố trong game day; bật <em>Open to work</em> chỉ hiển thị với recruiter. Hồ sơ trên ITviec, TopCV dùng cùng bộ từ khoá với CV.</p>
+<h2 id="devops-portfolio-chung-chi--bien-kinh-nghiem-frontend-thanh-diem-cong">Biến kinh nghiệm Frontend thành điểm cộng</h2>
+<table>
+<thead>
+<tr>
+<th>Kinh nghiệm Frontend</th>
+<th>Giá trị với team DevOps/Platform</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nx monorepo, <code>nx affected</code>, cache</td>
+<td>Tối ưu CI: chỉ build phần bị ảnh hưởng, cache từ xa</td>
+</tr>
+<tr>
+<td>Module Federation, micro-frontend</td>
+<td>Release độc lập nhiều thành phần, quản lý version và tương thích</td>
+</tr>
+<tr>
+<td>CDN, cache header, asset có hash</td>
+<td>Thiết kế cache ở reverse proxy và CDN, invalidation</td>
+</tr>
+<tr>
+<td>Giám sát phía client (RUM, Web Vitals)</td>
+<td>Observability đầu cuối: từ trình duyệt tới database</td>
+</tr>
+<tr>
+<td>Keycloak/OIDC ở Frontend</td>
+<td>Hiểu luồng xác thực khi cấu hình IAM, OIDC cho CI</td>
+</tr>
+<tr>
+<td>CSP, header bảo mật</td>
+<td>Cấu hình header ở Nginx/gateway, hiểu vì sao</td>
+</tr>
+<tr>
+<td>Là "khách hàng" của pipeline nhiều năm</td>
+<td><strong>Developer experience</strong> — điều cốt lõi của Platform Engineering</td>
+</tr>
+<tr>
+<td>Làm trong quy trình ngân hàng</td>
+<td>SIT/UAT, phê duyệt nhiều cấp, change request — không phải học lại</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Giới thiệu bản thân 60 giây</strong> (sửa theo thực tế):</p>
+<blockquote>
+<p>"Em làm Frontend gần 6 năm, chủ yếu ở dự án ngân hàng và bảo hiểm — Angular, Nx, micro-frontend. Mấy năm gần đây em là người lo phần build và release cho Frontend, và nhận ra việc em thích nhất là làm cho cả team deploy nhanh và an toàn hơn. Một năm qua em học bài bản Linux, mạng, Docker, CI/CD, Kubernetes, Terraform, và dựng một hệ thống mini-bank đầy đủ — pipeline 4 môi trường có duyệt, Kubernetes có SLO và cảnh báo, hạ tầng AWS bằng code, kèm postmortem cho các sự cố tự gây. Ở dự án hiện tại em đã [kết quả có số đo]. Em tìm vị trí DevOps/Platform để làm toàn thời gian việc này, và lợi thế của em là hiểu rất rõ developer cần gì từ nền tảng."</p>
+</blockquote>
+<p>Câu hỏi hành vi hay đi kèm khi chuyển ngành: <a href="i/bh-why-hire-you">"Vì sao chúng tôi nên chọn bạn?" — tóm giá trị trong 60 giây bằng bằng chứng khớp với bài toán của họ, không liệt kê tính từ</a> · <a href="i/bh-why-leave">Vì sao bạn muốn rời công ty hiện tại — hướng tới điều bạn tìm kiếm thay vì chạy trốn điều bạn ghét, trung thực mà không chê nơi cũ</a> · <a href="i/bh-career-goals">Mục tiêu nghề nghiệp 3–5 năm — chuyên gia kỹ thuật hay quản lý, nói cụ thể nhưng linh hoạt, nối với cơ hội ở vị trí này</a> · <a href="i/bh-learn-fast">Kể về lần bạn phải học nhanh một công nghệ/miền nghiệp vụ mới — cách học có cấu trúc, học bằng làm, tìm người hỏi đúng, tạo giá trị sớm</a> · <a href="i/bh-improve-process">Kể về lần bạn cải thiện một quy trình của team — đo trước, thay đổi nhỏ có thử nghiệm, đo sau, và thuyết phục mọi người dùng nó</a> · <a href="i/bh-ownership-beyond-role">Kể về lần bạn làm việc vượt ra ngoài phạm vi được giao — ownership thật khác 'ôm việc' thế nào, và vì sao kết thúc câu chuyện bằng việc trao lại cho đúng người</a> · <a href="i/bh-salary-expectation">Mức lương mong muốn và thương lượng offer — tìm hiểu dải thị trường, nói khoảng có căn cứ, gross/net và tổng đãi ngộ, không nói dối về lương hiện tại</a></p>
+<h2 id="devops-portfolio-chung-chi--nguon">Nguồn</h2>
+<p>Kiểm tra ngày 15/11/2026.</p>
+<ul>
+<li><a href="https://training.linuxfoundation.org/certification/certified-kubernetes-administrator-cka/" target="_blank" rel="noopener noreferrer">Linux Foundation — CKA</a>: giá, nội dung gói, thời hạn, trọng số đề (đọc trực tiếp) · <a href="https://training.linuxfoundation.org/certification/certified-kubernetes-application-developer-ckad/" target="_blank" rel="noopener noreferrer">CKAD</a> · <a href="https://training.linuxfoundation.org/certification/certified-kubernetes-security-specialist/" target="_blank" rel="noopener noreferrer">CKS</a></li>
+<li><a href="https://developer.hashicorp.com/certifications/infrastructure-automation" target="_blank" rel="noopener noreferrer">HashiCorp — Terraform Associate</a>: đề 1 giờ, Terraform 1.12 (đọc trực tiếp); giá 70,50 USD, hạn 2 năm, 003 ngừng 8/1/2026 lấy từ các trang ôn thi</li>
+<li><a href="https://aws.amazon.com/certification/certified-solutions-architect-associate/" target="_blank" rel="noopener noreferrer">AWS — Solutions Architect Associate</a> · <a href="https://aws.amazon.com/certification/certified-cloudops-engineer-associate/" target="_blank" rel="noopener noreferrer">CloudOps Engineer Associate</a> · <a href="https://aws.amazon.com/certification/certified-devops-engineer-professional/" target="_blank" rel="noopener noreferrer">DevOps Engineer Professional</a></li>
+<li><a href="https://www.redhat.com/en/services/training/ex200-red-hat-certified-system-administrator-rhcsa-exam" target="_blank" rel="noopener noreferrer">Red Hat — RHCSA EX200</a></li>
+<li><a href="https://learn.microsoft.com/en-us/credentials/applied-skills/" target="_blank" rel="noopener noreferrer">Microsoft Applied Skills</a></li>
+<li><a href="https://docs.gitlab.com/user/project/repository/mirror/push/" target="_blank" rel="noopener noreferrer">GitLab — push mirroring</a> (gói Free) · <a href="https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-github-profile/customizing-your-profile/managing-your-profile-readme" target="_blank" rel="noopener noreferrer">GitHub — profile README</a></li>
+<li><a href="https://github.com/cncf/curriculum" target="_blank" rel="noopener noreferrer">CNCF curriculum</a> · <a href="https://killercoda.com/killer-shell-cka" target="_blank" rel="noopener noreferrer">Killer Shell CKA trên Killercoda</a></li>
+</ul>
+</div></article><nav aria-label="Bài trước và bài sau" class="ih-no-print mt-6 grid gap-3 sm:grid-cols-2"><a class="ih-card ih-card-link flex-col gap-1 p-4" href="/interview-hub/huong-dan/devops-tai-lieu-theo-level" jsaction="click:;"><span class="flex items-center gap-1.5 text-xs text-faint"><ih-icon name="arrow-left" class="inline-flex shrink-0" ngh="0"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M19 12H5M11 6l-6 6 6 6"/><!----></svg></ih-icon> Bài trước </span><span class="font-medium">Tài liệu theo level</span></a><!----><!----><a class="ih-card ih-card-link flex-col items-end gap-1 p-4 text-right" href="/interview-hub/huong-dan/devops-phong-van-junior" jsaction="click:;"><span class="flex items-center gap-1.5 text-xs text-faint"> Bài sau <ih-icon name="arrow-right" class="inline-flex shrink-0" ngh="0"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/><!----></svg></ih-icon></span><span class="font-medium">Câu hỏi Junior</span></a><!----></nav><!----><!----><!----><!----></div></div><!----></ih-guide-page><!----></main><nav _ngcontent-ng-c604673181 aria-label="Điều hướng chính trên điện thoại" class="ih-tabbar ih-no-print"><a _ngcontent-ng-c604673181 class="ih-tab" href="/interview-hub/" jsaction="click:;"><ih-icon _ngcontent-ng-c604673181 class="inline-flex shrink-0" ngh="2"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><!----></svg></ih-icon><span _ngcontent-ng-c604673181>Hôm nay</span></a><a _ngcontent-ng-c604673181 class="ih-tab" href="/interview-hub/ly-thuyet" jsaction="click:;"><ih-icon _ngcontent-ng-c604673181 class="inline-flex shrink-0" ngh="2"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3a3 3 0 0 1 3 3v5a3 3 0 0 1-6 0V6a3 3 0 0 1 3-3Z"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/><!----></svg></ih-icon><span _ngcontent-ng-c604673181>Luyện tập</span></a><a _ngcontent-ng-c604673181 class="ih-tab" href="/interview-hub/lo-trinh" jsaction="click:;"><ih-icon _ngcontent-ng-c604673181 class="inline-flex shrink-0" ngh="2"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2Z"/><path d="M9 4v14M15 6v14"/><!----></svg></ih-icon><span _ngcontent-ng-c604673181>Lộ trình</span></a><a _ngcontent-ng-c604673181 class="ih-tab" href="/interview-hub/huong-dan" aria-current="page" jsaction="click:;"><ih-icon _ngcontent-ng-c604673181 class="inline-flex shrink-0" ngh="2"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 5h6a3 3 0 0 1 3 3v12a2 2 0 0 0-2-2H3z"/><path d="M21 5h-6a3 3 0 0 0-3 3v12a2 2 0 0 1 2-2h7z"/><!----></svg></ih-icon><span _ngcontent-ng-c604673181>Hướng dẫn</span></a><!----></nav><!----><!----></ih-root>
+<link rel="modulepreload" href="chunk-XI763TYC.js"><link rel="modulepreload" href="chunk-EKQCVM2I.js"><link rel="modulepreload" href="chunk-2RZ4USXX.js"><link rel="modulepreload" href="chunk-GDWDA4XP.js"><script src="main-K26KT5RT.js" type="module"></script>
+<link rel="modulepreload" href="chunk-NPY5NB5I.js">
+<link rel="modulepreload" href="chunk-SOTLWFPK.js">
+
+
+<script id="ng-state" type="application/json">{"__nghData__":[{"t":{"2":"t2"},"c":{"2":[{"i":"t2","r":1}]}},{},{"t":{"2":"t2"},"c":{"2":[{"i":"t2","r":1,"x":2}]}},{"t":{"3":"t115","5":"t122","6":"t124","7":"t125","8":"t132","9":"t133","10":"t116"},"c":{"3":[{"i":"t116","r":7,"t":{"3":"t117"},"c":{"3":[{"i":"t117","r":1,"t":{"7":"t118"},"c":{"7":[]},"x":4},{"i":"t117","r":1,"t":{"7":"t118"},"c":{"7":[{"i":"t118","r":1,"t":{"2":"t119"},"c":{"2":[{"i":"t119","r":1,"t":{"3":"t120"},"c":{"3":[]},"x":3},{"i":"t119","r":1,"t":{"3":"t120"},"c":{"3":[{"i":"t120","r":1,"t":{"2":"t121"},"c":{"2":[{"i":"t121","r":1,"x":15}]}}]}},{"i":"t119","r":1,"t":{"3":"t120"},"c":{"3":[]},"x":4}]}}]}}]}}],"5":[{"i":"t122","r":1,"t":{"10":"t123"},"c":{"10":[{"i":"t116","r":7,"t":{"3":"t117"},"c":{"3":[{"i":"t117","r":1,"t":{"7":"t118"},"c":{"7":[]},"x":4},{"i":"t117","r":1,"t":{"7":"t118"},"c":{"7":[{"i":"t118","r":1,"t":{"2":"t119"},"c":{"2":[{"i":"t119","r":1,"t":{"3":"t120"},"c":{"3":[]},"x":3},{"i":"t119","r":1,"t":{"3":"t120"},"c":{"3":[{"i":"t120","r":1,"t":{"2":"t121"},"c":{"2":[{"i":"t121","r":1,"x":15}]}}]}},{"i":"t119","r":1,"t":{"3":"t120"},"c":{"3":[]},"x":4}]}}]}}]}}]}}],"6":[],"7":[{"i":"t125","r":7,"t":{"3":"t126","6":"t127","9":"t128"},"c":{"3":[{"i":"t126","r":2}],"6":[{"i":"t127","r":1}],"9":[{"i":"t128","r":1,"t":{"1":"t129","2":"t130","3":"t131"},"c":{"1":[{"i":"t129","r":1}],"2":[],"3":[{"i":"t131","r":1}]}}]}}],"8":[],"9":[],"10":[]}},{"t":{"2":"t0","3":"t1","4":"t27"},"c":{"2":[],"3":[{"i":"t1","r":3,"t":{"9":"t3","17":"t4","29":"t5","34":"t26"},"c":{"9":[{"i":"t3","r":1,"x":4}],"17":[],"29":[],"31":[{"i":"c3062323264","r":1}],"34":[{"i":"t26","r":1,"x":4}]}}],"4":[]}}]}</script></body></html>

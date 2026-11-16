@@ -1,0 +1,1225 @@
+<!DOCTYPE html><html lang="vi" data-beasties-container><head>
+  <meta charset="utf-8">
+  <title>Java Spring Boot từ con số 0 cho dev Angular · Hướng dẫn · Interview Hub</title>
+  <base href="/interview-hub/">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Phòng tập phỏng vấn: Angular, Java/Spring Boot, DevOps, Data — tình huống thật trong dự án enterprise, bank, bảo hiểm.">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script>
+    /*
+     * Dat theme TRUOC khi paint. Trang duoc prerender thanh HTML tinh (khong co
+     * class .dark), nen neu doi ThemeService chay sau hydration thi may dat theme
+     * toi se nhay trang mot nhip. Script nay chay sync trong <head> nen khong co
+     * nhip nao bi nhay. Giu dong bo voi ThemeService (khoa 'ih.theme').
+     */
+    (function () {
+      try {
+        var mode = localStorage.getItem('ih.theme') || 'system';
+        var dark = mode === 'dark' || (mode === 'system' && matchMedia('(prefers-color-scheme: dark)').matches);
+        if (dark) document.documentElement.classList.add('dark');
+      } catch (e) {
+        /* localStorage bi chan (private mode): bo qua, mac dinh sang */
+      }
+    })();
+  </script>
+<style>@layer properties;@layer theme,base,components,utilities;@layer theme{:root{--font-sans: "Be Vietnam Pro", ui-sans-serif, system-ui, sans-serif;--font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;--color-white: #fff;--spacing: .25rem;--container-xl: 36rem;--text-xs: .75rem;--text-xs--line-height: calc(1 / .75);--text-sm: .875rem;--text-sm--line-height: calc(1.25 / .875);--text-base: 1rem;--text-base--line-height: 1.5 ;--text-lg: 1.125rem;--text-lg--line-height: calc(1.75 / 1.125);--font-weight-normal: 400;--font-weight-medium: 500;--font-weight-semibold: 600;--font-weight-bold: 700;--leading-tight: 1.25;--leading-snug: 1.375;--leading-relaxed: 1.625;--radius-md: .375rem;--radius-lg: .5rem;--radius-xl: .75rem;--radius-2xl: 1rem;--aspect-video: 16 / 9;--default-transition-duration: .15s;--default-transition-timing-function: cubic-bezier(.4, 0, .2, 1);--default-font-family: var(--font-sans);--default-mono-font-family: var(--font-mono);--font-display: "Be Vietnam Pro", ui-sans-serif, system-ui, sans-serif;--color-surface: var(--ih-surface);--color-muted: var(--ih-muted);--color-accent: var(--ih-accent)}}@layer base{*,:after,:before{box-sizing:border-box;margin:0;padding:0;border:0 solid}html{line-height:1.5;-webkit-text-size-adjust:100%;tab-size:4;font-family:var(--default-font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji");font-feature-settings:var(--default-font-feature-settings, normal);font-variation-settings:var(--default-font-variation-settings, normal);-webkit-tap-highlight-color:transparent}h1,h2,h3{font-size:inherit;font-weight:inherit}a{color:inherit;-webkit-text-decoration:inherit;text-decoration:inherit}strong{font-weight:bolder}code{font-family:var(--default-mono-font-family, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace);font-feature-settings:var(--default-mono-font-feature-settings, normal);font-variation-settings:var(--default-mono-font-variation-settings, normal);font-size:1em}table{text-indent:0;border-color:inherit;border-collapse:collapse}summary{display:list-item}ol,ul{list-style:none}svg,object{display:block;vertical-align:middle}button{font:inherit;font-feature-settings:inherit;font-variation-settings:inherit;letter-spacing:inherit;color:inherit;border-radius:0;background-color:transparent;opacity:1}button{appearance:button}}@layer utilities{.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border-width:0}.sticky{position:sticky}.top-6{top:calc(var(--spacing) * 6)}.mx-auto{margin-inline:auto}.mt-0\.5{margin-top:calc(var(--spacing) * .5)}.mt-1\.5{margin-top:calc(var(--spacing) * 1.5)}.mt-2{margin-top:calc(var(--spacing) * 2)}.mt-3{margin-top:calc(var(--spacing) * 3)}.mt-6{margin-top:calc(var(--spacing) * 6)}.flex{display:flex}.grid{display:grid}.hidden{display:none}.inline-flex{display:inline-flex}.max-w-\[66ch\]{max-width:66ch}.max-w-\[68ch\]{max-width:68ch}.max-w-\[1180px\]{max-width:1180px}.min-w-0{min-width:0px}.flex-1{flex:1}.shrink-0{flex-shrink:0}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-center{align-items:center}.items-end{align-items:flex-end}.gap-0\.5{gap:calc(var(--spacing) * .5)}.gap-1{gap:var(--spacing)}.gap-1\.5{gap:calc(var(--spacing) * 1.5)}.gap-3{gap:calc(var(--spacing) * 3)}.gap-8{gap:calc(var(--spacing) * 8)}.truncate{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.p-4{padding:calc(var(--spacing) * 4)}.px-4{padding-inline:calc(var(--spacing) * 4)}.py-7{padding-block:calc(var(--spacing) * 7)}.text-left{text-align:left}.text-right{text-align:right}.text-sm{font-size:var(--text-sm);line-height:var(--tw-leading, var(--text-sm--line-height))}.text-xs{font-size:var(--text-xs);line-height:var(--tw-leading, var(--text-xs--line-height))}.text-\[0\.6875rem\]{font-size:.6875rem}.text-\[1\.0625rem\]{font-size:1.0625rem}.font-medium{--tw-font-weight: var(--font-weight-medium);font-weight:var(--font-weight-medium)}.text-faint{color:var(--ih-faint)}.text-ink-2{color:var(--ih-ink-2)}.text-muted{color:var(--ih-muted)}@media(hover:hover){.hover\:text-accent:hover{color:var(--ih-accent)}}@media(width>=40rem){.sm\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.sm\:p-6{padding:calc(var(--spacing) * 6)}.sm\:px-8{padding-inline:calc(var(--spacing) * 8)}}@media(width>=64rem){.lg\:p-7{padding:calc(var(--spacing) * 7)}.lg\:px-10{padding-inline:calc(var(--spacing) * 10)}}@media(width>=80rem){.xl\:block{display:block}.xl\:hidden{display:none}.xl\:grid-cols-\[15rem_minmax\(0\,1fr\)\]{grid-template-columns:15rem minmax(0,1fr)}}}@font-face{font-family:Be Vietnam Pro;font-style:normal;font-display:swap;font-weight:400;src:url("./media/be-vietnam-pro-vietnamese-400-normal-AYP4TBQP.woff2") format("woff2"),url("./media/be-vietnam-pro-vietnamese-400-normal-XCSVBHAH.woff") format("woff");unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB}@font-face{font-family:Be Vietnam Pro;font-style:normal;font-display:swap;font-weight:400;src:url("./media/be-vietnam-pro-latin-ext-400-normal-VIXFGEVI.woff2") format("woff2"),url("./media/be-vietnam-pro-latin-ext-400-normal-H5FLM5EA.woff") format("woff");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:Be Vietnam Pro;font-style:normal;font-display:swap;font-weight:400;src:url("./media/be-vietnam-pro-latin-400-normal-GO7MVAWD.woff2") format("woff2"),url("./media/be-vietnam-pro-latin-400-normal-RVJKSZUF.woff") format("woff");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:Be Vietnam Pro;font-style:normal;font-display:swap;font-weight:500;src:url("./media/be-vietnam-pro-vietnamese-500-normal-4TYGC47D.woff2") format("woff2"),url("./media/be-vietnam-pro-vietnamese-500-normal-X6H4D6SQ.woff") format("woff");unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB}@font-face{font-family:Be Vietnam Pro;font-style:normal;font-display:swap;font-weight:500;src:url("./media/be-vietnam-pro-latin-ext-500-normal-4V547L43.woff2") format("woff2"),url("./media/be-vietnam-pro-latin-ext-500-normal-OT6QGGBR.woff") format("woff");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:Be Vietnam Pro;font-style:normal;font-display:swap;font-weight:500;src:url("./media/be-vietnam-pro-latin-500-normal-ICUK3VUJ.woff2") format("woff2"),url("./media/be-vietnam-pro-latin-500-normal-7QE332AG.woff") format("woff");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:Be Vietnam Pro;font-style:normal;font-display:swap;font-weight:600;src:url("./media/be-vietnam-pro-vietnamese-600-normal-JNWISTGY.woff2") format("woff2"),url("./media/be-vietnam-pro-vietnamese-600-normal-WRJMS4YC.woff") format("woff");unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB}@font-face{font-family:Be Vietnam Pro;font-style:normal;font-display:swap;font-weight:600;src:url("./media/be-vietnam-pro-latin-ext-600-normal-CBJZJMMX.woff2") format("woff2"),url("./media/be-vietnam-pro-latin-ext-600-normal-4EIVITBO.woff") format("woff");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:Be Vietnam Pro;font-style:normal;font-display:swap;font-weight:600;src:url("./media/be-vietnam-pro-latin-600-normal-BUKYBXKC.woff2") format("woff2"),url("./media/be-vietnam-pro-latin-600-normal-3FZKMTWI.woff") format("woff");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:Be Vietnam Pro;font-style:normal;font-display:swap;font-weight:700;src:url("./media/be-vietnam-pro-vietnamese-700-normal-2FUHI57A.woff2") format("woff2"),url("./media/be-vietnam-pro-vietnamese-700-normal-6TZDSQEZ.woff") format("woff");unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB}@font-face{font-family:Be Vietnam Pro;font-style:normal;font-display:swap;font-weight:700;src:url("./media/be-vietnam-pro-latin-ext-700-normal-O2T6GATN.woff2") format("woff2"),url("./media/be-vietnam-pro-latin-ext-700-normal-RSM77A7Z.woff") format("woff");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:Be Vietnam Pro;font-style:normal;font-display:swap;font-weight:700;src:url("./media/be-vietnam-pro-latin-700-normal-D4XLH5H5.woff2") format("woff2"),url("./media/be-vietnam-pro-latin-700-normal-T76PCEOT.woff") format("woff");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:JetBrains Mono;font-style:normal;font-display:swap;font-weight:400;src:url("./media/jetbrains-mono-cyrillic-ext-400-normal-C7IFWGF6.woff2") format("woff2"),url("./media/jetbrains-mono-cyrillic-ext-400-normal-PWXUA557.woff") format("woff");unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}@font-face{font-family:JetBrains Mono;font-style:normal;font-display:swap;font-weight:400;src:url("./media/jetbrains-mono-cyrillic-400-normal-C5JECUCT.woff2") format("woff2"),url("./media/jetbrains-mono-cyrillic-400-normal-FGCZYWMY.woff") format("woff");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}@font-face{font-family:JetBrains Mono;font-style:normal;font-display:swap;font-weight:400;src:url("./media/jetbrains-mono-greek-400-normal-O7JTTR3P.woff2") format("woff2"),url("./media/jetbrains-mono-greek-400-normal-JJNQZMPZ.woff") format("woff");unicode-range:U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF}@font-face{font-family:JetBrains Mono;font-style:normal;font-display:swap;font-weight:400;src:url("./media/jetbrains-mono-vietnamese-400-normal-KU7YLUPA.woff2") format("woff2"),url("./media/jetbrains-mono-vietnamese-400-normal-7ULXAK72.woff") format("woff");unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB}@font-face{font-family:JetBrains Mono;font-style:normal;font-display:swap;font-weight:400;src:url("./media/jetbrains-mono-latin-ext-400-normal-JVR3IR4Z.woff2") format("woff2"),url("./media/jetbrains-mono-latin-ext-400-normal-55RNMRQS.woff") format("woff");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:JetBrains Mono;font-style:normal;font-display:swap;font-weight:400;src:url("./media/jetbrains-mono-latin-400-normal-3OOWLGQ2.woff2") format("woff2"),url("./media/jetbrains-mono-latin-400-normal-WDD34GPP.woff") format("woff");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:JetBrains Mono;font-style:normal;font-display:swap;font-weight:600;src:url("./media/jetbrains-mono-cyrillic-ext-600-normal-HKBRUTLC.woff2") format("woff2"),url("./media/jetbrains-mono-cyrillic-ext-600-normal-5QNCOHRJ.woff") format("woff");unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}@font-face{font-family:JetBrains Mono;font-style:normal;font-display:swap;font-weight:600;src:url("./media/jetbrains-mono-cyrillic-600-normal-IC2P33CI.woff2") format("woff2"),url("./media/jetbrains-mono-cyrillic-600-normal-N3RL4S3I.woff") format("woff");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}@font-face{font-family:JetBrains Mono;font-style:normal;font-display:swap;font-weight:600;src:url("./media/jetbrains-mono-greek-600-normal-MQRRJYKT.woff2") format("woff2"),url("./media/jetbrains-mono-greek-600-normal-IGJJY4I4.woff") format("woff");unicode-range:U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF}@font-face{font-family:JetBrains Mono;font-style:normal;font-display:swap;font-weight:600;src:url("./media/jetbrains-mono-vietnamese-600-normal-5QHQ2LOD.woff2") format("woff2"),url("./media/jetbrains-mono-vietnamese-600-normal-GHFUHINE.woff") format("woff");unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB}@font-face{font-family:JetBrains Mono;font-style:normal;font-display:swap;font-weight:600;src:url("./media/jetbrains-mono-latin-ext-600-normal-Y3NFETVK.woff2") format("woff2"),url("./media/jetbrains-mono-latin-ext-600-normal-2YWDXQ5Z.woff") format("woff");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:JetBrains Mono;font-style:normal;font-display:swap;font-weight:600;src:url("./media/jetbrains-mono-latin-600-normal-5PVSJ4PH.woff2") format("woff2"),url("./media/jetbrains-mono-latin-600-normal-DJM6S6N3.woff") format("woff");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}:root{--ih-ground: #f4f5f8;--ih-surface: #ffffff;--ih-raised: #f7f8fb;--ih-sunken: #e9ebf1;--ih-border: #e3e6ed;--ih-border-strong: #8b92a1;--ih-ink: #12141a;--ih-ink-2: #2b2f3a;--ih-muted: #576072;--ih-faint: #646c7d;--ih-accent: #4f46e5;--ih-accent-solid: #4f46e5;--ih-accent-ink: #3b33c4;--ih-accent-soft: #eeedfd;--ih-accent-tint: #f5f4ff;--ih-accent-line: #c9c6f7;--ih-on-accent: #ffffff;--ih-done: #17804a;--ih-done-soft: #e6f4ec;--ih-done-line: #a3d3b7;--ih-warn: #a85a00;--ih-warn-ink: #8a4b00;--ih-warn-soft: #fdf1e1;--ih-warn-line: #e9be7f;--ih-bad: #b42318;--ih-bad-ink: #8f1d13;--ih-bad-soft: #fdecea;--ih-bad-tint: #fff8f7;--ih-bad-line: #f3b8b2;--ih-l1-bg: #dde3ff;--ih-l1-fg: #2e2a86;--ih-l2-bg: #b9c3fd;--ih-l2-fg: #1f1b5e;--ih-l3-bg: #8c93f5;--ih-l3-fg: #17154a;--ih-l4-bg: #5b52e8;--ih-l4-fg: #ffffff;--ih-l5-bg: #2a2577;--ih-l5-fg: #ffffff;--ih-off: #dcdfe7;--ih-hero: #2a2577;--ih-hero-ink: #ffffff;--ih-hero-muted: #c9c6f7;--ih-code-bg: #161826;--ih-code-head: #10121c;--ih-code-line: #262a3b;--ih-shadow: 0 1px 2px rgb(18 20 26 / .04);--ih-shadow-lift: 0 10px 28px -16px rgb(42 37 119 / .35);color-scheme:light}@layer base{*,:before,:after{border-color:var(--ih-border)}html{-webkit-text-size-adjust:100%}body{background:var(--ih-ground);color:var(--ih-ink);font-family:var(--font-sans);font-size:.9375rem;line-height:1.55;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}h1,h2,h3{text-wrap:balance}code{font-variant-ligatures:none;font-feature-settings:"liga" 0,"calt" 0}@media(prefers-reduced-motion:reduce){*,:before,:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}}@layer components{.ih-h1{font-family:var(--font-display);font-weight:700;font-size:clamp(1.75rem,1.4rem + 1.2vw,2rem);letter-spacing:-.015em;line-height:1.2}.ih-num{font-variant-numeric:tabular-nums}.ih-card{background:var(--ih-surface);border:1px solid var(--ih-border);border-radius:1.25rem;box-shadow:var(--ih-shadow)}a.ih-card-link{display:flex;text-align:left;color:inherit;transition:border-color .12s ease,box-shadow .12s ease}.ih-card-link:hover{border-color:var(--ih-accent-line);box-shadow:var(--ih-shadow-lift)}.ih-mono{display:inline-flex;align-items:center;justify-content:center;flex:none;width:1.75rem;height:1.75rem;border-radius:.5rem;color:#fff;font-size:.6875rem;font-weight:700;letter-spacing:.02em}.ih-mono[data-size=sm]{width:1.375rem;height:1.375rem;border-radius:.375rem;font-size:.5625rem}.ih-subnav{font-size:.875rem}aside .ih-subnav{max-height:calc(100vh - 3rem);overflow-y:auto;overscroll-behavior:contain;padding-right:.25rem}.ih-subnav-group{display:flex;align-items:center;gap:.5rem;width:100%;min-height:2.25rem;padding:0 .625rem;border-radius:.5rem;color:var(--ih-ink-2);font-size:.875rem;font-weight:600;text-align:left}.ih-subnav-group:hover{background:var(--ih-sunken);color:var(--ih-ink)}.ih-subnav-caret{transition:transform .15s ease}.ih-subnav-caret-open{transform:rotate(180deg)}.ih-subnav-link{display:block;padding:.45rem .625rem;border-radius:.5rem;color:var(--ih-ink-2);font-weight:500;line-height:1.35}.ih-subnav-link:hover{background:var(--ih-sunken);color:var(--ih-ink)}.ih-subnav-link[aria-current=page]{background:var(--ih-accent-soft);color:var(--ih-accent-ink);font-weight:600}.ih-subnav-toc{display:flex;flex-direction:column;gap:.125rem;margin:.25rem 0 .5rem .875rem;padding-left:.625rem;border-left:1px solid var(--ih-border)}.ih-subnav-toc-link{display:block;padding:.25rem .375rem;border-radius:.375rem;color:var(--ih-muted);font-size:.8125rem;line-height:1.35}.ih-subnav-toc-link:hover{background:var(--ih-sunken);color:var(--ih-accent-ink)}.ih-subnav-mobile{margin-bottom:1.5rem;padding:.25rem;border:1px solid var(--ih-border);border-radius:.875rem;background:var(--ih-surface)}.ih-subnav-mobile>summary{display:flex;align-items:center;gap:.5rem;min-height:2.75rem;padding:0 .625rem;border-radius:.625rem;cursor:pointer;font-weight:500;list-style:none}.ih-subnav-mobile>summary::-webkit-details-marker{display:none}.ih-pop{position:relative}.ih-prose{font-size:1rem;line-height:1.7;color:var(--ih-ink);overflow-wrap:anywhere}.ih-prose>*+*{margin-top:.85rem}.ih-prose>h2,.ih-prose>h3{margin-top:1.5rem;font-weight:600}.ih-prose h2{font-family:var(--font-display);font-size:1.25rem;line-height:1.3;margin-top:2rem;scroll-margin-top:4.5rem}.ih-prose h3{font-family:var(--font-display);font-size:1.0625rem}.ih-prose ul,.ih-prose ol{padding-left:1.25rem;display:flex;flex-direction:column;gap:.45rem}.ih-prose ul{list-style:disc}.ih-prose ol{list-style:decimal}.ih-prose li::marker{color:var(--ih-accent)}.ih-prose a{color:var(--ih-accent);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:2px}.ih-prose a:hover{color:var(--ih-accent-ink)}.ih-prose strong{font-weight:600}.ih-prose code:not(pre code){font-family:var(--font-mono);font-size:.86em;background:var(--ih-sunken);border-radius:.3rem;padding:.08em .35em}.ih-prose table{display:block;max-width:100%;overflow-x:auto;border-collapse:collapse;font-size:.875rem;overflow-wrap:normal}.ih-prose td,.ih-prose th{min-width:7rem}.ih-prose td:first-child,.ih-prose th:first-child{min-width:0}.ih-prose th,.ih-prose td{border:1px solid var(--ih-border);padding:.5rem .7rem;text-align:left;vertical-align:top}.ih-prose th{background:var(--ih-raised);font-weight:600}.ih-prose ul:has(>li.ih-task-item){padding-left:0;gap:0}.ih-prose li.ih-task-item{position:relative;list-style:none;padding:.75rem .25rem .75rem 1.75rem}.ih-prose li.ih-task-item+li.ih-task-item{border-top:1px solid var(--ih-border)}.ih-task{position:absolute;top:.75rem;left:.25rem;width:1.15rem;color:var(--ih-faint);font-family:var(--font-mono);line-height:1.6}.ih-task-line{display:block}.ih-task-text{font-weight:500;line-height:1.6}.ih-kbd{display:inline-flex;align-items:center;min-width:1.4rem;justify-content:center;padding:.05rem .35rem;border:1px solid var(--ih-border-strong);border-bottom-width:2px;border-radius:.3rem;background:var(--ih-surface);color:var(--ih-ink-2);font-family:var(--font-mono);font-size:.6875rem;line-height:1.4}}@media print{.ih-no-print{display:none!important}body{background:#fff;color:#000;font-size:11pt}.ih-card{border-color:#ccc;box-shadow:none;break-inside:avoid}}@property --tw-translate-x{syntax: "*"; inherits: false; initial-value: 0;}@property --tw-translate-y{syntax: "*"; inherits: false; initial-value: 0;}@property --tw-translate-z{syntax: "*"; inherits: false; initial-value: 0;}@property --tw-rotate-x{syntax: "*"; inherits: false;}@property --tw-rotate-y{syntax: "*"; inherits: false;}@property --tw-rotate-z{syntax: "*"; inherits: false;}@property --tw-skew-x{syntax: "*"; inherits: false;}@property --tw-skew-y{syntax: "*"; inherits: false;}@property --tw-divide-y-reverse{syntax: "*"; inherits: false; initial-value: 0;}@property --tw-border-style{syntax: "*"; inherits: false; initial-value: solid;}@property --tw-leading{syntax: "*"; inherits: false;}@property --tw-font-weight{syntax: "*"; inherits: false;}@property --tw-ordinal{syntax: "*"; inherits: false;}@property --tw-slashed-zero{syntax: "*"; inherits: false;}@property --tw-numeric-figure{syntax: "*"; inherits: false;}@property --tw-numeric-spacing{syntax: "*"; inherits: false;}@property --tw-numeric-fraction{syntax: "*"; inherits: false;}@property --tw-shadow{syntax: "*"; inherits: false; initial-value: 0 0 #0000;}@property --tw-shadow-color{syntax: "*"; inherits: false;}@property --tw-shadow-alpha{syntax: "<percentage>"; inherits: false; initial-value: 100%;}@property --tw-inset-shadow{syntax: "*"; inherits: false; initial-value: 0 0 #0000;}@property --tw-inset-shadow-color{syntax: "*"; inherits: false;}@property --tw-inset-shadow-alpha{syntax: "<percentage>"; inherits: false; initial-value: 100%;}@property --tw-ring-color{syntax: "*"; inherits: false;}@property --tw-ring-shadow{syntax: "*"; inherits: false; initial-value: 0 0 #0000;}@property --tw-inset-ring-color{syntax: "*"; inherits: false;}@property --tw-inset-ring-shadow{syntax: "*"; inherits: false; initial-value: 0 0 #0000;}@property --tw-ring-inset{syntax: "*"; inherits: false;}@property --tw-ring-offset-width{syntax: "<length>"; inherits: false; initial-value: 0px;}@property --tw-ring-offset-color{syntax: "*"; inherits: false; initial-value: #fff;}@property --tw-ring-offset-shadow{syntax: "*"; inherits: false; initial-value: 0 0 #0000;}@property --tw-outline-style{syntax: "*"; inherits: false; initial-value: solid;}@property --tw-blur{syntax: "*"; inherits: false;}@property --tw-brightness{syntax: "*"; inherits: false;}@property --tw-contrast{syntax: "*"; inherits: false;}@property --tw-grayscale{syntax: "*"; inherits: false;}@property --tw-hue-rotate{syntax: "*"; inherits: false;}@property --tw-invert{syntax: "*"; inherits: false;}@property --tw-opacity{syntax: "*"; inherits: false;}@property --tw-saturate{syntax: "*"; inherits: false;}@property --tw-sepia{syntax: "*"; inherits: false;}@property --tw-drop-shadow{syntax: "*"; inherits: false;}@property --tw-drop-shadow-color{syntax: "*"; inherits: false;}@property --tw-drop-shadow-alpha{syntax: "<percentage>"; inherits: false; initial-value: 100%;}@property --tw-drop-shadow-size{syntax: "*"; inherits: false;}@property --tw-backdrop-blur{syntax: "*"; inherits: false;}@property --tw-backdrop-brightness{syntax: "*"; inherits: false;}@property --tw-backdrop-contrast{syntax: "*"; inherits: false;}@property --tw-backdrop-grayscale{syntax: "*"; inherits: false;}@property --tw-backdrop-hue-rotate{syntax: "*"; inherits: false;}@property --tw-backdrop-invert{syntax: "*"; inherits: false;}@property --tw-backdrop-opacity{syntax: "*"; inherits: false;}@property --tw-backdrop-saturate{syntax: "*"; inherits: false;}@property --tw-backdrop-sepia{syntax: "*"; inherits: false;}@layer properties{@supports ((-webkit-hyphens: none) and (not (margin-trim: block))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))){*,:before,:after{--tw-translate-x: 0;--tw-translate-y: 0;--tw-translate-z: 0;--tw-rotate-x: initial;--tw-rotate-y: initial;--tw-rotate-z: initial;--tw-skew-x: initial;--tw-skew-y: initial;--tw-divide-y-reverse: 0;--tw-border-style: solid;--tw-leading: initial;--tw-font-weight: initial;--tw-ordinal: initial;--tw-slashed-zero: initial;--tw-numeric-figure: initial;--tw-numeric-spacing: initial;--tw-numeric-fraction: initial;--tw-shadow: 0 0 #0000;--tw-shadow-color: initial;--tw-shadow-alpha: 100%;--tw-inset-shadow: 0 0 #0000;--tw-inset-shadow-color: initial;--tw-inset-shadow-alpha: 100%;--tw-ring-color: initial;--tw-ring-shadow: 0 0 #0000;--tw-inset-ring-color: initial;--tw-inset-ring-shadow: 0 0 #0000;--tw-ring-inset: initial;--tw-ring-offset-width: 0px;--tw-ring-offset-color: #fff;--tw-ring-offset-shadow: 0 0 #0000;--tw-outline-style: solid;--tw-blur: initial;--tw-brightness: initial;--tw-contrast: initial;--tw-grayscale: initial;--tw-hue-rotate: initial;--tw-invert: initial;--tw-opacity: initial;--tw-saturate: initial;--tw-sepia: initial;--tw-drop-shadow: initial;--tw-drop-shadow-color: initial;--tw-drop-shadow-alpha: 100%;--tw-drop-shadow-size: initial;--tw-backdrop-blur: initial;--tw-backdrop-brightness: initial;--tw-backdrop-contrast: initial;--tw-backdrop-grayscale: initial;--tw-backdrop-hue-rotate: initial;--tw-backdrop-invert: initial;--tw-backdrop-opacity: initial;--tw-backdrop-saturate: initial;--tw-backdrop-sepia: initial}}}
+</style><link rel="stylesheet" href="styles-WKOWS4ZK.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="styles-WKOWS4ZK.css"></noscript><style ng-app-id="ng">.ih-skip[_ngcontent-ng-c604673181]{position:absolute;left:-9999px;z-index:60}.ih-skip[_ngcontent-ng-c604673181]:focus{left:.75rem;top:.75rem;padding:.5rem .75rem;border-radius:.5rem;background:var(--ih-surface);border:1px solid var(--ih-border-strong)}.ih-bar[_ngcontent-ng-c604673181]{position:sticky;top:0;z-index:30;border-bottom:1px solid var(--ih-border);background:color-mix(in oklab,var(--ih-surface) 94%,transparent);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}.ih-bar-inner[_ngcontent-ng-c604673181]{max-width:1180px;margin:0 auto;min-height:3.5rem;padding:0 .75rem 0 1rem;display:flex;align-items:center;gap:1rem}@media(min-width:640px){.ih-bar-inner[_ngcontent-ng-c604673181]{padding:0 2rem}}@media(min-width:1024px){.ih-bar-inner[_ngcontent-ng-c604673181]{min-height:4rem;padding:0 2.5rem;gap:2rem}}.ih-brand[_ngcontent-ng-c604673181]{display:inline-flex;align-items:center;gap:.6rem;font-size:1rem;font-weight:700;letter-spacing:-.01em;white-space:nowrap}.ih-brand-mark[_ngcontent-ng-c604673181]{display:inline-flex;align-items:center;justify-content:center;width:2rem;height:2rem;border-radius:.5rem;background:var(--ih-hero);color:var(--ih-hero-ink)}.ih-mainnav[_ngcontent-ng-c604673181]{display:none}@media(min-width:1024px){.ih-mainnav[_ngcontent-ng-c604673181]{display:flex;align-self:stretch;gap:.25rem}}.ih-mainnav-link[_ngcontent-ng-c604673181]{display:inline-flex;align-items:center;padding:0 .75rem;border-bottom:2px solid transparent;margin-bottom:-1px;color:var(--ih-muted);font-size:.9375rem;font-weight:500;white-space:nowrap;transition:color .12s ease,border-color .12s ease}.ih-mainnav-link[_ngcontent-ng-c604673181]:hover{color:var(--ih-ink)}.ih-mainnav-link[aria-current=page][_ngcontent-ng-c604673181]{color:var(--ih-ink);font-weight:600;border-bottom-color:var(--ih-accent)}.ih-bar-tools[_ngcontent-ng-c604673181]{margin-left:auto;display:flex;align-items:center;gap:.375rem}@media(min-width:640px){.ih-bar-tools[_ngcontent-ng-c604673181]{gap:.5rem}}.ih-bar-btn[_ngcontent-ng-c604673181]{display:inline-flex;align-items:center;gap:.5rem;min-height:2.75rem;padding:0 .625rem;border:1px solid var(--ih-border);border-radius:.625rem;background:var(--ih-surface);color:var(--ih-ink);font-family:inherit;font-size:.875rem;font-weight:500;cursor:pointer;transition:border-color .12s ease}.ih-bar-btn[_ngcontent-ng-c604673181]:hover{border-color:var(--ih-border-strong)}.ih-bar-btn[aria-expanded=true][_ngcontent-ng-c604673181]{border-color:var(--ih-accent)}@media(min-width:1024px){.ih-bar-btn[_ngcontent-ng-c604673181]{min-height:2.5rem}}.ih-bar-btn-label[_ngcontent-ng-c604673181]{display:none}@media(min-width:640px){.ih-bar-btn-label[_ngcontent-ng-c604673181]{display:inline}}.ih-bar-icon[_ngcontent-ng-c604673181]{justify-content:center;width:2.75rem;padding:0}@media(min-width:1024px){.ih-bar-icon[_ngcontent-ng-c604673181]{width:2.5rem}}.ih-bar-search[_ngcontent-ng-c604673181]{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;min-height:2.75rem;min-width:2.75rem;padding:0 .75rem;border:1px solid var(--ih-border);border-radius:.625rem;background:var(--ih-raised);color:var(--ih-muted);font-family:inherit;font-size:.875rem;cursor:pointer}.ih-bar-search[_ngcontent-ng-c604673181]:hover{border-color:var(--ih-border-strong);color:var(--ih-ink)}@media(min-width:1024px){.ih-bar-search[_ngcontent-ng-c604673181]{min-height:2.5rem;min-width:13rem;justify-content:flex-start}}.ih-bar-search-label[_ngcontent-ng-c604673181], .ih-bar-search-kbd[_ngcontent-ng-c604673181]{display:none}@media(min-width:1024px){.ih-bar-search-label[_ngcontent-ng-c604673181], .ih-bar-search-kbd[_ngcontent-ng-c604673181]{display:inline-flex}}.ih-bar-search-label[_ngcontent-ng-c604673181]{flex:1}.ih-main[_ngcontent-ng-c604673181]{min-width:0;padding-bottom:calc(4.5rem + env(safe-area-inset-bottom))}@media(min-width:1024px){.ih-main[_ngcontent-ng-c604673181]{padding-bottom:0}}.ih-tabbar[_ngcontent-ng-c604673181]{position:fixed;z-index:30;inset:auto 0 0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));padding-bottom:env(safe-area-inset-bottom);border-top:1px solid var(--ih-border);background:color-mix(in oklab,var(--ih-surface) 96%,transparent);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}@media(min-width:1024px){.ih-tabbar[_ngcontent-ng-c604673181]{display:none}}.ih-tab[_ngcontent-ng-c604673181]{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.2rem;min-height:3.75rem;color:var(--ih-muted);font-size:.75rem;font-weight:500}.ih-tab[aria-current=page][_ngcontent-ng-c604673181]{color:var(--ih-accent);font-weight:600}</style></head>
+<body><!--nghm--><script type="text/javascript" id="ng-event-dispatch-contract">(()=>{function p(t,n,r,o,e,i,f,m){return{eventType:t,event:n,targetElement:r,eic:o,timeStamp:e,eia:i,eirp:f,eiack:m}}function u(t){let n=[],r=e=>{n.push(e)};return{c:t,q:n,et:[],etc:[],d:r,h:e=>{r(p(e.type,e,e.target,t,Date.now()))}}}function s(t,n,r){for(let o=0;o<n.length;o++){let e=n[o];(r?t.etc:t.et).push(e),t.c.addEventListener(e,t.h,r)}}function c(t,n,r,o,e=window){let i=u(t);e._ejsas||(e._ejsas={}),e._ejsas[n]=i,s(i,r),s(i,o,!0)}window.__jsaction_bootstrap=c;})();
+</script><script>window.__jsaction_bootstrap(document.body,"ng",["click"],[]);</script>
+  <ih-root ng-version="21.2.26" _nghost-ng-c604673181 ngh="4" ng-server-context="ssg"><a _ngcontent-ng-c604673181 href="#ih-main" class="ih-skip">Bỏ qua điều hướng</a><!----><header _ngcontent-ng-c604673181 class="ih-bar ih-no-print"><div _ngcontent-ng-c604673181 class="ih-bar-inner"><a _ngcontent-ng-c604673181 routerlink="/" class="ih-brand" href="/interview-hub/" jsaction="click:;"><span _ngcontent-ng-c604673181 class="ih-brand-mark"><ih-icon _ngcontent-ng-c604673181 name="ladder" class="inline-flex shrink-0" ngh="0"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 21V3M17 21V3M7 7h10M7 12h10M7 17h10"/><!----></svg></ih-icon></span><span _ngcontent-ng-c604673181>Interview Hub</span></a><nav _ngcontent-ng-c604673181 aria-label="Điều hướng chính" class="ih-mainnav"><a _ngcontent-ng-c604673181 class="ih-mainnav-link" href="/interview-hub/" jsaction="click:;"> Hôm nay </a><a _ngcontent-ng-c604673181 class="ih-mainnav-link" href="/interview-hub/ly-thuyet" jsaction="click:;"> Luyện tập </a><a _ngcontent-ng-c604673181 class="ih-mainnav-link" href="/interview-hub/lo-trinh" jsaction="click:;"> Lộ trình </a><a _ngcontent-ng-c604673181 class="ih-mainnav-link" href="/interview-hub/huong-dan" aria-current="page" jsaction="click:;"> Hướng dẫn </a><!----></nav><div _ngcontent-ng-c604673181 class="ih-bar-tools"><div _ngcontent-ng-c604673181 data-pop class="ih-pop"><button _ngcontent-ng-c604673181 type="button" aria-haspopup="true" aria-controls="ih-track-menu" class="ih-bar-btn" aria-expanded="false" aria-label="Đổi ngôn ngữ, đang chọn Angular" jsaction="click:;"><ih-track-mono _ngcontent-ng-c604673181 size="sm" class="inline-flex" ngh="1"><span aria-hidden="true" class="ih-mono" style="background: #D6264F;" data-size="sm">NG</span></ih-track-mono><span _ngcontent-ng-c604673181 class="ih-bar-btn-label">Angular</span><ih-icon _ngcontent-ng-c604673181 name="chevron-down" class="inline-flex shrink-0" ngh="0"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/><!----></svg></ih-icon></button><!----></div><button _ngcontent-ng-c604673181 type="button" class="ih-bar-search" jsaction="click:;"><ih-icon _ngcontent-ng-c604673181 name="search" class="inline-flex shrink-0" ngh="2"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14Z"/><path d="m20 20-3.5-3.5"/><!----></svg></ih-icon><span _ngcontent-ng-c604673181 class="ih-bar-search-label">Tìm câu hỏi</span><span _ngcontent-ng-c604673181 class="ih-kbd ih-bar-search-kbd">⌘K</span><span _ngcontent-ng-c604673181 class="sr-only">(phím tắt Command hoặc Ctrl cộng K)</span></button><div _ngcontent-ng-c604673181 data-pop class="ih-pop"><button _ngcontent-ng-c604673181 type="button" aria-haspopup="true" aria-controls="ih-settings-menu" aria-label="Giao diện sáng, tối" class="ih-bar-btn ih-bar-icon" aria-expanded="false" jsaction="click:;"><ih-icon _ngcontent-ng-c604673181 class="inline-flex shrink-0" ngh="2"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/><!----></svg></ih-icon></button><!----></div></div></div></header><main _ngcontent-ng-c604673181 id="ih-main" class="ih-main"><router-outlet _ngcontent-ng-c604673181></router-outlet><ih-guide-page ngh="3"><div class="mx-auto grid max-w-[1180px] gap-8 px-4 py-7 sm:px-8 lg:px-10 xl:grid-cols-[15rem_minmax(0,1fr)]"><aside class="ih-no-print hidden xl:block"><nav aria-label="Menu hướng dẫn" class="ih-subnav sticky top-6"><a routerlink="/huong-dan" class="ih-subnav-link" href="/interview-hub/huong-dan" jsaction="click:;"> Tổng quan </a><section class="mt-3"><button type="button" class="ih-subnav-group" aria-expanded="false" aria-controls="d-sub-cach-dung" jsaction="click:;"><span class="flex-1 text-left">Cách ôn &amp; cách dùng</span><span class="ih-num text-[0.6875rem] text-faint">5</span><ih-icon name="chevron-down" class="inline-flex shrink-0 ih-subnav-caret" ngh="0"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m6 9 6 6 6-6"/><!----></svg></ih-icon></button><!----></section><section class="mt-3"><button type="button" class="ih-subnav-group" aria-expanded="false" aria-controls="d-sub-theo-mang" jsaction="click:;"><span class="flex-1 text-left">Lộ trình &amp; checklist theo mảng</span><span class="ih-num text-[0.6875rem] text-faint">5</span><ih-icon name="chevron-down" class="inline-flex shrink-0 ih-subnav-caret" ngh="0"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m6 9 6 6 6-6"/><!----></svg></ih-icon></button><!----></section><section class="mt-3"><button type="button" class="ih-subnav-group" aria-expanded="true" aria-controls="d-sub-java" jsaction="click:;"><span class="flex-1 text-left">Java Spring Boot từ con số 0</span><span class="ih-num text-[0.6875rem] text-faint">6</span><ih-icon name="chevron-down" class="inline-flex shrink-0 ih-subnav-caret ih-subnav-caret-open" ngh="0"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m6 9 6 6 6-6"/><!----></svg></ih-icon></button><ul class="mt-0.5 flex flex-col gap-0.5" id="d-sub-java"><li><a class="ih-subnav-link" aria-current="page" href="/interview-hub/huong-dan/java-tu-con-so-0" jsaction="click:;"> Lộ trình 11 giai đoạn </a><ul aria-label="Các mục trong bài" class="ih-subnav-toc"><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/java-tu-con-so-0#java-tu-con-so-0--cach-dung-trang-nay" jsaction="click:;"> Cách dùng trang này </a></li><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/java-tu-con-so-0#java-tu-con-so-0--tong-quan-lo-trinh" jsaction="click:;"> Tổng quan lộ trình </a></li><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/java-tu-con-so-0#java-tu-con-so-0--giai-doan-1-core-java-tuan-1-8" jsaction="click:;"> Giai đoạn 1 — Core Java (tuần 1–8) </a></li><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/java-tu-con-so-0#java-tu-con-so-0--giai-doan-2-nen-tang-backend-tuan-9-11" jsaction="click:;"> Giai đoạn 2 — Nền tảng backend (tuần 9–11) </a></li><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/java-tu-con-so-0#java-tu-con-so-0--giai-doan-3-spring-core-va-spring-boot-tuan-12" jsaction="click:;"> Giai đoạn 3 — Spring Core và Spring Boot (tuần 12–15) </a></li><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/java-tu-con-so-0#java-tu-con-so-0--giai-doan-4-web-rest-tuan-16-19" jsaction="click:;"> Giai đoạn 4 — Web/REST (tuần 16–19) </a></li><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/java-tu-con-so-0#java-tu-con-so-0--giai-doan-5-du-lieu-tuan-20-26" jsaction="click:;"> Giai đoạn 5 — Dữ liệu (tuần 20–26) </a></li><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/java-tu-con-so-0#java-tu-con-so-0--giai-doan-6-bao-mat-tuan-27-30" jsaction="click:;"> Giai đoạn 6 — Bảo mật (tuần 27–30) </a></li><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/java-tu-con-so-0#java-tu-con-so-0--giai-doan-7-testing-va-chat-luong-tuan-31-34" jsaction="click:;"> Giai đoạn 7 — Testing và chất lượng (tuần 31–34) </a></li><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/java-tu-con-so-0#java-tu-con-so-0--giai-doan-8-concurrency-va-hieu-nang-tuan-35-39" jsaction="click:;"> Giai đoạn 8 — Concurrency và hiệu năng (tuần 35–39) </a></li><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/java-tu-con-so-0#java-tu-con-so-0--giai-doan-9-microservices-va-he-phan-tan-tuan" jsaction="click:;"> Giai đoạn 9 — Microservices và hệ phân tán (tuần 40–45) </a></li><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/java-tu-con-so-0#java-tu-con-so-0--giai-doan-10-devops-va-van-hanh-tuan-46-49" jsaction="click:;"> Giai đoạn 10 — DevOps và vận hành (tuần 46–49) </a></li><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/java-tu-con-so-0#java-tu-con-so-0--giai-doan-11-ky-nang-senior-tuan-50-53-va-lien" jsaction="click:;"> Giai đoạn 11 — Kỹ năng senior (tuần 50–53 và liên tục) </a></li><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/java-tu-con-so-0#java-tu-con-so-0--lo-trinh-theo-thang" jsaction="click:;"> Lộ trình theo tháng </a></li><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/java-tu-con-so-0#java-tu-con-so-0--bon-du-an-xuyen-suot" jsaction="click:;"> Bốn dự án xuyên suốt </a></li><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/java-tu-con-so-0#java-tu-con-so-0--hoc-song-song-voi-sql" jsaction="click:;"> Học song song với SQL </a></li><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/java-tu-con-so-0#java-tu-con-so-0--muoi-hai-loi-va-hieu-nham-pho-bien-khi-tu" jsaction="click:;"> Mười hai lỗi và hiểu nhầm phổ biến khi từ Frontend sang Spring Boot </a></li><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/java-tu-con-so-0#java-tu-con-so-0--nhan-biet-minh-da-dat-level-nao" jsaction="click:;"> Nhận biết mình đã đạt level nào </a></li><!----></ul><!----></li><li><a class="ih-subnav-link" href="/interview-hub/huong-dan/java-tai-lieu-theo-level" jsaction="click:;"> Tài liệu theo level </a><!----></li><li><a class="ih-subnav-link" href="/interview-hub/huong-dan/java-phong-van-newbie" jsaction="click:;"> Câu hỏi Newbie </a><!----></li><li><a class="ih-subnav-link" href="/interview-hub/huong-dan/java-phong-van-junior" jsaction="click:;"> Câu hỏi Junior </a><!----></li><li><a class="ih-subnav-link" href="/interview-hub/huong-dan/java-phong-van-middle" jsaction="click:;"> Câu hỏi Middle </a><!----></li><li><a class="ih-subnav-link" href="/interview-hub/huong-dan/java-phong-van-senior" jsaction="click:;"> Câu hỏi Senior </a><!----></li><!----></ul><!----></section><section class="mt-3"><button type="button" class="ih-subnav-group" aria-expanded="false" aria-controls="d-sub-sql" jsaction="click:;"><span class="flex-1 text-left">SQL từ con số 0</span><span class="ih-num text-[0.6875rem] text-faint">6</span><ih-icon name="chevron-down" class="inline-flex shrink-0 ih-subnav-caret" ngh="0"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m6 9 6 6 6-6"/><!----></svg></ih-icon></button><!----></section><section class="mt-3"><button type="button" class="ih-subnav-group" aria-expanded="false" aria-controls="d-sub-devops" jsaction="click:;"><span class="flex-1 text-left">DevOps từ Frontend</span><span class="ih-num text-[0.6875rem] text-faint">8</span><ih-icon name="chevron-down" class="inline-flex shrink-0 ih-subnav-caret" ngh="0"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m6 9 6 6 6-6"/><!----></svg></ih-icon></button><!----></section><!----><!----></nav></aside><div class="min-w-0"><details class="ih-subnav-mobile ih-no-print xl:hidden"><summary><ih-icon name="menu" class="inline-flex shrink-0" ngh="0"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6h18M3 12h18M3 18h18"/><!----></svg></ih-icon><span class="min-w-0 flex-1 truncate"><span class="text-muted">Hướng dẫn:</span> Lộ trình 11 giai đoạn </span><ih-icon name="chevron-down" class="inline-flex shrink-0 ih-subnav-caret" ngh="0"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m6 9 6 6 6-6"/><!----></svg></ih-icon></summary><nav aria-label="Menu hướng dẫn" class="ih-subnav mt-2" jsaction="click:;"><a routerlink="/huong-dan" class="ih-subnav-link" href="/interview-hub/huong-dan" jsaction="click:;"> Tổng quan </a><section class="mt-3"><button type="button" class="ih-subnav-group" aria-expanded="false" aria-controls="m-sub-cach-dung" jsaction="click:;"><span class="flex-1 text-left">Cách ôn &amp; cách dùng</span><span class="ih-num text-[0.6875rem] text-faint">5</span><ih-icon name="chevron-down" class="inline-flex shrink-0 ih-subnav-caret" ngh="0"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m6 9 6 6 6-6"/><!----></svg></ih-icon></button><!----></section><section class="mt-3"><button type="button" class="ih-subnav-group" aria-expanded="false" aria-controls="m-sub-theo-mang" jsaction="click:;"><span class="flex-1 text-left">Lộ trình &amp; checklist theo mảng</span><span class="ih-num text-[0.6875rem] text-faint">5</span><ih-icon name="chevron-down" class="inline-flex shrink-0 ih-subnav-caret" ngh="0"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m6 9 6 6 6-6"/><!----></svg></ih-icon></button><!----></section><section class="mt-3"><button type="button" class="ih-subnav-group" aria-expanded="true" aria-controls="m-sub-java" jsaction="click:;"><span class="flex-1 text-left">Java Spring Boot từ con số 0</span><span class="ih-num text-[0.6875rem] text-faint">6</span><ih-icon name="chevron-down" class="inline-flex shrink-0 ih-subnav-caret ih-subnav-caret-open" ngh="0"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m6 9 6 6 6-6"/><!----></svg></ih-icon></button><ul class="mt-0.5 flex flex-col gap-0.5" id="m-sub-java"><li><a class="ih-subnav-link" aria-current="page" href="/interview-hub/huong-dan/java-tu-con-so-0" jsaction="click:;"> Lộ trình 11 giai đoạn </a><ul aria-label="Các mục trong bài" class="ih-subnav-toc"><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/java-tu-con-so-0#java-tu-con-so-0--cach-dung-trang-nay" jsaction="click:;"> Cách dùng trang này </a></li><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/java-tu-con-so-0#java-tu-con-so-0--tong-quan-lo-trinh" jsaction="click:;"> Tổng quan lộ trình </a></li><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/java-tu-con-so-0#java-tu-con-so-0--giai-doan-1-core-java-tuan-1-8" jsaction="click:;"> Giai đoạn 1 — Core Java (tuần 1–8) </a></li><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/java-tu-con-so-0#java-tu-con-so-0--giai-doan-2-nen-tang-backend-tuan-9-11" jsaction="click:;"> Giai đoạn 2 — Nền tảng backend (tuần 9–11) </a></li><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/java-tu-con-so-0#java-tu-con-so-0--giai-doan-3-spring-core-va-spring-boot-tuan-12" jsaction="click:;"> Giai đoạn 3 — Spring Core và Spring Boot (tuần 12–15) </a></li><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/java-tu-con-so-0#java-tu-con-so-0--giai-doan-4-web-rest-tuan-16-19" jsaction="click:;"> Giai đoạn 4 — Web/REST (tuần 16–19) </a></li><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/java-tu-con-so-0#java-tu-con-so-0--giai-doan-5-du-lieu-tuan-20-26" jsaction="click:;"> Giai đoạn 5 — Dữ liệu (tuần 20–26) </a></li><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/java-tu-con-so-0#java-tu-con-so-0--giai-doan-6-bao-mat-tuan-27-30" jsaction="click:;"> Giai đoạn 6 — Bảo mật (tuần 27–30) </a></li><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/java-tu-con-so-0#java-tu-con-so-0--giai-doan-7-testing-va-chat-luong-tuan-31-34" jsaction="click:;"> Giai đoạn 7 — Testing và chất lượng (tuần 31–34) </a></li><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/java-tu-con-so-0#java-tu-con-so-0--giai-doan-8-concurrency-va-hieu-nang-tuan-35-39" jsaction="click:;"> Giai đoạn 8 — Concurrency và hiệu năng (tuần 35–39) </a></li><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/java-tu-con-so-0#java-tu-con-so-0--giai-doan-9-microservices-va-he-phan-tan-tuan" jsaction="click:;"> Giai đoạn 9 — Microservices và hệ phân tán (tuần 40–45) </a></li><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/java-tu-con-so-0#java-tu-con-so-0--giai-doan-10-devops-va-van-hanh-tuan-46-49" jsaction="click:;"> Giai đoạn 10 — DevOps và vận hành (tuần 46–49) </a></li><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/java-tu-con-so-0#java-tu-con-so-0--giai-doan-11-ky-nang-senior-tuan-50-53-va-lien" jsaction="click:;"> Giai đoạn 11 — Kỹ năng senior (tuần 50–53 và liên tục) </a></li><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/java-tu-con-so-0#java-tu-con-so-0--lo-trinh-theo-thang" jsaction="click:;"> Lộ trình theo tháng </a></li><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/java-tu-con-so-0#java-tu-con-so-0--bon-du-an-xuyen-suot" jsaction="click:;"> Bốn dự án xuyên suốt </a></li><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/java-tu-con-so-0#java-tu-con-so-0--hoc-song-song-voi-sql" jsaction="click:;"> Học song song với SQL </a></li><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/java-tu-con-so-0#java-tu-con-so-0--muoi-hai-loi-va-hieu-nham-pho-bien-khi-tu" jsaction="click:;"> Mười hai lỗi và hiểu nhầm phổ biến khi từ Frontend sang Spring Boot </a></li><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/java-tu-con-so-0#java-tu-con-so-0--nhan-biet-minh-da-dat-level-nao" jsaction="click:;"> Nhận biết mình đã đạt level nào </a></li><!----></ul><!----></li><li><a class="ih-subnav-link" href="/interview-hub/huong-dan/java-tai-lieu-theo-level" jsaction="click:;"> Tài liệu theo level </a><!----></li><li><a class="ih-subnav-link" href="/interview-hub/huong-dan/java-phong-van-newbie" jsaction="click:;"> Câu hỏi Newbie </a><!----></li><li><a class="ih-subnav-link" href="/interview-hub/huong-dan/java-phong-van-junior" jsaction="click:;"> Câu hỏi Junior </a><!----></li><li><a class="ih-subnav-link" href="/interview-hub/huong-dan/java-phong-van-middle" jsaction="click:;"> Câu hỏi Middle </a><!----></li><li><a class="ih-subnav-link" href="/interview-hub/huong-dan/java-phong-van-senior" jsaction="click:;"> Câu hỏi Senior </a><!----></li><!----></ul><!----></section><section class="mt-3"><button type="button" class="ih-subnav-group" aria-expanded="false" aria-controls="m-sub-sql" jsaction="click:;"><span class="flex-1 text-left">SQL từ con số 0</span><span class="ih-num text-[0.6875rem] text-faint">6</span><ih-icon name="chevron-down" class="inline-flex shrink-0 ih-subnav-caret" ngh="0"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m6 9 6 6 6-6"/><!----></svg></ih-icon></button><!----></section><section class="mt-3"><button type="button" class="ih-subnav-group" aria-expanded="false" aria-controls="m-sub-devops" jsaction="click:;"><span class="flex-1 text-left">DevOps từ Frontend</span><span class="ih-num text-[0.6875rem] text-faint">8</span><ih-icon name="chevron-down" class="inline-flex shrink-0 ih-subnav-caret" ngh="0"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m6 9 6 6 6-6"/><!----></svg></ih-icon></button><!----></section><!----><!----></nav></details><!----><!----><nav aria-label="Vị trí" class="flex flex-wrap items-center gap-1.5 text-sm text-muted"><a routerlink="/huong-dan" class="hover:text-accent" href="/interview-hub/huong-dan" jsaction="click:;">Hướng dẫn</a><span aria-hidden="true">›</span><span>Java Spring Boot từ con số 0</span><!----></nav><h1 class="ih-h1 mt-1.5">Java Spring Boot từ con số 0 cho dev Angular</h1><p class="mt-2 max-w-[66ch] text-[1.0625rem] text-ink-2">Lộ trình ước lượng khoảng 12 tháng (10–15 giờ/tuần) từ chưa biết Java tới mức senior cho backend ngân hàng, bảo hiểm — 11 giai đoạn, mỗi giai đoạn có thứ tự học và lý do, so sánh với Angular/TypeScript, khác biệt phiên bản, nguồn học, bài tập, dự án, tiêu chí qua cửa; kèm 4 dự án xuyên suốt, lỗi người từ Frontend hay mắc và cách nhận biết level.</p><!----><article class="ih-card mt-6 p-4 sm:p-6 lg:p-7"><div ihinternallinks class="ih-prose max-w-[68ch]" jsaction="click:;"><p>Trang này dành cho người đã làm Angular/TypeScript vài năm nhưng <strong>chưa từng viết Java hay Spring Boot</strong>, muốn đi tới mức làm backend được ở dự án ngân hàng, bảo hiểm và qua phỏng vấn. Câu hỏi phỏng vấn đi kèm chia theo level: <a href="huong-dan/java-phong-van-newbie">Newbie</a> · <a href="huong-dan/java-phong-van-junior">Junior</a> · <a href="huong-dan/java-phong-van-middle">Middle</a> · <a href="huong-dan/java-phong-van-senior">Senior</a>.</p>
+<p><strong>Tài liệu học theo level</strong> — học cái nào trước, đọc phần nào, sách nào đáng mua, tài liệu nào đã cũ: <a href="huong-dan/java-tai-lieu-theo-level">Tài liệu Java theo level</a>. Mục <strong>Nguồn học</strong> trong từng giai đoạn bên dưới có link bấm được.</p>
+<p><strong>Phiên bản chuẩn</strong> (đối chiếu 15/11/2026): <strong>Java 25 LTS</strong> và <strong>Spring Boot 4.1</strong> (Spring Framework 7, Spring Security 7, Hibernate 7, Jackson 3). Spring Boot 3.5 đã hết hỗ trợ cộng đồng từ 30/06/2026; 4.0 hết hỗ trợ cuối 12/2026. Ngân hàng Việt Nam còn chạy rất nhiều hệ thống <strong>Java 8/11/17/21 + Spring Boot 2.x/3.x</strong>, nên mỗi giai đoạn có mục <strong>Phiên bản cần để ý</strong> chỉ ra chỗ khác nhau — để bạn không học nhầm tài liệu cũ, mà vẫn đọc được code cũ.</p>
+<p><strong>Môi trường:</strong> macOS, JDK 25 (bản Eclipse Temurin), cài qua SDKMAN (<code>sdk list java</code> rồi <code>sdk install java &lt;bản 25 tem&gt;</code>) hoặc tải từ adoptium.net; IntelliJ IDEA; Maven (dùng <code>./mvnw</code> có sẵn trong project); Docker Desktop cho database và Kafka. Tạo project Spring Boot ở <strong>start.spring.io</strong>.</p>
+<p>Hai trang Java đã có trong app vẫn dùng được song song: <a href="huong-dan/java-theo-lo-trinh">Java theo lộ trình 58 tuần</a> (xếp 261 câu theo tuần) và <a href="huong-dan/java-checklist">Checklist Java Spring Boot</a> (bản checklist gốc của bạn đã rà soát). SQL học theo trang riêng <a href="huong-dan/sql-tu-con-so-0">SQL từ con số 0</a> — mục "Học song song với SQL" ở cuối trang chỉ cách ghép.</p>
+<h2 id="java-tu-con-so-0--cach-dung-trang-nay">Cách dùng trang này</h2>
+<ul>
+<li><strong>Đi đúng thứ tự</strong> và chỉ sang giai đoạn sau khi đạt mục <strong>Qua cửa</strong> — tiêu chí là việc làm được, không phải số trang đã đọc.</li>
+<li><strong>Mỗi tuần (~12 giờ):</strong> 3 giờ đọc/xem → 6 giờ tự code → 2 giờ dự án → 1 giờ ôn câu hỏi trong app (tự trả lời thành tiếng rồi mới xem đáp án).</li>
+<li><strong>Viết test từ tuần 2</strong>, không đợi tới giai đoạn testing. Thói quen này quan trọng hơn mọi framework.</li>
+<li>Mọi con số thời gian trên trang là <strong>ước lượng</strong> cho 10–15 giờ/tuần (lấy trung bình 12). Học 10 giờ/tuần thì cộng khoảng 20%, 15 giờ/tuần thì trừ khoảng 20%.</li>
+</ul>
+<p>Ký hiệu nguồn: ✅ chắc chắn có thật và miễn phí · 💰 trả phí · ⚠️ có thật nhưng nội dung/phiên bản cần kiểm tra trước khi dùng.</p>
+<h2 id="java-tu-con-so-0--tong-quan-lo-trinh">Tổng quan lộ trình</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Giai đoạn</th>
+<th>Tuần</th>
+<th>Giờ (ước lượng)</th>
+<th>Sau giai đoạn bạn làm được</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Core Java</td>
+<td>1–8</td>
+<td>~96</td>
+<td>Viết Java thuần có OOP, collection, stream, exception, test</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Nền tảng backend</td>
+<td>9–11</td>
+<td>~36</td>
+<td>HTTP/REST, JSON, Git, SQL cơ bản, terminal Linux</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Spring Core &amp; Spring Boot</td>
+<td>12–15</td>
+<td>~48</td>
+<td>Hiểu container, bean, cấu hình, AOP, Actuator</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Web/REST</td>
+<td>16–19</td>
+<td>~48</td>
+<td>REST API có validate, lỗi chuẩn, phân trang, OpenAPI; Angular gọi được</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Dữ liệu</td>
+<td>20–26</td>
+<td>~84</td>
+<td>JPA không N+1, transaction đúng, migration, Redis cơ bản</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Bảo mật</td>
+<td>27–30</td>
+<td>~48</td>
+<td>Spring Security + Keycloak, JWT, CORS/CSRF, OWASP</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Testing &amp; chất lượng</td>
+<td>31–34</td>
+<td>~48</td>
+<td>Test nhiều tầng với Testcontainers, review code, design pattern</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Concurrency &amp; hiệu năng</td>
+<td>35–39</td>
+<td>~60</td>
+<td>Thread, pool, virtual thread, GC, profiling, cache</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Microservices &amp; phân tán</td>
+<td>40–45</td>
+<td>~72</td>
+<td>Kafka, outbox, saga, idempotency, resilience, DDD</td>
+</tr>
+<tr>
+<td>10</td>
+<td>DevOps &amp; vận hành</td>
+<td>46–49</td>
+<td>~48</td>
+<td>Docker, CI/CD, Kubernetes cơ bản, observability, xử lý sự cố</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Kỹ năng senior</td>
+<td>50–53</td>
+<td>~48</td>
+<td>System design, ADR, trade-off, mentoring, đặc thù ngân hàng</td>
+</tr>
+</tbody>
+</table>
+<p>Tổng khoảng <strong>53 tuần (~12 tháng), ~640 giờ</strong> — ước lượng. Sau giai đoạn 5–7 (tháng thứ 7–8) bạn đủ kiến thức ứng tuyển Junior; sau giai đoạn 9 đủ kiến thức trả lời phỏng vấn Middle. Senior thật cần thêm vài năm làm production — lộ trình cho bạn điều kiện cần và câu chuyện để kể, không thay được kinh nghiệm.</p>
+<h3>Bốn thay đổi tư duy khi từ Angular sang Spring Boot</h3>
+<ol>
+<li><strong>Nhiều thread thật, không có event loop.</strong> Code Spring MVC viết tuần tự, chặn chờ database là bình thường; đổi lại, mọi field của bean singleton đều bị nhiều request dùng chung cùng lúc.</li>
+<li><strong>Server là nơi quyết định cuối.</strong> Validator, route guard, ẩn nút ở Angular là trải nghiệm; validate, phân quyền, kiểm tra quyền sở hữu phải làm lại ở API.</li>
+<li><strong>Dữ liệu và transaction là trung tâm.</strong> Bug nguy hiểm nhất của backend ngân hàng không nằm ở giao diện mà ở trừ tiền hai lần, mất cập nhật, đối soát lệch.</li>
+<li><strong>Vận hành là một phần công việc.</strong> Log, metric, cấu hình theo môi trường, khởi động lại an toàn, xử lý sự cố lúc 2 giờ sáng — không có "deploy lại bundle là xong".</li>
+</ol>
+<h2 id="java-tu-con-so-0--giai-doan-1-core-java-tuan-1-8">Giai đoạn 1 — Core Java (tuần 1–8)</h2>
+<p>Mục tiêu: viết Java thuần đúng kiểu Java (không phải "JavaScript có kiểu"), có test.</p>
+<h3>Chủ đề theo thứ tự</h3>
+<ol>
+<li><strong>Môi trường:</strong> JDK, <code>javac</code>/<code>java</code>, IntelliJ, cấu trúc project Maven (<code>pom.xml</code>, <code>src/main/java</code>, <code>src/test/java</code>), <code>./mvnw test</code>. <em>JDK</em> là bộ công cụ phát triển, <em>JVM</em> là máy ảo chạy bytecode.</li>
+<li><strong>Cú pháp và kiểu:</strong> 8 kiểu nguyên thuỷ, <code>String</code>, điều khiển luồng, method, mảng, <code>var</code>, switch expression, text block.</li>
+<li><strong>OOP:</strong> class/object, constructor, đóng gói (<code>private</code> + method), kế thừa, interface vs abstract class, đa hình, overload/override, <code>equals</code>/<code>hashCode</code>, <code>record</code>, <code>enum</code>, <code>sealed</code>.</li>
+<li><strong>Exception:</strong> checked vs unchecked, try-with-resources, exception tự định nghĩa.</li>
+<li><strong>Collections và Generics:</strong> <code>List</code>/<code>Set</code>/<code>Map</code>/<code>Deque</code>, chọn collection, bất biến (<code>List.of</code>), generic và wildcard cơ bản.</li>
+<li><strong>Lambda, Stream, Optional:</strong> functional interface, method reference, <code>map</code>/<code>filter</code>/<code>collect</code>/<code>groupingBy</code>, Optional dùng cho kiểu trả về.</li>
+<li><strong>Java hiện đại:</strong> record pattern, pattern matching trong <code>switch</code> (Java 21), sequenced collections; Java 25: compact source files, flexible constructor bodies.</li>
+<li><strong>I/O cơ bản:</strong> <code>Path</code>, <code>Files</code>, đọc file theo luồng, charset UTF-8.</li>
+<li><strong>JUnit cơ bản</strong> — bản 6 đi cùng Spring Boot 4, cách viết test giống JUnit 5 (từ tuần 2 trở đi, song song mọi chủ đề) và <strong>debugger</strong> của IntelliJ.</li>
+</ol>
+<p><strong>Vì sao thứ tự này:</strong> có môi trường chạy được trước → cú pháp và kiểu (khác TS nhiều nhất ở số và so sánh) → OOP vì mọi thứ trong Java là class và Spring dựa trên interface/kiểu → exception cần trước khi đụng I/O và API → collection/generic là nền dữ liệu → stream cần cả collection lẫn generic → tính năng hiện đại làm gọn code đã biết → I/O dùng cả exception lẫn stream.</p>
+<h3>Dễ nhầm khi từ Angular/TypeScript sang</h3>
+<table>
+<thead>
+<tr>
+<th>Angular / TypeScript</th>
+<th>Java</th>
+<th>Chỗ khác, dễ nhầm</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>npm</code>, <code>package.json</code>, <code>node_modules</code></td>
+<td>Maven <code>pom.xml</code>, kho <code>~/.m2</code></td>
+<td>Maven không có lockfile mặc định; phiên bản được cố định bằng BOM (Spring Boot quản lý)</td>
+</tr>
+<tr>
+<td><code>interface</code> (structural typing)</td>
+<td><code>interface</code> (nominal)</td>
+<td>Phải <code>implements</code> tường minh; không "khớp hình dạng"</td>
+</tr>
+<tr>
+<td><code>number</code></td>
+<td><code>int</code>, <code>long</code>, <code>double</code>, <code>BigDecimal</code></td>
+<td>Chia nguyên, tràn số; tiền luôn <code>BigDecimal</code></td>
+</tr>
+<tr>
+<td><code>===</code></td>
+<td><code>equals()</code> cho object</td>
+<td><code>==</code> so tham chiếu — sai với <code>String</code> đọc từ request</td>
+</tr>
+<tr>
+<td><code>undefined</code> và <code>null</code></td>
+<td>chỉ <code>null</code>, <code>Optional</code> cho kiểu trả về</td>
+<td>Unboxing <code>Integer</code> null → <code>NullPointerException</code></td>
+</tr>
+<tr>
+<td><code>const</code>, <code>readonly</code></td>
+<td><code>final</code></td>
+<td><code>final</code> chỉ khoá biến, không làm object bất biến</td>
+</tr>
+<tr>
+<td><code>arr.map().filter()</code></td>
+<td><code>stream().map().filter()</code></td>
+<td>Stream lười, chỉ dùng một lần, cần <code>collect</code>/<code>toList()</code></td>
+</tr>
+<tr>
+<td><code>enum</code> (số/chuỗi)</td>
+<td><code>enum</code> là class</td>
+<td>Có field, method, constructor; dùng <code>EnumMap</code></td>
+</tr>
+<tr>
+<td><code>try/catch (e: any)</code></td>
+<td>Exception có kiểu, checked phải khai báo</td>
+<td>Không bắt <code>Exception</code> chung chung</td>
+</tr>
+<tr>
+<td>Decorator</td>
+<td>Annotation</td>
+<td>Annotation chỉ là dữ liệu mô tả, có người đọc mới có tác dụng</td>
+</tr>
+</tbody>
+</table>
+<h3>Phiên bản cần để ý</h3>
+<ul>
+<li><strong>Java 8</strong> (rất nhiều ở ngân hàng): chưa có <code>var</code> (10), <code>record</code>/text block (16–17), <code>List.of</code> (9); code cũ dùng <code>Date</code>/<code>Calendar</code> thay <code>java.time</code>.</li>
+<li><strong>Java 17 → 21:</strong> pattern matching cho <code>switch</code> và record pattern final ở 21; virtual thread final ở 21.</li>
+<li><strong>Java 21 → 25:</strong> stream gatherers (24), virtual thread không còn bị "pin" bởi <code>synchronized</code> (24), scoped values và compact source files final ở 25. Structured concurrency <strong>vẫn là preview</strong> ở 25 — không dùng trong production.</li>
+<li>Tài liệu Oracle Java Tutorials (docs.oracle.com/javase/tutorial) ghi rõ viết cho JDK 8 — chỉ đọc phần khái niệm.</li>
+</ul>
+<h3>Nguồn học</h3>
+<ul>
+<li>✅ <a href="https://dev.java/learn/" target="_blank" rel="noopener noreferrer"><strong>dev.java — Learn</strong></a> (dev.java/learn): tutorial chính thức, cập nhật theo bản mới.</li>
+<li>✅ <a href="https://openjdk.org/jeps/0" target="_blank" rel="noopener noreferrer"><strong>OpenJDK JEPs</strong></a> (openjdk.org/jeps): trạng thái chính thức preview/final của từng tính năng.</li>
+<li>✅ <a href="https://exercism.org/tracks/java" target="_blank" rel="noopener noreferrer"><strong>Exercism — Java track</strong></a> (exercism.org): bài tập có mentor, hợp để luyện cú pháp tuần 1–4.</li>
+<li>✅ <a href="https://docs.junit.org/" target="_blank" rel="noopener noreferrer"><strong>JUnit User Guide</strong></a> (docs.junit.org): JUnit 6, bản Spring Boot 4 dùng; cách viết test giống JUnit 5.</li>
+<li>💰 <strong>Effective Java</strong>, 3rd edition (Joshua Bloch): viết cho Java 9 nhưng nguyên tắc (<code>equals</code>, bất biến, generic, exception) vẫn là chuẩn.</li>
+<li>💰 <strong>Head First Java</strong>, 3rd edition: dễ đọc cho người mới; ⚠️ kiểm tra bản bạn mua viết cho Java 17 trở lên.</li>
+<li>💰 <strong>Modern Java in Action</strong> (Urma, Fusco, Mycroft): lambda, stream, Optional sâu.</li>
+</ul>
+<h3>Bài tập</h3>
+<ol>
+<li>20 bài Exercism Java (tuần 1–4), mỗi bài commit kèm test.</li>
+<li><a href="i/java-ex-nb-console-bank">Bài tập: ngân hàng mini bằng Java thuần — record bất biến, enum, Map, exception nghiệp vụ, Stream gom theo tiền tệ, và test JUnit chứng minh chuyển tiền lỗi không đổi gì</a> — ngân hàng mini bằng record, enum, Map, exception, Stream, JUnit.</li>
+<li><a href="i/java-ex-nb-csv-statement">Bài tập: đọc file sao kê CSV bằng Java — Files.lines theo luồng, LocalDate và BigDecimal, gom dòng lỗi thay vì dừng cả file, chống trùng mã, tổng theo ngày bằng TreeMap</a> — đọc file sao kê CSV theo luồng, gom dòng lỗi.</li>
+<li><a href="i/java-ex-money-value">Bài tập: value object Money bất biến — cộng trừ cùng tiền tệ, nhân tỉ lệ có làm tròn, phân bổ không mất đồng nào</a> — value object <code>Money</code> bất biến, phân bổ không mất đồng nào.</li>
+<li><a href="i/java-ex-live-coding-collections">Bài tập live coding: 8 bài nhỏ hay ra ở vòng code trực tiếp — anagram, ký tự không lặp đầu tiên, two-sum, ngoặc hợp lệ, gộp khoảng, đếm tần suất — viết bằng Java chuẩn và nói ra suy nghĩ</a> — 8 bài live coding hay gặp.</li>
+</ol>
+<p><strong>Dự án nhỏ — <code>java-core-lab</code>:</strong> gộp bài 2 và 3 thành một repo Maven: import file CSV vào ngân hàng mini, in báo cáo, ≥ 15 test, README ghi 5 chỗ Java khác TypeScript bạn đã vấp.</p>
+<h3>Qua cửa</h3>
+<ul>
+<li class="ih-task-item"><span class="ih-task" data-done="false">○</span> <span class="ih-task-line ih-task-text">Tạo project Maven, viết class + record + enum + exception + test mà không cần chép mẫu.</span></li>
+<li class="ih-task-item"><span class="ih-task" data-done="false">○</span> <span class="ih-task-line ih-task-text">Giải 6/8 bài live coding collections, mỗi bài ≤ 20 phút.</span></li>
+<li class="ih-task-item"><span class="ih-task" data-done="false">○</span> <span class="ih-task-line ih-task-text">Giải thích bằng lời: <code>equals</code>/<code>hashCode</code>, checked vs unchecked, <code>String</code> bất biến, Java truyền tham trị, stream lười.</span></li>
+<li class="ih-task-item"><span class="ih-task" data-done="false">○</span> <span class="ih-task-line ih-task-text">Đọc stack trace có <code>Caused by</code>, đặt breakpoint có điều kiện, sửa được một <code>NullPointerException</code>.</span></li>
+</ul>
+<h3>Đọc sâu trong app</h3>
+<p><a href="i/java-nb-ts-to-java">Từ TypeScript sang Java — kiểu được kiểm tra cả lúc chạy, mọi thứ nằm trong class, number tách thành int/long/double/BigDecimal, không có undefined, == với object</a> · <a href="i/java-jdk-jre-jvm-bytecode">JDK, JRE và JVM khác nhau thế nào? Từ file .java tới lúc chạy — bytecode, classpath, JIT — đi qua những bước nào?</a> · <a href="i/java-tool-maven-basics">Maven cho người mới vào dự án Java — lifecycle và phase, dependency scope, parent/BOM và dependencyManagement, multi-module, settings.xml trỏ Nexus nội bộ, và Gradle khác gì</a> · <a href="i/java-primitives-casting">8 kiểu nguyên thuỷ, ép kiểu mở rộng/thu hẹp, tràn số và chia nguyên — vì sao int nhân int có thể làm sai số tiền?</a> · <a href="i/java-string-immutable">Vì sao String là immutable? == và equals khác gì? StringBuilder, string pool và nối chuỗi trong vòng lặp</a> · <a href="i/java-pass-by-value">Java truyền tham trị hay tham chiếu? Giải thích bằng ví dụ sửa object và gán lại biến bên trong method</a> · <a href="i/java-oop-solid">Bốn tính chất OOP và nguyên tắc SOLID — giải thích bằng ví dụ thật trong ứng dụng ngân hàng</a> · <a href="i/java-interface-vs-abstract">Interface và abstract class khác nhau thế nào từ Java 8 trở đi — default method, trạng thái, và khi nào chọn cái nào?</a> · <a href="i/java-equals-hashcode">Vì sao override equals() thì phải override hashCode()? Record giải quyết thế nào, và bẫy với entity JPA?</a> · <a href="i/java-exceptions">Checked và unchecked exception khác nhau thế nào? Thiết kế xử lý lỗi cho ứng dụng Spring Boot ra sao?</a> · <a href="i/java-collections-choice">Chọn collection thế nào — ArrayList vs LinkedList, HashMap vs LinkedHashMap vs TreeMap, và Set, Queue khi nào?</a> · <a href="i/java-generics-wildcards">Generics trong Java — type erasure, wildcard ? extends / ? super (PECS), và vì sao List<object> không nhận List<string> · <a href="i/java-lambda-functional">Lambda, functional interface và method reference — Function, Supplier, Consumer, Predicate dùng vào đâu, và vì sao biến dùng trong lambda phải effectively final?</a> · <a href="i/java-streams">Stream API hoạt động thế nào — lazy, intermediate và terminal; khi nào không nên dùng stream, parallel stream có nguy hiểm không?</a> · <a href="i/java-optional">Optional dùng đúng cách thế nào — và những chỗ không nên dùng Optional</a> · <a href="i/java-modern-features">Tính năng Java 17 → 25 bạn dùng trong code thật — record, sealed, pattern matching, virtual thread, scoped values...</a> · <a href="i/java-records-sealed-pattern">Mô hình hoá nghiệp vụ bằng record, sealed interface và pattern matching — thay cho if/else và instanceof</a> · <a href="i/java-io-nio-files">Đọc/ghi file trong Java — InputStream vs Reader, buffer, NIO.2 Files/Path, đọc file 2 GB không tràn RAM, và vì sao luôn khai báo UTF-8</a> · <a href="i/java-test-junit5-essentials">JUnit (bản 6 đi cùng Spring Boot 4, cú pháp như JUnit 5) và AssertJ dùng cho thành thạo — @ParameterizedTest cho biểu phí, @Nested, assertThrows/assertThatThrownBy, assertAll, vòng đời test, và đặt tên test như một câu đặc tả</a> · <a href="i/java-tool-debugging">Debug Java như người làm thật — đọc stack trace dài (Caused by), breakpoint có điều kiện, exception breakpoint, Evaluate Expression, drop frame, và remote debug vào container (JDWP) an toàn</a> · <a href="i/java-nb-annotation-vs-decorator">Annotation trong Java khác decorator trong TypeScript/Angular thế nào — dữ liệu mô tả thụ động, ai đọc nó và khi nào, vì sao @Transactional cần proxy và gọi nội bộ thì mất tác dụng</a><p></p>
+<h2 id="java-tu-con-so-0--giai-doan-2-nen-tang-backend-tuan-9-11">Giai đoạn 2 — Nền tảng backend (tuần 9–11)</h2>
+<p>Mục tiêu: hiểu những gì Spring sẽ che đi — request HTTP, JSON, database — và dùng thạo Git, terminal.</p>
+<h3>Chủ đề theo thứ tự</h3>
+<ol>
+<li><strong>HTTP:</strong> method (GET/POST/PUT/PATCH/DELETE), status code, header, cookie, an toàn và idempotent; điều gì xảy ra khi gõ một URL.</li>
+<li><strong>REST cơ bản:</strong> tài nguyên, URL, mã trạng thái, phân trang; <strong>JSON</strong> và cách ánh xạ sang object.</li>
+<li><strong>Git cho làm việc nhóm:</strong> branch, rebase, merge conflict, pull request.</li>
+<li><strong>SQL cơ bản:</strong> bảng, khoá, <code>SELECT/JOIN/GROUP BY</code>, <code>INSERT/UPDATE/DELETE</code> an toàn — chỉ mức Newbie–Junior; phần sâu học theo <a href="huong-dan/sql-tu-con-so-0">SQL từ con số 0</a>.</li>
+<li><strong>Linux và terminal:</strong> lệnh hằng ngày (<code>ls</code>, <code>grep</code>, <code>tail -f</code>, <code>less</code>, <code>ps</code>), biến môi trường, SSH; Docker chạy PostgreSQL.</li>
+</ol>
+<p><strong>Vì sao thứ tự này:</strong> HTTP là ngôn ngữ chung giữa Angular và Spring nên học trước → REST và JSON xây trên HTTP → Git, SQL, terminal là công cụ dùng từ giai đoạn 3 trở đi.</p>
+<h3>Dễ nhầm khi từ Angular/TypeScript sang</h3>
+<table>
+<thead>
+<tr>
+<th>Angular</th>
+<th>Backend</th>
+<th>Chỗ khác, dễ nhầm</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>HttpClient</code> gửi request</td>
+<td>Server nhận, chọn status code</td>
+<td>Server phải trả đúng mã (201, 204, 400, 404, 409, 422) — Frontend dựa vào đó</td>
+</tr>
+<tr>
+<td>Lỗi CORS trong console</td>
+<td>Server gửi header CORS</td>
+<td>CORS là luật của trình duyệt, không phải bảo mật cho API</td>
+</tr>
+<tr>
+<td><code>JSON.parse</code> số lớn</td>
+<td><code>long</code>, <code>BigDecimal</code> trong Java</td>
+<td>Số &gt; 2^53 mất chính xác ở JS — id và tiền nên trả dạng chuỗi</td>
+</tr>
+<tr>
+<td><code>environment.ts</code> lúc build</td>
+<td>Biến môi trường lúc chạy</td>
+<td>Backend đọc cấu hình khi khởi động, một bản build chạy mọi môi trường</td>
+</tr>
+</tbody>
+</table>
+<h3>Nguồn học</h3>
+<ul>
+<li>✅ <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP" target="_blank" rel="noopener noreferrer"><strong>MDN — HTTP</strong></a> (developer.mozilla.org): method, status, header, CORS.</li>
+<li>✅ <a href="https://git-scm.com/book/en/v2" target="_blank" rel="noopener noreferrer"><strong>Pro Git</strong></a> (git-scm.com/book): sách Git miễn phí.</li>
+<li>✅ <a href="https://linuxcommand.org/tlcl.php" target="_blank" rel="noopener noreferrer"><strong>The Linux Command Line</strong></a> (William Shotts, bản miễn phí ở linuxcommand.org).</li>
+<li>✅ Trang <a href="huong-dan/sql-tu-con-so-0">SQL từ con số 0</a>, giai đoạn 1–2.</li>
+</ul>
+<h3>Bài tập</h3>
+<ol>
+<li>Gọi một API công khai bằng <code>curl -v</code> và bằng file <code>.http</code> của IntelliJ; đọc từng header.</li>
+<li><a href="i/ops-ex-git-drills">Bài tập: 6 bài luyện Git có lời giải — gom commit bằng rebase -i, conflict bằng merge và rebase, cứu commit sau reset --hard, bisect run tự động, hook commit-msg, soi object bằng cat-file</a> — 6 bài Git có lời giải.</li>
+<li>Phần Newbie của <a href="huong-dan/sql-phong-van-newbie">bộ câu hỏi SQL</a> và dự án <a href="i/data-pj-nb-mini-bank-v0">Dự án: mini-bank v0 — dựng PostgreSQL bằng Docker, schema có ràng buộc, seed chạy lại được và 15 câu truy vấn nghiệp vụ trong một repo</a>.</li>
+<li><a href="i/ops-ex-bash-disk-cleanup">Bài tập: script bash dọn log cũ và cảnh báo khi đĩa vượt 80% — set -euo pipefail, trap, chạy thử (dry-run), lên lịch bằng systemd timer và kiểm tra bằng shellcheck</a> — script bash nhỏ.</li>
+</ol>
+<h3>Qua cửa</h3>
+<ul>
+<li class="ih-task-item"><span class="ih-task" data-done="false">○</span> <span class="ih-task-line ih-task-text">Giải thích đường đi của một request từ trình duyệt tới server và ngược lại.</span></li>
+<li class="ih-task-item"><span class="ih-task" data-done="false">○</span> <span class="ih-task-line ih-task-text">Chọn đúng status code cho 10 tình huống (tạo mới, không tìm thấy, trùng, sai dữ liệu, không có quyền…).</span></li>
+<li class="ih-task-item"><span class="ih-task" data-done="false">○</span> <span class="ih-task-line ih-task-text">Qua cửa level Newbie của bộ SQL.</span></li>
+<li class="ih-task-item"><span class="ih-task" data-done="false">○</span> <span class="ih-task-line ih-task-text">Giải conflict và rebase một nhánh mà không mất commit.</span></li>
+</ul>
+<h3>Đọc sâu trong app</h3>
+<p><a href="i/ops-net-url-journey">Điều gì xảy ra khi gõ https://ebank.example.vn vào trình duyệt — DNS, TCP, TLS, HTTP, CDN, load balancer, Ingress tới pod; mỗi tầng hỏng thì triệu chứng là gì</a> · <a href="i/ops-net-tcp-udp">TCP và UDP, bắt tay ba bước, cổng; 'connection refused' khác 'timeout' thế nào; keep-alive, TIME_WAIT; HTTP/1.1, HTTP/2, HTTP/3 khác nhau ở tầng vận chuyển</a> · <a href="i/ops-net-dns">DNS hoạt động thế nào — resolver, bản ghi A/AAAA/CNAME/TXT/MX, TTL; vì sao đổi DNS rồi mà người dùng vẫn vào IP cũ, và chuyển đổi hệ thống bằng DNS cho an toàn</a> · <a href="i/java-web-rest-design">Thiết kế REST API cho tài nguyên hợp đồng — đặt tên, method, status code, PUT vs PATCH, hành động nghiệp vụ và ETag</a> · <a href="i/ops-git-three-areas">Ba vùng của Git — working tree, staging area (index), repository; git add -p, các kiểu git diff, và vì sao nên commit từng phần nhỏ</a> · <a href="i/ops-git-branching">Chọn mô hình nhánh Git cho đội 5 người — trunk-based, GitHub flow hay GitFlow; nhánh release và hotfix trong ngân hàng</a> · <a href="i/ops-merge-conflict">Xử lý merge conflict đúng cách — hiểu ba phía của xung đột, rebase hay merge, kiểm tra lại sau khi giải quyết, và cách giảm xung đột</a> · <a href="i/ops-linux-everyday-commands">Lệnh Linux hằng ngày của developer trên server — đọc log (tail -f, less, grep), tìm file, đếm và xếp hạng bằng pipe (awk, sort, uniq), redirect 2&gt;&amp;1, biến môi trường và PATH, exit code</a> · <a href="i/ops-linux-ssh">SSH cho developer — khoá ed25519 và ssh-agent, ~/.ssh/config, đi qua bastion bằng ProxyJump, mở tunnel tới database (-L), scp/rsync, cảnh báo host key và làm cứng SSH server</a> · <a href="i/ops-docker-image-container">Docker image và container khác nhau thế nào? Container khác máy ảo ở điểm nào — namespace, cgroup và hệ quả thực tế</a> · <a href="i/ops-docker-compose-dev">Dùng Docker Compose cho môi trường phát triển cả đội — một lệnh dựng đủ DB, Kafka, Redis, dữ liệu mẫu; profile và override</a> · <a href="i/data-sql-nb-relational-db">Database quan hệ là gì — table, row, column, khoá; khác gì lưu JSON trong file hay localStorage, và vì sao backend cần một DBMS</a> · <a href="i/data-sql-join-where-having">INNER JOIN vs LEFT JOIN, WHERE vs HAVING — và bẫy điều kiện trên bảng bên phải biến LEFT JOIN thành INNER JOIN</a></p>
+<h2 id="java-tu-con-so-0--giai-doan-3-spring-core-va-spring-boot-tuan-12">Giai đoạn 3 — Spring Core và Spring Boot (tuần 12–15)</h2>
+<p>Mục tiêu: hiểu Spring dựng ứng dụng thế nào, để mọi "phép màu" về sau (transaction, security, cache) đều giải thích được.</p>
+<h3>Chủ đề theo thứ tự</h3>
+<ol>
+<li><strong>IoC/DI:</strong> container, bean, <code>ApplicationContext</code>; constructor injection; <code>@Component</code>, <code>@Service</code>, <code>@Repository</code>, <code>@Controller</code>, <code>@Bean</code> trong <code>@Configuration</code>.</li>
+<li><strong>Bean scope và vòng đời:</strong> singleton (mặc định) dùng chung giữa thread, prototype, request; <code>@PostConstruct</code>/<code>@PreDestroy</code>.</li>
+<li><strong>Cấu hình:</strong> <code>application.yml</code>, profile, thứ tự ưu tiên property, <code>@ConfigurationProperties</code> với record và validation.</li>
+<li><strong>Spring Boot:</strong> starter, auto-configuration, <code>@SpringBootApplication</code>, <code>SpringApplication.run()</code> làm gì.</li>
+<li><strong>AOP và proxy:</strong> aspect, advice, pointcut; vì sao <code>@Transactional</code>/<code>@Cacheable</code>/<code>@Async</code> có lúc "không chạy".</li>
+<li><strong>Logging:</strong> SLF4J + Logback, mức log, MDC gắn traceId, log JSON.</li>
+<li><strong>Actuator:</strong> health (liveness/readiness), metrics, info; endpoint nào được mở.</li>
+</ol>
+<p><strong>Vì sao thứ tự này:</strong> mọi thứ trong Spring là bean nên DI trước → scope quyết định có an toàn với thread không → cấu hình để cùng code chạy dev/test/prod → auto-configuration giải thích "bean từ đâu ra" → proxy giải thích annotation chạy thế nào (nền cho transaction, security ở giai đoạn 5–6) → log và Actuator để quan sát được ứng dụng ngay từ đầu.</p>
+<h3>Dễ nhầm khi từ Angular/TypeScript sang</h3>
+<table>
+<thead>
+<tr>
+<th>Angular</th>
+<th>Spring</th>
+<th>Chỗ khác, dễ nhầm</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>@Injectable({ providedIn: 'root' })</code></td>
+<td>Bean singleton</td>
+<td>Singleton Spring phục vụ <strong>nhiều thread cùng lúc</strong> — không giữ trạng thái theo người dùng trong field</td>
+</tr>
+<tr>
+<td>Injector phân cấp, provider theo component</td>
+<td>Một <code>ApplicationContext</code></td>
+<td>Ít khi có "bean riêng cho từng màn"; scope <code>request</code> dùng cho dữ liệu theo request</td>
+</tr>
+<tr>
+<td><code>environment.ts</code> thay lúc build</td>
+<td><code>application.yml</code> + profile lúc chạy</td>
+<td>Một artifact cho mọi môi trường; secret không nằm trong repo</td>
+</tr>
+<tr>
+<td>Angular CLI <code>ng generate</code></td>
+<td>start.spring.io</td>
+<td>Chọn starter = chọn dependency + auto-configuration</td>
+</tr>
+<tr>
+<td>HttpInterceptor, zone.js</td>
+<td>AOP proxy</td>
+<td>Proxy chỉ chặn lời gọi <strong>từ bên ngoài</strong> bean</td>
+</tr>
+</tbody>
+</table>
+<h3>Phiên bản cần để ý</h3>
+<ul>
+<li><strong>Boot 2 → 3:</strong> <code>javax.*</code> đổi thành <code>jakarta.*</code>; Java 17 tối thiểu.</li>
+<li><strong>Boot 3 → 4:</strong> starter chia module (<code>spring-boot-starter-webmvc</code> thay <code>-web</code>, <code>-aspectj</code> thay <code>-aop</code>); Jackson 3 (package <code>tools.jackson</code>); null-safety bằng JSpecify; <code>@Retryable</code>, <code>@ConcurrencyLimit</code> có sẵn trong Spring Framework 7.</li>
+<li><code>@MockBean</code> bị xoá ở Boot 4 → <code>@MockitoBean</code> (có từ Boot 3.4).</li>
+</ul>
+<h3>Nguồn học</h3>
+<ul>
+<li>✅ <a href="https://docs.spring.io/spring-boot/" target="_blank" rel="noopener noreferrer"><strong>Spring Boot Reference</strong></a> và <a href="https://docs.spring.io/spring-framework/reference/core.html" target="_blank" rel="noopener noreferrer"><strong>Spring Framework Reference — Core</strong></a> (docs.spring.io): luôn chọn đúng bản đang dùng.</li>
+<li>✅ <a href="https://spring.io/guides" target="_blank" rel="noopener noreferrer"><strong>Spring Guides</strong></a> (spring.io/guides): bài hướng dẫn ngắn có code.</li>
+<li>✅ <a href="https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-4.0-Migration-Guide" target="_blank" rel="noopener noreferrer"><strong>Spring Boot 4.0 Migration Guide</strong></a> (wiki của repo spring-boot trên GitHub): đọc để biết chỗ khác Boot 3.</li>
+<li>💰 <strong>Spring Start Here</strong> (Laurentiu Spilca, 2021): giải thích nền tảng Spring dễ hiểu nhất; viết cho Boot 2 nên đọc kèm việc đổi <code>javax</code> → <code>jakarta</code>; bản 2 dự kiến đầu 2027. ⚠️ <em>Spring in Action</em> mới nhất vẫn là bản 6 (2022) viết cho Boot 2 — chưa có bản cho Boot 3/4.</li>
+</ul>
+<h3>Bài tập</h3>
+<ol>
+<li>Tạo project từ start.spring.io; viết một service có hai cài đặt (<code>@Primary</code>, <code>@Qualifier</code>) và chứng minh bằng test.</li>
+<li>Cấu hình bằng <code>@ConfigurationProperties</code> + record + validation; ứng dụng không khởi động nếu thiếu cấu hình bắt buộc.</li>
+<li><a href="i/java-ex-aop-audit-annotation">Bài tập: tự viết annotation @Audited và một @Aspect ghi audit log cho thao tác duyệt khoản vay — lấy người dùng, tham số đã che, kết quả/lỗi, thời gian; ghi cả lần thất bại</a> — tự viết <code>@Audited</code> + <code>@Aspect</code>.</li>
+<li>Cố tình gây 3 lỗi khởi động (thiếu bean, vòng phụ thuộc, sai property) và sửa — xem <a href="i/java-sc-bean-not-found-startup">Tình huống: ứng dụng không khởi động — 'Parameter 0 of constructor required a bean of type X that could not be found' (hoặc NoUniqueBeanDefinitionException); chạy ở máy được, lên UAT thì chết</a>.</li>
+</ol>
+<p><strong>Dự án nhỏ:</strong> khởi tạo dự án P1 (InsureFlow) với profile <code>dev</code>/<code>test</code>, log JSON có traceId, Actuator health.</p>
+<h3>Qua cửa</h3>
+<ul>
+<li class="ih-task-item"><span class="ih-task" data-done="false">○</span> <span class="ih-task-line ih-task-text">Kể các bước <code>SpringApplication.run()</code> và giải thích một bean "từ đâu ra".</span></li>
+<li class="ih-task-item"><span class="ih-task" data-done="false">○</span> <span class="ih-task-line ih-task-text">Giải thích vì sao gọi <code>this.method()</code> làm mất <code>@Transactional</code>.</span></li>
+<li class="ih-task-item"><span class="ih-task" data-done="false">○</span> <span class="ih-task-line ih-task-text">Sửa được 3 lỗi khởi động kinh điển trong ≤ 15 phút mỗi lỗi.</span></li>
+</ul>
+<h3>Đọc sâu trong app</h3>
+<p><a href="i/java-sp-ioc-container">IoC và DI khác nhau thế nào? Bean là gì, ApplicationContext khác BeanFactory ra sao, và container tạo một bean qua những bước nào</a> · <a href="i/java-sp-di-constructor">Dependency injection trong Spring — vì sao constructor injection tốt hơn @Autowired trên field? Nhiều cài đặt, phụ thuộc tuỳ chọn xử lý ra sao?</a> · <a href="i/java-sp-stereotypes-bean">@Component, @Service, @Repository, @Controller khác nhau thế nào? Khi nào dùng @Bean trong @Configuration, và BeanRegistrar của Spring 7</a> · <a href="i/java-sp-bean-scope-lifecycle">Bean scope và vòng đời bean — singleton có thread-safe không, prototype trong singleton, và vì sao @Transactional không chạy trong @PostConstruct</a> · <a href="i/java-sp-boot-vs-framework">Spring Boot khác Spring Framework và Spring MVC thế nào — Boot giải quyết vấn đề gì, starter, auto-configuration, embedded server, fat jar</a> · <a href="i/java-sp-springbootapplication-startup">@SpringBootApplication gồm những gì, SpringApplication.run() làm gì từng bước — và chọn @PostConstruct, ApplicationRunner hay ApplicationReadyEvent cho việc chạy lúc khởi động</a> · <a href="i/java-sp-autoconfiguration">Auto-configuration của Spring Boot hoạt động thế nào — điều kiện, thứ tự, debug vì sao bean (không) được tạo, và viết starter nội bộ</a> · <a href="i/java-sp-profiles-config">Quản lý cấu hình dev/test/prod trong Spring Boot — thứ tự ưu tiên property, profile, và để secret ở đâu</a> · <a href="i/java-sp-config-properties">@ConfigurationProperties với record và validation thay cho @Value — cấu hình có kiểu, fail fast khi khởi động</a> · <a href="i/java-sp-aop-proxy">Spring AOP và proxy — vì sao @Transactional, @Cacheable, @Async, @Retryable có lúc "không chạy", và thứ tự giữa retry với transaction</a> · <a href="i/java-sp-circular-dependency">Lỗi 'The dependencies of some of the beans form a cycle' — vì sao Spring Boot cấm vòng phụ thuộc và sửa thế nào cho đúng</a> · <a href="i/java-sp-logging-mdc">Logging trong Spring Boot — SLF4J và Logback, chọn mức log, MDC gắn traceId, log JSON có cấu trúc, và vì sao không nối chuỗi trong câu log</a> · <a href="i/java-sp-actuator">Spring Boot Actuator — endpoint nào mở mặc định, health group cho liveness/readiness, metrics Prometheus, và khoá Actuator an toàn trên production</a> · <a href="i/java-sp-boot4-whats-new">Spring Boot 4 / Spring Framework 7 có gì mới — và kế hoạch nâng cấp một service Spring Boot 3 lên 4</a> · <a href="i/java-jr-project-structure">Tổ chức package trong project Spring Boot — theo layer hay theo feature, controller/service/repository mỗi tầng làm gì, đặt DTO, mapper, config ở đâu; so với core/shared/feature của Angular</a></p>
+<h2 id="java-tu-con-so-0--giai-doan-4-web-rest-tuan-16-19">Giai đoạn 4 — Web/REST (tuần 16–19)</h2>
+<p>Mục tiêu: viết REST API mà chính app Angular của bạn gọi được, đúng chuẩn production.</p>
+<h3>Chủ đề theo thứ tự</h3>
+<ol>
+<li><strong>Luồng request trong Spring MVC:</strong> Tomcat → filter → <code>DispatcherServlet</code> → controller → message converter.</li>
+<li><strong>Controller:</strong> <code>@RestController</code>, <code>@PathVariable</code>, <code>@RequestParam</code>, <code>@RequestBody</code>, <code>ResponseEntity</code>.</li>
+<li><strong>DTO và ánh xạ:</strong> record làm DTO, tách khỏi entity, MapStruct.</li>
+<li><strong>Validation:</strong> Bean Validation (<code>@NotBlank</code>, <code>@Positive</code>, <code>@Valid</code>), ràng buộc tự viết.</li>
+<li><strong>Xử lý lỗi toàn cục:</strong> <code>@RestControllerAdvice</code>, <code>ProblemDetail</code> (RFC 9457), mã lỗi ổn định cho Frontend.</li>
+<li><strong>Thiết kế REST:</strong> đặt tên tài nguyên, PUT vs PATCH, hành động nghiệp vụ, idempotency.</li>
+<li><strong>Phân trang và sắp xếp;</strong> <strong>OpenAPI/Swagger</strong> (springdoc).</li>
+<li><strong>Gọi service khác:</strong> <code>RestClient</code>, HTTP service interface, <code>WebClient</code>; timeout.</li>
+<li><strong>Filter và HandlerInterceptor;</strong> <strong>CORS</strong> cho Angular; upload/download file lớn; cấu hình Jackson.</li>
+</ol>
+<p><strong>Vì sao thứ tự này:</strong> hiểu luồng request trước để biết mỗi annotation can thiệp ở bước nào → controller → DTO và validation là "cổng vào" → xử lý lỗi để hợp đồng API ổn định → thiết kế REST, phân trang, OpenAPI hoàn thiện hợp đồng → gọi ra ngoài và filter là phần nâng cao.</p>
+<h3>Dễ nhầm khi từ Angular/TypeScript sang</h3>
+<table>
+<thead>
+<tr>
+<th>Angular</th>
+<th>Spring</th>
+<th>Chỗ khác, dễ nhầm</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ActivatedRoute.params</code></td>
+<td><code>@PathVariable</code></td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>HttpParams</code></td>
+<td><code>@RequestParam</code></td>
+<td>Kiểu được chuyển và validate phía server</td>
+</tr>
+<tr>
+<td>Reactive form validator</td>
+<td>Bean Validation</td>
+<td>Server là nơi quyết định; validator FE chỉ là trải nghiệm</td>
+</tr>
+<tr>
+<td><code>catchError</code> trong service</td>
+<td><code>@RestControllerAdvice</code></td>
+<td>Lỗi xử lý một chỗ, trả <code>ProblemDetail</code> thống nhất</td>
+</tr>
+<tr>
+<td><code>HttpInterceptor</code></td>
+<td><code>Filter</code>, <code>HandlerInterceptor</code></td>
+<td>Filter chạy trước Spring MVC; interceptor biết controller nào</td>
+</tr>
+<tr>
+<td>Interface TS cho response</td>
+<td>Record DTO + OpenAPI</td>
+<td>Sinh client TypeScript từ OpenAPI — Frontend và backend dùng chung hợp đồng</td>
+</tr>
+</tbody>
+</table>
+<h3>Phiên bản cần để ý</h3>
+<ul>
+<li><code>RestTemplate</code> vẫn chạy nhưng được khuyên thay bằng <strong><code>RestClient</code></strong> (Spring 6.1+); Boot 4 tự cấu hình <strong>HTTP service client</strong> khai báo bằng interface.</li>
+<li>Spring Framework 7 có <strong>API versioning</strong> sẵn cho MVC.</li>
+<li>springdoc-openapi: ⚠️ chọn bản tương thích với bản Boot (bảng tương thích trên springdoc.org).</li>
+</ul>
+<h3>Nguồn học</h3>
+<ul>
+<li>✅ <a href="https://docs.spring.io/spring-framework/reference/web/webmvc.html" target="_blank" rel="noopener noreferrer"><strong>Spring Framework Reference — Web MVC</strong></a>.</li>
+<li>✅ <a href="https://www.rfc-editor.org/rfc/rfc9457" target="_blank" rel="noopener noreferrer"><strong>RFC 9457 — Problem Details for HTTP APIs</strong></a>.</li>
+<li>✅ <a href="https://springdoc.org/" target="_blank" rel="noopener noreferrer"><strong>springdoc.org</strong></a> — tài liệu springdoc-openapi.</li>
+<li>✅ <a href="https://opensource.zalando.com/restful-api-guidelines/" target="_blank" rel="noopener noreferrer"><strong>Zalando RESTful API Guidelines</strong></a>: bộ quy ước REST chi tiết, dùng làm tham chiếu khi tranh luận thiết kế.</li>
+</ul>
+<h3>Bài tập</h3>
+<ol>
+<li><a href="i/java-ex-rest-crud-validation">Bài tập: API quản lý người thụ hưởng — CRUD có validate, phân trang, ETag chống sửa đè, Problem Detail, test bằng MockMvc</a> — API người thụ hưởng: CRUD, validate, phân trang, ETag, ProblemDetail.</li>
+<li>Sinh client TypeScript từ OpenAPI (openapi-generator) cho app Angular — điểm mạnh của bạn.</li>
+<li>Gọi một API ngoài bằng <code>RestClient</code> có timeout, test bằng WireMock.</li>
+</ol>
+<p><strong>Dự án P1 — InsureFlow chặng 1:</strong> backend Spring Boot cho chính app Angular của bạn — xem <a href="i/java-pj-insureflow-api">Dự án: InsureFlow chặng 1 — viết backend Spring Boot cho chính app Angular của bạn (khách hàng, sản phẩm, báo giá, hợp đồng): REST chuẩn, validation, hợp đồng lỗi, idempotency, Flyway, Testcontainers, OpenAPI sinh client TypeScript</a>.</p>
+<h3>Qua cửa</h3>
+<ul>
+<li class="ih-task-item"><span class="ih-task" data-done="false">○</span> <span class="ih-task-line ih-task-text">Angular gọi API thật (không mock), lỗi trả <code>ProblemDetail</code> có mã; CORS cấu hình đúng.</span></li>
+<li class="ih-task-item"><span class="ih-task" data-done="false">○</span> <span class="ih-task-line ih-task-text">OpenAPI đầy đủ, client TypeScript sinh được.</span></li>
+<li class="ih-task-item"><span class="ih-task" data-done="false">○</span> <span class="ih-task-line ih-task-text">Giải thích được đường đi của một request qua Spring MVC.</span></li>
+</ul>
+<h3>Đọc sâu trong app</h3>
+<p><a href="i/java-web-dispatcher-flow">Một HTTP request đi qua Spring MVC thế nào — từ Tomcat, filter, DispatcherServlet, HandlerMapping, interceptor, argument resolver, message converter tới exception resolver</a> · <a href="i/java-web-controller-basics">@Controller vs @RestController, @PathVariable vs @RequestParam vs @RequestBody vs @RequestHeader, ResponseEntity — viết một endpoint REST đầu tiên cho đúng</a> · <a href="i/java-web-dto-mapping">DTO và entity — vì sao tách, ánh xạ tay, MapStruct hay ModelMapper, và cách MapStruct bắt lỗi quên field ngay lúc build</a> · <a href="i/java-web-validation">Validate dữ liệu đầu vào trong Spring Boot — Bean Validation, validate path/query, ràng buộc tự viết, và quy tắc nghiệp vụ đặt ở đâu</a> · <a href="i/java-web-exception-handling">Xử lý lỗi tập trung cho REST API — @RestControllerAdvice, ProblemDetail (RFC 9457), mã lỗi ổn định, và lỗi ngoài controller</a> · <a href="i/java-web-rest-design">Thiết kế REST API cho tài nguyên hợp đồng — đặt tên, method, status code, PUT vs PATCH, hành động nghiệp vụ và ETag</a> · <a href="i/java-web-pagination-versioning">Phân trang bảng hàng chục triệu giao dịch (offset vs keyset) và versioning API với tính năng API versioning của Spring 7</a> · <a href="i/java-web-openapi-contract">Hợp đồng API với OpenAPI — code-first hay API-first, sinh client, và chặn breaking change ngay trong CI</a> · <a href="i/java-web-http-clients">Gọi REST service khác — RestTemplate, RestClient, WebClient hay HTTP service interface? Timeout, lỗi, retry và quan sát</a> · <a href="i/java-web-filter-interceptor">Filter, HandlerInterceptor và AOP khác nhau thế nào — log request, gắn trace id, kiểm tra tenant đặt ở đâu?</a> · <a href="i/java-sec-cors-csrf">CORS và CSRF khác nhau thế nào — cấu hình cho SPA Angular gọi API Spring Boot khác domain, và csrf.spa() của Spring Security 7</a> · <a href="i/java-web-jackson">Jackson trong Spring Boot — cấu hình JSON cho API tài chính (ngày ISO-8601, BigDecimal không ra 1E+6, field không biết), Jackson 3 ở Boot 4 đổi gì, và bẫy đa hình</a> · <a href="i/java-web-large-files">Upload hồ sơ và xuất sao kê dung lượng lớn — giới hạn multipart, stream không nạp vào RAM, presigned URL, quét mã độc, export bất đồng bộ</a> · <a href="i/java-web-idempotency-api">Thiết kế API thanh toán idempotent với header Idempotency-Key — lưu gì, xử lý request trùng đồng thời, khoá hết hạn</a></p>
+<h2 id="java-tu-con-so-0--giai-doan-5-du-lieu-tuan-20-26">Giai đoạn 5 — Dữ liệu (tuần 20–26)</h2>
+<p>Mục tiêu: dùng JPA mà không bị nó "lừa", đặt transaction đúng chỗ, đổi schema bằng migration.</p>
+<h3>Chủ đề theo thứ tự</h3>
+<ol>
+<li><strong>JDBC</strong> và <code>JdbcClient</code>/<code>JdbcTemplate</code>; connection pool HikariCP.</li>
+<li><strong>JPA/Hibernate cơ bản:</strong> entity, persistence context, trạng thái entity, dirty checking, flush.</li>
+<li><strong>Quan hệ:</strong> <code>@ManyToOne</code>/<code>@OneToMany</code>, owning side, <code>mappedBy</code>, LAZY/EAGER, cascade, <code>orphanRemoval</code>.</li>
+<li><strong>N+1</strong> và cách sửa; projection DTO; phân trang.</li>
+<li><strong><code>@Transactional</code>:</strong> proxy, propagation, isolation, quy tắc rollback, các lỗi kinh điển.</li>
+<li><strong>Locking:</strong> <code>@Version</code> (optimistic), <code>@Lock(PESSIMISTIC_WRITE)</code>; cập nhật nguyên tử.</li>
+<li><strong>Flyway/Liquibase.</strong></li>
+<li><strong>Redis cơ bản</strong> và cache trong Spring.</li>
+<li><strong>Đặc thù ngân hàng Việt Nam:</strong> Oracle, stored procedure qua <code>SimpleJdbcCall</code>, MyBatis.</li>
+</ol>
+<p><strong>Vì sao thứ tự này:</strong> JDBC trước để thấy SQL thật dưới JPA → JPA cơ bản → quan hệ → N+1 là hệ quả của quan hệ + lazy → transaction (cần hiểu persistence context) → locking cho đồng thời → migration để đưa schema lên môi trường thật → Redis là tầng thêm sau database → Oracle/MyBatis vì đa số core ngân hàng chạy Oracle. Học song song giai đoạn 3–6 của <a href="huong-dan/sql-tu-con-so-0">SQL từ con số 0</a>.</p>
+<h3>Dễ nhầm khi từ Angular/TypeScript sang</h3>
+<table>
+<thead>
+<tr>
+<th>Angular</th>
+<th>Spring Data / JPA</th>
+<th>Chỗ khác, dễ nhầm</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Store NgRx theo dõi state</td>
+<td>Persistence context theo dõi entity</td>
+<td>Sửa field của entity được quản lý là có <code>UPDATE</code> khi commit — không cần <code>save()</code></td>
+</tr>
+<tr>
+<td>Lazy-loaded route</td>
+<td>LAZY fetch</td>
+<td>Truy cập sau khi transaction đóng → <code>LazyInitializationException</code></td>
+</tr>
+<tr>
+<td>Gọi API trong <code>@for</code></td>
+<td>N+1 query</td>
+<td>1 màn hình sinh 101 câu SQL</td>
+</tr>
+<tr>
+<td>Model dùng chung FE–BE</td>
+<td>Entity ≠ DTO</td>
+<td>Không trả entity ra API</td>
+</tr>
+</tbody>
+</table>
+<h3>Phiên bản cần để ý</h3>
+<ul>
+<li><strong>Boot 2 → 3:</strong> <code>javax.persistence</code> → <code>jakarta.persistence</code>; Hibernate 6. <strong>Boot 4:</strong> Hibernate 7, JPA 3.2.</li>
+<li><code>@SoftDelete</code> có từ Hibernate 6.4.</li>
+<li><code>spring.jpa.open-in-view</code> vẫn bật mặc định kèm cảnh báo — nên tắt.</li>
+</ul>
+<h3>Nguồn học</h3>
+<ul>
+<li>✅ <a href="https://docs.spring.io/spring-data/jpa/reference/" target="_blank" rel="noopener noreferrer"><strong>Spring Data JPA Reference</strong></a>, <a href="https://hibernate.org/orm/documentation/" target="_blank" rel="noopener noreferrer"><strong>Hibernate ORM User Guide</strong></a>.</li>
+<li>✅ Blog <a href="https://vladmihalcea.com/" target="_blank" rel="noopener noreferrer"><strong>Vlad Mihalcea</strong></a> và <a href="https://thorben-janssen.com/" target="_blank" rel="noopener noreferrer"><strong>Thorben Janssen</strong></a> (JPA/Hibernate theo chủ đề).</li>
+<li>💰 <strong>High-Performance Java Persistence</strong> (Vlad Mihalcea).</li>
+<li>✅ <a href="https://documentation.red-gate.com/fd" target="_blank" rel="noopener noreferrer"><strong>Flyway documentation</strong></a> (Redgate), <a href="https://redis.io/docs/latest/" target="_blank" rel="noopener noreferrer"><strong>Redis docs</strong></a>.</li>
+<li>✅ <a href="huong-dan/sql-tu-con-so-0">SQL từ con số 0</a>, giai đoạn 3–7.</li>
+</ul>
+<h3>Bài tập</h3>
+<ol>
+<li><a href="i/java-ex-jdbc-dao-transaction">Bài tập: DAO JDBC thuần không Spring — recordPayment ghi payment và cập nhật policy trong một transaction tự quản (setAutoCommit, commit, rollback), có test chứng minh rollback và tái hiện cạn pool</a> — DAO JDBC thuần có transaction.</li>
+<li><a href="i/java-ex-fix-n-plus-one">Bài tập: endpoint danh sách hồ sơ vay chạy 101 truy vấn — viết test đếm truy vấn, sửa còn ≤ 2, không phá phân trang</a> — test đếm query, sửa 101 query còn ≤ 2.</li>
+<li><a href="i/java-ex-dynamic-search">Bài tập: màn tra cứu giao dịch back-office với 8 điều kiện tuỳ chọn — Specification/Criteria hoặc JdbcClient, phân trang, sort qua allowlist, giới hạn khoảng ngày, không N+1, không SQL injection</a> — tra cứu 8 điều kiện tuỳ chọn, không SQL injection.</li>
+<li><a href="i/java-ex-optimistic-retry">Bài tập: cập nhật hạn mức đã dùng trong ngày bằng @Version + retry — đúng khi đồng thời, không retry vô hạn, test chứng minh</a> — <code>@Version</code> + retry.</li>
+</ol>
+<p><strong>Dự án:</strong> P1 chuyển sang PostgreSQL + Flyway, có test đếm query và test đồng thời cho thao tác tiền.</p>
+<h3>Qua cửa</h3>
+<ul>
+<li class="ih-task-item"><span class="ih-task" data-done="false">○</span> <span class="ih-task-line ih-task-text">Test đếm query đỏ khi có N+1 và xanh sau khi sửa.</span></li>
+<li class="ih-task-item"><span class="ih-task" data-done="false">○</span> <span class="ih-task-line ih-task-text">Chứng minh 3 bẫy <code>@Transactional</code> (self-invocation, checked exception, nuốt exception) bằng test.</span></li>
+<li class="ih-task-item"><span class="ih-task" data-done="false">○</span> <span class="ih-task-line ih-task-text">20 thread cùng thao tác số dư: tổng tiền không đổi.</span></li>
+</ul>
+<h3>Đọc sâu trong app</h3>
+<p><a href="i/java-jpa-vs-hibernate-springdata">JPA, Hibernate, Spring Data JPA và JDBC khác nhau thế nào — tầng nào làm gì, lỗi đến từ tầng nào, và khi nào không nên dùng JPA</a> · <a href="i/java-da-jdbctemplate-jdbcclient">JdbcTemplate, NamedParameterJdbcTemplate và JdbcClient — khi nào chọn JDBC thay vì JPA, RowMapper, mệnh đề IN, batchUpdate và xử lý lỗi DataAccessException</a> · <a href="i/java-pf-connection-pool">Kích thước connection pool (HikariCP) — vì sao pool nhỏ thường nhanh hơn, tổng kết nối theo số instance, timeout, phát hiện rò kết nối</a> · <a href="i/java-jpa-persistence-context">Persistence context, trạng thái entity và dirty checking — vì sao sửa field là được lưu dù không gọi save(), và save() thật ra làm gì</a> · <a href="i/java-jpa-relationships">Mapping quan hệ JPA đúng cách — owning side, mappedBy, LAZY cho ToOne, cascade, orphanRemoval và khi nào không nên map collection</a> · <a href="i/java-jpa-n-plus-one">N+1 query trong JPA/Hibernate — phát hiện bằng số đo, sửa bằng fetch join, entity graph, batch fetching hay DTO, và các bẫy đi kèm</a> · <a href="i/java-jpa-lazy-init">LazyInitializationException và Open Session in View — vì sao Spring Boot cảnh báo, có nên tắt, và sửa đúng cách</a> · <a href="i/java-tx-acid-basics">Transaction và ACID giải thích bằng một lệnh chuyển tiền — atomicity, consistency, isolation, durability; transaction khác connection thế nào, và @Transactional cho bạn chữ nào</a> · <a href="i/java-tx-transactional-proxy">@Transactional hoạt động thế nào — proxy, transaction gắn với thread, ranh giới transaction đặt ở đâu và vì sao không gọi HTTP bên trong</a> · <a href="i/java-tx-rollback-rules">Khi nào transaction rollback — checked vs unchecked, rollbackFor, bắt exception rồi đi tiếp, và UnexpectedRollbackException</a> · <a href="i/java-tx-propagation-isolation">Propagation REQUIRED, REQUIRES_NEW, NESTED — ví dụ dùng thật, bẫy cạn pool; và chọn isolation level</a> · <a href="i/java-jpa-locking">Optimistic vs pessimistic locking và cập nhật nguyên tử — chọn gì cho số dư tài khoản, hồ sơ khách hàng, hàng đợi job</a> · <a href="i/java-jpa-id-generation">Chiến lược sinh khoá chính — IDENTITY, SEQUENCE (allocationSize), UUID v4 hay v7, khoá nghiệp vụ; vì sao IDENTITY giết batch insert và lệch allocationSize gây trùng id</a> · <a href="i/java-da-flyway-liquibase">Quản lý schema bằng Flyway hoặc Liquibase — versioned vs repeatable migration, vì sao không sửa migration đã chạy, ddl-auto=validate, baseline database có sẵn, và đổi gì ở Spring Boot 4</a> · <a href="i/java-pf-caching">Cache trong ứng dụng Spring — Caffeine cục bộ hay Redis, TTL và vô hiệu hoá, cache stampede, và những dữ liệu không được cache</a> · <a href="i/java-pf-redis-patterns">Redis trong hệ thống Spring Boot — kiểu dữ liệu dùng vào việc gì (string, hash, sorted set, stream), rate limit, phiên, khoá; TTL và eviction; persistence/replication; và những thứ không nên đặt vào Redis</a> · <a href="i/java-da-oracle-for-java-devs">Oracle mà dev Java phải biết khi vào ngân hàng — phân trang, sequence, chuỗi rỗng = NULL, DATE có giờ, NUMBER ↔ BigDecimal, VARCHAR2 BYTE vs CHAR với tiếng Việt, giới hạn 1000 phần tử IN, ORA-01555</a> · <a href="i/java-da-stored-procedure">Gọi stored procedure Oracle từ Spring — SimpleJdbcCall, tham số OUT, REF CURSOR, quy ước mã lỗi PO_ErrorCode; ưu nhược của việc đặt logic nghiệp vụ trong PL/SQL</a> · <a href="i/java-da-mybatis">MyBatis so với JPA — mapper XML, SQL động với <if>/<foreach>, #{} vs ${} và SQL injection, ánh xạ kết quả lồng nhau, khi nào chọn MyBatis</foreach></if></a></p>
+<h2 id="java-tu-con-so-0--giai-doan-6-bao-mat-tuan-27-30">Giai đoạn 6 — Bảo mật (tuần 27–30)</h2>
+<p>Mục tiêu: bảo vệ API đúng chuẩn ngân hàng, tích hợp Keycloak với app Angular.</p>
+<h3>Chủ đề theo thứ tự</h3>
+<ol>
+<li><strong>Authentication vs authorization;</strong> 401 vs 403; session vs token; JWT gồm gì.</li>
+<li><strong>Spring Security:</strong> filter chain, <code>SecurityContext</code>, lưu mật khẩu (<code>PasswordEncoder</code>).</li>
+<li><strong>OAuth2/OIDC với Keycloak:</strong> resource server kiểm JWT, ánh xạ role, authorization code + PKCE cho Angular.</li>
+<li><strong>Phân quyền:</strong> URL, method security (<code>@PreAuthorize</code>), kiểm tra quyền sở hữu dữ liệu (chống IDOR).</li>
+<li><strong>CORS và CSRF</strong> cho SPA.</li>
+<li><strong>OWASP Top 10</strong> và <strong>OWASP API Security Top 10</strong>; injection; quản lý secret; che dữ liệu cá nhân trong log.</li>
+<li><strong>Service-to-service:</strong> client credentials, mTLS (mức khái niệm).</li>
+</ol>
+<p><strong>Vì sao thứ tự này:</strong> khái niệm trước để không nhầm 401/403 → cơ chế Spring Security → tích hợp Keycloak (thứ ngân hàng dùng thật) → phân quyền chi tiết → CORS/CSRF hay gây bối rối khi nối với Angular → OWASP và secret là lớp phòng thủ tổng thể → giữa các service là phần nâng cao.</p>
+<h3>Dễ nhầm khi từ Angular/TypeScript sang</h3>
+<table>
+<thead>
+<tr>
+<th>Angular</th>
+<th>Backend</th>
+<th>Chỗ khác, dễ nhầm</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Route guard, ẩn nút theo role</td>
+<td>Phân quyền ở API</td>
+<td>Guard là trải nghiệm; ai cũng gọi thẳng API được</td>
+</tr>
+<tr>
+<td>Token trong <code>localStorage</code></td>
+<td>Session cookie HttpOnly hoặc BFF</td>
+<td>XSS đọc được <code>localStorage</code></td>
+</tr>
+<tr>
+<td>Lỗi CORS</td>
+<td>Header CORS từ server</td>
+<td>CORS không chặn Postman/curl — không phải lớp bảo mật</td>
+</tr>
+<tr>
+<td>Interceptor bắt 401 để refresh</td>
+<td>401 = chưa xác thực, 403 = không có quyền</td>
+<td>Trả sai mã làm Frontend refresh token sai lúc</td>
+</tr>
+</tbody>
+</table>
+<h3>Phiên bản cần để ý</h3>
+<ul>
+<li><code>WebSecurityConfigurerAdapter</code> bị đánh dấu lỗi thời từ Spring Security 5.7 và bị xoá ở 6.0; từ đó dùng bean <code>SecurityFilterChain</code> với lambda DSL, <code>authorizeHttpRequests</code> thay <code>authorizeRequests</code>. Spring Security 7 (Boot 4) tiếp tục gỡ API cũ — tài liệu cấu hình kiểu <code>.and()</code> là đã cũ.</li>
+<li>OWASP Top 10 bản hiện hành là <strong>2025</strong>; API Security Top 10 là bản <strong>2023</strong>.</li>
+</ul>
+<h3>Nguồn học</h3>
+<ul>
+<li>✅ <a href="https://docs.spring.io/spring-security/reference/" target="_blank" rel="noopener noreferrer"><strong>Spring Security Reference</strong></a> (servlet, OAuth2 resource server).</li>
+<li>✅ <a href="https://owasp.org/www-project-top-ten/" target="_blank" rel="noopener noreferrer"><strong>OWASP Top 10</strong></a>, <a href="https://owasp.org/API-Security/" target="_blank" rel="noopener noreferrer"><strong>OWASP API Security Top 10</strong></a>, <a href="https://cheatsheetseries.owasp.org/" target="_blank" rel="noopener noreferrer"><strong>OWASP Cheat Sheet Series</strong></a> (owasp.org).</li>
+<li>✅ <a href="https://www.keycloak.org/documentation" target="_blank" rel="noopener noreferrer"><strong>Keycloak documentation</strong></a> (keycloak.org).</li>
+</ul>
+<h3>Bài tập</h3>
+<ol>
+<li>Keycloak chạy bằng Docker; Angular đăng nhập bằng code + PKCE; Spring Boot là resource server.</li>
+<li><a href="i/java-ex-ownership-check">Bài tập: vá lỗ hổng IDOR ở API sao kê — kiểm tra quyền sở hữu từ token, nhân viên chỉ xem chi nhánh mình, trả 404, test bằng jwt()</a> — vá IDOR ở API sao kê.</li>
+<li>Test 401/403 và quyền theo chi nhánh — xem <a href="i/java-test-security">Test phân quyền trong Spring Security — @WithMockUser, jwt() cho MockMvc, test 401/403 và quyền theo chủ sở hữu dữ liệu (agent A không xem được khách của agent B)</a>.</li>
+</ol>
+<p><strong>Dự án P2:</strong> quy trình duyệt khoản vay có maker-checker và phân quyền theo chi nhánh — <a href="i/java-pj-loan-workflow">Dự án: quy trình duyệt khoản vay — máy trạng thái, maker-checker, phân quyền theo chi nhánh và hạn mức, step-up MFA, audit trail</a>.</p>
+<h3>Qua cửa</h3>
+<ul>
+<li class="ih-task-item"><span class="ih-task" data-done="false">○</span> <span class="ih-task-line ih-task-text">Vẽ được luồng đăng nhập Angular → Keycloak → API từ đầu tới cuối.</span></li>
+<li class="ih-task-item"><span class="ih-task" data-done="false">○</span> <span class="ih-task-line ih-task-text">Test chứng minh nhân viên chi nhánh A không xem được khách chi nhánh B.</span></li>
+<li class="ih-task-item"><span class="ih-task" data-done="false">○</span> <span class="ih-task-line ih-task-text">Liệt kê 10 việc bảo mật tối thiểu cho một API mới.</span></li>
+</ul>
+<h3>Đọc sâu trong app</h3>
+<p><a href="i/java-sec-authn-authz-basics">Authentication và authorization khác nhau thế nào — 401 vs 403, session vs token, JWT gồm gì (được ký chứ không mã hoá), access/refresh token, OAuth2 và OIDC ở mức tổng quan</a> · <a href="i/java-sec-filter-chain">Spring Security xử lý một request thế nào — FilterChainProxy, SecurityFilterChain, SecurityContext; phân quyền theo URL và theo dữ liệu</a> · <a href="i/java-sec-authentication-architecture">Spring Security xác thực một người dùng thế nào — AuthenticationManager, ProviderManager, AuthenticationProvider, UserDetailsService, PasswordEncoder, SecurityContextHolder; authentication khác authorization ra sao</a> · <a href="i/java-sec-password-storage">Lưu mật khẩu đúng cách — hash thích ứng (Argon2id, bcrypt), salt, DelegatingPasswordEncoder để nâng thuật toán, và các lớp bảo vệ đăng nhập</a> · <a href="i/java-sec-jwt-resource-server">Resource server nhận JWT từ Keycloak — kiểm tra chữ ký, issuer, audience, thời hạn; ánh xạ role; thu hồi token và lưu token ở client</a> · <a href="i/java-sec-session-vs-jwt-spa">SPA Angular gọi API Spring Boot: session cookie hay JWT trong localStorage — thu hồi token, XSS vs CSRF, refresh token, và vì sao nhiều ngân hàng chọn mẫu BFF (backend-for-frontend)</a> · <a href="i/java-sec-method-security">Method security — @PreAuthorize, @PostAuthorize, bean kiểm tra quyền, meta-annotation; bẫy proxy và cách test</a> · <a href="i/java-sec-oauth2-roles">Thiết kế phân quyền cho hệ thống nội bộ ngân hàng — role, scope, thuộc tính (chi nhánh, hạn mức duyệt), maker-checker và step-up MFA</a> · <a href="i/java-sec-cors-csrf">CORS và CSRF khác nhau thế nào — cấu hình cho SPA Angular gọi API Spring Boot khác domain, và csrf.spa() của Spring Security 7</a> · <a href="i/java-sec-api-baseline">Một REST API Spring Boot vừa tạo xong — 10 việc bảo mật tối thiểu phải làm trước khi lên môi trường thật (HTTPS, xác thực, phân quyền theo dữ liệu, validate, lỗi không lộ nội bộ, mật khẩu, secret, CORS, Actuator, log)</a> · <a href="i/java-sec-owasp-api">OWASP API Security Top 10 (2023) áp vào API ngân hàng — mỗi rủi ro một ví dụ thật và cách chặn trong Spring</a> · <a href="i/java-sec-injection">Injection trong ứng dụng Spring không chỉ là SQL — JPQL/native ghép chuỗi, ORDER BY động, MyBatis ${}, procedure nhận chuỗi SQL, XXE khi đọc XML, LDAP, log injection và SSRF; chặn từng loại thế nào</a> · <a href="i/java-sec-secrets-pii">Bảo vệ dữ liệu cá nhân và dữ liệu thẻ — phân loại, che trong log, mã hoá cột, tokenization, tối thiểu hoá và kiểm toán truy cập</a> · <a href="i/java-sec-service-to-service">Bảo mật giữa các service — OAuth2 grant types (authorization code + PKCE, client credentials, token exchange), RestClient tự lấy token, chuyền token người dùng hay dùng token của service, và mTLS</a> · <a href="i/java-ms-config-secrets">Cấu hình và secret cho hàng chục service trên Kubernetes — ConfigMap, Spring Cloud Config, Vault, External Secrets, xoay vòng mật khẩu</a></p>
+<h2 id="java-tu-con-so-0--giai-doan-7-testing-va-chat-luong-tuan-31-34">Giai đoạn 7 — Testing và chất lượng (tuần 31–34)</h2>
+<p>Mục tiêu: bộ test nhanh, tin được, chạy với database thật; code dễ đọc, dễ review.</p>
+<h3>Chủ đề theo thứ tự</h3>
+<ol>
+<li><strong>Kim tự tháp test</strong> và tổ chức test cho một service.</li>
+<li><strong>JUnit 6 + AssertJ</strong> nâng cao: <code>@ParameterizedTest</code>, <code>@Nested</code>, test thời gian và ngẫu nhiên.</li>
+<li><strong>Mockito</strong> — và khi nào mock là sai, fake tốt hơn.</li>
+<li><strong>Test slice:</strong> <code>@WebMvcTest</code>, <code>@DataJpaTest</code>, <code>@JsonTest</code>, <code>@RestClientTest</code>.</li>
+<li><strong><code>@SpringBootTest</code> + Testcontainers;</strong> WireMock cho hệ thống ngoài.</li>
+<li><strong>Coverage (JaCoCo) và mutation testing (PIT);</strong> ArchUnit giữ ranh giới kiến trúc.</li>
+<li><strong>Clean code, code smell, SOLID, design pattern</strong> dùng thật trong Spring; review pull request.</li>
+</ol>
+<p><strong>Vì sao thứ tự này:</strong> biết test gì ở tầng nào trước → công cụ unit test → mock → slice nhanh hơn test toàn ứng dụng → test tích hợp với database thật → đo chất lượng test → chất lượng code là bước cuối vì cần đã viết đủ nhiều code.</p>
+<h3>Dễ nhầm khi từ Angular/TypeScript sang</h3>
+<table>
+<thead>
+<tr>
+<th>Angular</th>
+<th>Spring</th>
+<th>Chỗ khác, dễ nhầm</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Jasmine/Jest spy</td>
+<td>Mockito</td>
+<td>Mock quá nhiều làm test vỡ khi refactor</td>
+</tr>
+<tr>
+<td><code>TestBed</code></td>
+<td>Spring test context</td>
+<td>Context khởi động chậm — Spring cache context giữa các test, đừng phá cache vô cớ</td>
+</tr>
+<tr>
+<td>Mock <code>HttpClient</code></td>
+<td>Testcontainers, WireMock</td>
+<td>Database thật (không H2) để test đúng hành vi SQL</td>
+</tr>
+<tr>
+<td>Coverage cao = yên tâm</td>
+<td>Mutation testing</td>
+<td>Coverage 90% vẫn lọt bug nếu test không kiểm kết quả</td>
+</tr>
+</tbody>
+</table>
+<h3>Phiên bản cần để ý</h3>
+<ul>
+<li><code>@MockBean</code>/<code>@SpyBean</code> bị xoá ở Boot 4 → <code>@MockitoBean</code>/<code>@MockitoSpyBean</code>.</li>
+<li>Boot 3.1+ có <code>@ServiceConnection</code> cho Testcontainers; Boot 4 có <code>RestTestClient</code>.</li>
+<li>JUnit: dùng JUnit Jupiter (5+), không dùng JUnit 4 trong code mới.</li>
+</ul>
+<h3>Nguồn học</h3>
+<ul>
+<li>✅ <a href="https://docs.junit.org/" target="_blank" rel="noopener noreferrer"><strong>JUnit User Guide</strong></a> (JUnit 6), <a href="https://site.mockito.org/" target="_blank" rel="noopener noreferrer"><strong>Mockito</strong></a> (site.mockito.org), <a href="https://assertj.github.io/doc/" target="_blank" rel="noopener noreferrer"><strong>AssertJ</strong></a>, <a href="https://testcontainers.com/" target="_blank" rel="noopener noreferrer"><strong>Testcontainers</strong></a> (testcontainers.com).</li>
+<li>💰 <strong>Unit Testing: Principles, Practices, and Patterns</strong> (Vladimir Khorikov): khi nào mock, test gì.</li>
+<li>💰 <strong>Refactoring</strong>, 2nd edition (Martin Fowler): ví dụ viết bằng JavaScript — rất hợp người từ Frontend.</li>
+<li>💰 <strong>Head First Design Patterns</strong>, 2nd edition.</li>
+</ul>
+<h3>Bài tập</h3>
+<ol>
+<li><a href="i/java-ex-test-transfer-service">Bài tập: viết bộ test cho TransferService — phí theo bậc, hạn mức ngày, số dư, sự kiện phát ra; unit với fake + một integration test</a> — bộ test cho TransferService.</li>
+<li><a href="i/java-design-strategy-ex">Bài tập: thay khối if/else 200 dòng tính phí theo kênh (ATM, Internet banking, quầy, đối tác) bằng Strategy + Spring — thêm kênh mới không sửa code cũ</a> — thay 200 dòng if/else tính phí bằng Strategy.</li>
+<li>Chạy PIT cho module tính phí, nâng mutation score và ghi lại số trước/sau.</li>
+</ol>
+<p><strong>Dự án:</strong> P2 đạt bộ test đủ tầng, CI chạy Testcontainers dưới 5 phút.</p>
+<h3>Qua cửa</h3>
+<ul>
+<li class="ih-task-item"><span class="ih-task" data-done="false">○</span> <span class="ih-task-line ih-task-text">Giải thích test nào ở tầng nào cho một tính năng mới và vì sao.</span></li>
+<li class="ih-task-item"><span class="ih-task" data-done="false">○</span> <span class="ih-task-line ih-task-text">Test tích hợp với PostgreSQL thật bằng Testcontainers chạy trong CI.</span></li>
+<li class="ih-task-item"><span class="ih-task" data-done="false">○</span> <span class="ih-task-line ih-task-text">Review một pull request và chỉ ra ≥ 3 vấn đề có lý do.</span></li>
+</ul>
+<h3>Đọc sâu trong app</h3>
+<p><a href="i/java-test-unit-vs-integration">Tổ chức test cho một service Spring Boot — unit, slice, integration với Testcontainers, end-to-end; mỗi loại kiểm tra gì và tỉ lệ ra sao</a> · <a href="i/java-test-junit5-essentials">JUnit (bản 6 đi cùng Spring Boot 4, cú pháp như JUnit 5) và AssertJ dùng cho thành thạo — @ParameterizedTest cho biểu phí, @Nested, assertThrows/assertThatThrownBy, assertAll, vòng đời test, và đặt tên test như một câu đặc tả</a> · <a href="i/java-test-mockito">Mockito dùng đúng cách — mock, stub, spy, verify; khi nào mock là sai và fake tốt hơn</a> · <a href="i/java-test-slices">Test slice của Spring Boot — @WebMvcTest, @DataJpaTest, @JsonTest, @RestClientTest: nạp gì, bỏ gì, và các bẫy hay gặp</a> · <a href="i/java-test-testcontainers">Testcontainers trong Spring Boot — @ServiceConnection, container dùng chung, context caching, dọn dữ liệu, chạy trong CI</a> · <a href="i/java-test-wiremock">Test lời gọi HTTP ra hệ thống ngoài bằng WireMock — giả response, độ trễ, lỗi 500, ngắt kết nối; kiểm timeout, retry và circuit breaker thật sự hoạt động</a> · <a href="i/java-test-time-random">Test phụ thuộc thời gian, ngẫu nhiên và bất đồng bộ — Clock, múi giờ, cuối tháng, seed, Awaitility; nguyên nhân test chập chờn (flaky)</a> · <a href="i/java-test-transactional-rollback-trap">Đặt @Transactional lên lớp test cho tiện rollback — vì sao nó làm test xanh giả: che LazyInitializationException, lỗi flush, propagation, và không test được đồng thời</a> · <a href="i/java-test-archunit-mutation">Coverage 90% mà vẫn lọt bug tính phí — mutation testing (PIT) đo chất lượng test thế nào, và ArchUnit biến quy tắc kiến trúc (không double cho tiền, domain không phụ thuộc Spring) thành test</a> · <a href="i/java-test-tdd">TDD khác viết test sau ở đâu — vòng red-green-refactor, outside-in hay inside-out, làm TDD cho quy tắc hạn mức chuyển tiền, và khi nào TDD không đáng</a> · <a href="i/java-oop-solid">Bốn tính chất OOP và nguyên tắc SOLID — giải thích bằng ví dụ thật trong ứng dụng ngân hàng</a> · <a href="i/java-design-patterns-in-spring">Design pattern bạn đã dùng thật — Strategy, Factory, Builder, Template Method, Observer, Proxy — và chúng nằm sẵn trong Spring ở đâu?</a> · <a href="i/java-code-smells-review">Khi review code Java bạn hay bắt những code smell nào — god class, method dài, primitive obsession, magic number, comment che code xấu — và refactor an toàn ra sao?</a> · <a href="i/java-tool-code-review-backend">Review một pull request backend Java — đọc theo thứ tự nào, cái gì đáng chặn (đúng đắn, đồng thời, transaction, phân quyền, N+1, tương thích ngược), cái gì để công cụ lo, và viết comment thế nào</a> · <a href="i/java-tool-lombok">Lombok trong codebase doanh nghiệp — @Data, @Builder, @RequiredArgsConstructor, @Slf4j sinh ra gì; vì sao @Data trên entity JPA nguy hiểm; @Builder.Default; và record thay được Lombok tới đâu</a></p>
+<h2 id="java-tu-con-so-0--giai-doan-8-concurrency-va-hieu-nang-tuan-35-39">Giai đoạn 8 — Concurrency và hiệu năng (tuần 35–39)</h2>
+<p>Mục tiêu: viết code đúng khi nhiều thread chạy cùng lúc, và tìm được nút thắt bằng số đo.</p>
+<h3>Chủ đề theo thứ tự</h3>
+<ol>
+<li><strong>Thread cơ bản,</strong> race condition, <code>synchronized</code>, lock, atomic; <code>volatile</code> và happens-before.</li>
+<li><strong>Executor và thread pool;</strong> <code>CompletableFuture</code>; tắt ứng dụng an toàn.</li>
+<li><strong>Virtual thread</strong> (Java 21) và cách đo hiệu quả; structured concurrency (preview — chỉ tìm hiểu).</li>
+<li><strong>Collection đồng thời:</strong> <code>ConcurrentHashMap</code>, hàng đợi có giới hạn.</li>
+<li><strong>JVM:</strong> vùng nhớ, GC (G1, ZGC), bộ nhớ trong container.</li>
+<li><strong>Profiling:</strong> Java Flight Recorder, async-profiler, heap dump, thread dump; JMH cho micro-benchmark.</li>
+<li><strong>Hiệu năng ứng dụng:</strong> truy vấn chậm, connection pool, cache, load test.</li>
+</ol>
+<p><strong>Vì sao thứ tự này:</strong> hiểu lỗi đồng thời trước khi dùng công cụ đồng thời → pool và <code>CompletableFuture</code> → virtual thread thay đổi cách chọn pool → JVM và GC để hiểu bộ nhớ → profiling để đo thay vì đoán → tối ưu ứng dụng là áp dụng tất cả.</p>
+<h3>Dễ nhầm khi từ Angular/TypeScript sang</h3>
+<table>
+<thead>
+<tr>
+<th>Angular / JS</th>
+<th>Java</th>
+<th>Chỗ khác, dễ nhầm</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Một thread, không race</td>
+<td>Nhiều thread dùng chung bộ nhớ</td>
+<td><code>count++</code> trên field dùng chung là sai</td>
+</tr>
+<tr>
+<td>RxJS, Promise</td>
+<td><code>CompletableFuture</code>, virtual thread</td>
+<td>Không cần mọi thứ bất đồng bộ; chọn executor cho I/O</td>
+</tr>
+<tr>
+<td>Rò subscription</td>
+<td>Rò bộ nhớ qua <code>static Map</code>, <code>ThreadLocal</code></td>
+<td>Heap dump để tìm, không đoán</td>
+</tr>
+<tr>
+<td>Lighthouse, DevTools Performance</td>
+<td>JFR, async-profiler</td>
+<td>Đo trên tải giống thật</td>
+</tr>
+</tbody>
+</table>
+<h3>Phiên bản cần để ý</h3>
+<ul>
+<li>Virtual thread final ở <strong>Java 21</strong>; từ <strong>24</strong> không còn bị pin khi gặp <code>synchronized</code>; <strong>scoped values</strong> final ở 25 thay <code>ThreadLocal</code> cho ngữ cảnh request.</li>
+<li>Spring Boot bật virtual thread bằng <code>spring.threads.virtual.enabled=true</code> (Boot 3.2+).</li>
+</ul>
+<h3>Nguồn học</h3>
+<ul>
+<li>💰 <strong>Java Concurrency in Practice</strong> (Brian Goetz và cộng sự): nguyên lý vẫn đúng, viết năm 2006 — đọc kèm JEP 444.</li>
+<li>✅ <a href="https://openjdk.org/jeps/444" target="_blank" rel="noopener noreferrer"><strong>JEP 444 (Virtual Threads)</strong></a>, <a href="https://openjdk.org/jeps/506" target="_blank" rel="noopener noreferrer"><strong>JEP 506 (Scoped Values)</strong></a> trên openjdk.org.</li>
+<li>✅ <a href="https://docs.oracle.com/en/java/java-components/jdk-mission-control/" target="_blank" rel="noopener noreferrer"><strong>JDK Mission Control / Java Flight Recorder</strong></a> (tài liệu Oracle), <a href="https://github.com/async-profiler/async-profiler" target="_blank" rel="noopener noreferrer"><strong>async-profiler</strong></a> (GitHub).</li>
+</ul>
+<h3>Bài tập</h3>
+<ol>
+<li><a href="i/java-ex-race-condition-fix">Bài tập: viết test tái hiện race condition một cách tin cậy (100 thread cộng phí), rồi sửa bằng synchronized, AtomicLong, LongAdder — đo và giải thích vì sao volatile không cứu được</a> — tái hiện race condition tin cậy rồi sửa 3 cách.</li>
+<li><a href="i/java-ex-producer-consumer">Bài tập: import file giao dịch 1 triệu dòng bằng producer–consumer — hàng đợi có giới hạn, batch insert, dừng sạch khi xong hoặc khi lỗi</a> — import 1 triệu dòng bằng hàng đợi có giới hạn.</li>
+<li><a href="i/java-ex-parallel-calls-timeout">Bài tập: màn tổng quan khách hàng gọi 3 service song song trong ngân sách 800ms — bắt buộc/không bắt buộc, huỷ khi lỗi, giữ traceId</a> — gọi 3 service song song trong 800 ms.</li>
+</ol>
+<p><strong>Dự án:</strong> <a href="i/java-pj-observability-lab">Dự án: phòng lab quan sát và chẩn đoán — tự gây 6 loại sự cố cho một service Spring Boot và viết runbook xử lý từng loại</a> — tự gây 6 loại sự cố và viết runbook chẩn đoán.</p>
+<h3>Qua cửa</h3>
+<ul>
+<li class="ih-task-item"><span class="ih-task" data-done="false">○</span> <span class="ih-task-line ih-task-text">Đọc thread dump, chỉ ra thread đang chặn và lý do.</span></li>
+<li class="ih-task-item"><span class="ih-task" data-done="false">○</span> <span class="ih-task-line ih-task-text">Bảng số đo trước/sau khi bật virtual thread cho một API I/O nặng.</span></li>
+<li class="ih-task-item"><span class="ih-task" data-done="false">○</span> <span class="ih-task-line ih-task-text">Tìm được rò bộ nhớ trong heap dump của bài lab.</span></li>
+</ul>
+<h3>Đọc sâu trong app</h3>
+<p><a href="i/java-cc-thread-basics">Thread cơ bản — vòng đời 6 trạng thái, start() vs run(), Runnable vs Callable, join, daemon thread, interrupt hoạt động thế nào</a> · <a href="i/java-cc-synchronized-lock-atomic">synchronized, ReentrantLock và Atomic*/LongAdder khác nhau thế nào — khi nào dùng cái nào?</a> · <a href="i/java-cc-volatile-jmm">volatile đảm bảo điều gì? Happens-before trong Java Memory Model giải thích bằng ví dụ</a> · <a href="i/java-cc-concurrenthashmap">ConcurrentHashMap khác synchronizedMap thế nào? Cập nhật giá trị không race bằng compute/merge — và các bẫy</a> · <a href="i/java-cc-completablefuture">CompletableFuture gọi song song nhiều service rồi gộp kết quả — executor, timeout, lỗi, ngữ cảnh và những bẫy</a> · <a href="i/java-jr-rxjs-to-java-async">Từ RxJS sang Java bất đồng bộ — Promise/Observable so với CompletableFuture, Reactor Mono/Flux và virtual thread; vì sao Spring MVC viết code chặn vẫn ổn và khi nào mới cần reactive</a> · <a href="i/java-cc-thread-pool-virtual">Cấu hình thread pool thế nào cho đúng — kích thước, hàng đợi, rejection — và virtual thread thay đổi cách làm ra sao?</a> · <a href="i/java-cc-virtual-threads-deep">Virtual thread hoạt động bên trong thế nào — mount/unmount, pinning, ThreadLocal — và chuyển một service Spring Boot sang virtual thread</a> · <a href="i/java-cc-threadlocal-leak">ThreadLocal trong thread pool — rò dữ liệu giữa request, rò bộ nhớ, mất ngữ cảnh khi async; ScopedValue của Java 25 giải quyết gì</a> · <a href="i/java-cc-deadlock">Deadlock xảy ra khi nào? Phát hiện bằng thread dump và tránh bằng thứ tự khoá, tryLock — ví dụ chuyển khoản hai chiều</a> · <a href="i/java-jvm-memory-gc">Vùng nhớ của JVM và garbage collector — heap, stack, metaspace; G1, ZGC chọn thế nào cho một API?</a> · <a href="i/java-pf-gc-tuning">JVM trên Kubernetes bị pause dài và OOMKilled — cấu hình bộ nhớ theo container, đọc GC log, chọn GC, và khi nào không cần tuning</a> · <a href="i/java-pf-jfr-profiling">Profiling production với Java Flight Recorder và async-profiler — ghi gì, đọc gì, chi phí bao nhiêu</a> · <a href="i/java-pf-heap-dump">Phân tích heap dump tìm rò bộ nhớ — lấy dump an toàn trên Kubernetes, dominator tree, đường giữ (GC roots), các thủ phạm quen thuộc</a> · <a href="i/java-pf-jmh-benchmark">Đo hiệu năng một đoạn code Java cho đúng — vì sao vòng for với System.nanoTime nói dối (warm-up, JIT, dead code elimination), viết benchmark bằng JMH, và khi nào đừng micro-benchmark</a> · <a href="i/java-pf-load-testing">Load test một API Spring Boot cho đúng — mô hình mở và đóng (arrival rate vs số user ảo), coordinated omission, đọc p95/p99 và tỉ lệ lỗi, dữ liệu và môi trường giống thật, các kiểu test (load, stress, soak, spike)</a> · <a href="i/java-pf-p99-investigation">Sau một lần release, p99 của API tăng từ 200ms lên 3 giây — quy trình điều tra từ quyết định rollback tới nguyên nhân gốc</a></p>
+<h2 id="java-tu-con-so-0--giai-doan-9-microservices-va-he-phan-tan-tuan">Giai đoạn 9 — Microservices và hệ phân tán (tuần 40–45)</h2>
+<p>Mục tiêu: thiết kế nhiều service nhất quán về dữ liệu, chịu được lỗi của nhau.</p>
+<h3>Chủ đề theo thứ tự</h3>
+<ol>
+<li><strong>Khi nào không cần microservices:</strong> modular monolith; ranh giới theo bounded context (DDD).</li>
+<li><strong>Giao tiếp:</strong> đồng bộ (REST, gRPC) vs bất đồng bộ (message); API gateway, BFF; cấu hình và discovery trên Kubernetes.</li>
+<li><strong>Resilience:</strong> timeout, retry có backoff, circuit breaker, bulkhead (Resilience4j hoặc <code>@Retryable</code>/<code>@ConcurrencyLimit</code> của Spring Framework 7).</li>
+<li><strong>Messaging:</strong> Kafka (topic, partition, consumer group, thứ tự, retry/DLT), RabbitMQ, JMS/IBM MQ ở ngân hàng.</li>
+<li><strong>Nhất quán:</strong> idempotency, transactional outbox, saga, eventual consistency, CAP; CQRS (khái niệm).</li>
+<li><strong>Distributed tracing</strong> với Micrometer Tracing/OpenTelemetry.</li>
+<li><strong>Kiến trúc hexagonal/clean</strong> cho từng service.</li>
+</ol>
+<p><strong>Vì sao thứ tự này:</strong> quyết định có tách hay không trước khi học cách tách → giao tiếp → resilience vì gọi qua mạng là sẽ lỗi → messaging → nhất quán dữ liệu khi không còn một transaction chung → tracing để thấy được luồng qua nhiều service → kiến trúc bên trong mỗi service.</p>
+<h3>Dễ nhầm khi từ Angular/TypeScript sang</h3>
+<table>
+<thead>
+<tr>
+<th>Frontend</th>
+<th>Backend phân tán</th>
+<th>Chỗ khác, dễ nhầm</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Micro-frontend</td>
+<td>Microservice</td>
+<td>Microservice sở hữu <strong>dữ liệu</strong> riêng — khó hơn nhiều so với chia UI</td>
+</tr>
+<tr>
+<td>NgRx effect phản ứng action</td>
+<td>Consumer phản ứng sự kiện</td>
+<td>Sự kiện có thể đến trùng, đến trễ, đến sai thứ tự</td>
+</tr>
+<tr>
+<td>Retry trong interceptor</td>
+<td>Retry giữa service</td>
+<td>Retry đồng loạt gây "bão retry" làm sập hệ thống</td>
+</tr>
+<tr>
+<td>Một store là nguồn sự thật</td>
+<td>Nhiều database</td>
+<td>Không có transaction chung — dùng outbox, saga</td>
+</tr>
+</tbody>
+</table>
+<h3>Phiên bản cần để ý</h3>
+<ul>
+<li>Spring Cloud có lịch phát hành riêng gắn với Boot — ⚠️ chọn bản Spring Cloud tương thích bản Boot (bảng trên spring.io).</li>
+<li>Kafka mới dùng KRaft, bỏ ZooKeeper; giao thức consumer group mới (KIP-848) — tài liệu cũ nói ZooKeeper là đã lỗi thời.</li>
+</ul>
+<h3>Nguồn học</h3>
+<ul>
+<li>💰 <strong>Building Microservices</strong>, 2nd edition (Sam Newman).</li>
+<li>💰 <strong>Designing Data-Intensive Applications</strong> (Martin Kleppmann, Chris Riccomini) — mua <strong>bản 2 (2026)</strong>, không mua bản 2017.</li>
+<li>✅ <a href="https://microservices.io/" target="_blank" rel="noopener noreferrer"><strong>microservices.io</strong></a> (Chris Richardson): mẫu saga, outbox, API gateway.</li>
+<li>✅ <a href="https://docs.spring.io/spring-kafka/reference/" target="_blank" rel="noopener noreferrer"><strong>Spring for Apache Kafka Reference</strong></a>, <a href="https://kafka.apache.org/documentation/" target="_blank" rel="noopener noreferrer"><strong>Apache Kafka documentation</strong></a>, <a href="https://resilience4j.readme.io/" target="_blank" rel="noopener noreferrer"><strong>Resilience4j docs</strong></a>.</li>
+<li>💰 <strong>Domain-Driven Design Distilled</strong> (Vaughn Vernon).</li>
+</ul>
+<h3>Bài tập</h3>
+<ol>
+<li><a href="i/java-ex-retry-backoff">Bài tập: tự viết retry có exponential backoff + jitter, chỉ retry lỗi tạm thời và thao tác idempotent, tôn trọng Retry-After và ngân sách thời gian — rồi so với Resilience4j/@Retryable của Spring 7</a> và <a href="i/java-ex-circuit-breaker">Bài tập: tự viết circuit breaker — CLOSED/OPEN/HALF_OPEN, cửa sổ đếm, thread-safe, đồng hồ giả để test; rồi so với Resilience4j</a> — tự viết để hiểu trước khi dùng thư viện.</li>
+<li><a href="i/java-ex-idempotent-consumer">Bài tập: consumer cộng điểm thưởng idempotent — chống trùng theo eventId, cùng transaction DB, DLT cho dữ liệu sai, test với Kafka thật</a> — consumer Kafka chống trùng.</li>
+<li><a href="i/java-ex-idempotent-transfer">Bài tập: POST /transfers idempotent — một lần duy nhất cho mỗi key, không âm số dư, không lost update, không deadlock</a> — <code>POST /transfers</code> idempotent khi đồng thời.</li>
+</ol>
+<p><strong>Dự án P3:</strong> <a href="i/java-pj-mini-core-banking">Dự án: mini core banking — chuyển tiền idempotent, sổ cái kép, outbox sang Kafka, đối soát và số đo tải</a> — chuyển tiền idempotent, sổ cái kép, outbox sang Kafka, đối soát.</p>
+<h3>Qua cửa</h3>
+<ul>
+<li class="ih-task-item"><span class="ih-task" data-done="false">○</span> <span class="ih-task-line ih-task-text">Outbox không mất sự kiện khi kill ứng dụng ở 5 điểm khác nhau.</span></li>
+<li class="ih-task-item"><span class="ih-task" data-done="false">○</span> <span class="ih-task-line ih-task-text">Từ một traceId dựng lại đường đi của request qua 2 service.</span></li>
+<li class="ih-task-item"><span class="ih-task" data-done="false">○</span> <span class="ih-task-line ih-task-text">Giải thích vì sao không dùng 2PC và saga bù trừ thế nào.</span></li>
+</ul>
+<h3>Đọc sâu trong app</h3>
+<p><a href="i/java-ms-modular-monolith">Modular monolith với Spring Modulith — khi nào tốt hơn microservices, cách giữ ranh giới module bằng test, và đường tách service sau này</a> · <a href="i/java-ms-boundaries-ddd">Chia ranh giới service theo bounded context — ví dụ ngân hàng, dấu hiệu chia sai (distributed monolith) và kích thước service hợp lý</a> · <a href="i/java-ms-communication">Gọi đồng bộ (REST, gRPC) hay nhắn tin bất đồng bộ giữa các microservice — chọn theo câu hỏi nào?</a> · <a href="i/java-ms-gateway-discovery">API gateway làm gì và không nên làm gì; service discovery trên Kubernetes — còn cần Eureka không?</a> · <a href="i/java-ms-config-secrets">Cấu hình và secret cho hàng chục service trên Kubernetes — ConfigMap, Spring Cloud Config, Vault, External Secrets, xoay vòng mật khẩu</a> · <a href="i/java-ms-resilience">Bảo vệ service khi phụ thuộc chậm hoặc chết — timeout, retry, circuit breaker, bulkhead, fallback phối hợp ra sao</a> · <a href="i/java-kf-basics">Kafka hoạt động thế nào — topic, partition, offset, replication, consumer group; cấu hình để không mất sự kiện tài chính</a> · <a href="i/java-kf-spring-kafka-basics">Spring Kafka trong code — KafkaTemplate gửi và chờ kết quả, @KafkaListener với concurrency, chế độ commit offset (ack mode), DefaultErrorHandler mặc định retry bao nhiêu lần, và serializer JSON</a> · <a href="i/java-kf-delivery-idempotent">At-most-once, at-least-once, exactly-once — vì sao thực tế là at-least-once và consumer phải idempotent</a> · <a href="i/java-kf-ordering">Đảm bảo thứ tự sự kiện trong Kafka — key, partition, những thứ âm thầm phá vỡ thứ tự và cách xử lý</a> · <a href="i/java-kf-retry-dlt">Xử lý lỗi consumer — retry chặn vs retry topic, phân loại lỗi tạm thời/vĩnh viễn, dead letter topic và quy trình xử lý DLT</a> · <a href="i/java-kf-vs-rabbitmq">Kafka hay RabbitMQ (hay chỉ cần bảng DB làm hàng đợi) — chọn theo đặc điểm bài toán</a> · <a href="i/java-mq-jms-ibm-mq">JMS với IBM MQ / TIBCO EMS trong ngân hàng — queue vs topic, JmsTemplate và @JmsListener, session transacted, backout queue cho poison message, và khác Kafka ở đâu</a> · <a href="i/java-ms-saga-outbox">Nhất quán qua nhiều service — vì sao không 2PC, saga điều phối vs biên đạo, bù trừ, khoá ngữ nghĩa và outbox</a> · <a href="i/java-tx-after-commit">Làm việc "sau khi commit" — gửi Kafka, SMS, gọi hệ thống khác: dual write, @TransactionalEventListener, và vì sao cuối cùng cần outbox</a> · <a href="i/sd-cap-consistency">CAP, PACELC và các mô hình nhất quán trong thực tế — strong, read-your-writes, monotonic, eventual; chọn cho từng loại dữ liệu</a> · <a href="i/java-ms-cqrs">CQRS và event sourcing — tách mô hình ghi và mô hình đọc giải quyết gì, khi nào đáng làm, khi nào là thiết kế thừa; ví dụ màn sao kê và tổng quan tài khoản</a> · <a href="i/java-ms-tracing">Distributed tracing với Micrometer Tracing và OpenTelemetry — lan truyền qua HTTP và Kafka, sampling, log correlation, dữ liệu nhạy cảm</a> · <a href="i/java-design-hexagonal">Layered architecture và hexagonal (ports &amp; adapters) khác nhau thế nào trong một service Spring Boot — hướng phụ thuộc, domain không biết Spring, khi nào đáng làm và khi nào chỉ thêm tầng</a></p>
+<h2 id="java-tu-con-so-0--giai-doan-10-devops-va-van-hanh-tuan-46-49">Giai đoạn 10 — DevOps và vận hành (tuần 46–49)</h2>
+<p>Mục tiêu: đưa service lên môi trường thật, quan sát được nó, và xử lý được sự cố.</p>
+<h3>Chủ đề theo thứ tự</h3>
+<ol>
+<li><strong>Docker:</strong> image cho Spring Boot (multi-stage, layered jar, non-root); Docker Compose cho môi trường dev.</li>
+<li><strong>CI/CD:</strong> pipeline build–test–quét bảo mật–đóng gói–deploy; kho artifact; quy trình phát hành ở ngân hàng (DEV → SIT → UAT → production).</li>
+<li><strong>Kubernetes cơ bản:</strong> Pod, Deployment, Service, ConfigMap/Secret, probe, resource request/limit, rolling update; OpenShift ở ngân hàng.</li>
+<li><strong>Observability:</strong> log có cấu trúc, metric (Micrometer → Prometheus → Grafana), trace (OpenTelemetry); SLO và cảnh báo.</li>
+<li><strong>Xử lý sự cố:</strong> runbook, postmortem không đổ lỗi; 12-factor.</li>
+</ol>
+<p><strong>Vì sao thứ tự này:</strong> đóng gói trước → tự động hoá đưa gói đi → môi trường chạy → quan sát khi đã chạy → xử lý sự cố là kỹ năng ghép tất cả.</p>
+<h3>Dễ nhầm khi từ Angular/TypeScript sang</h3>
+<table>
+<thead>
+<tr>
+<th>Frontend</th>
+<th>Backend</th>
+<th>Chỗ khác, dễ nhầm</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SPA là file tĩnh trên CDN</td>
+<td>Service có trạng thái kết nối, cần khởi động/tắt an toàn</td>
+<td>Graceful shutdown, readiness probe</td>
+</tr>
+<tr>
+<td>Cấu hình lúc build</td>
+<td>Cấu hình lúc chạy (ConfigMap, Secret)</td>
+<td>Một image cho mọi môi trường</td>
+</tr>
+<tr>
+<td>Lỗi hiện trên console trình duyệt</td>
+<td>Log, metric, trace</td>
+<td>Không có log tốt thì không điều tra được</td>
+</tr>
+</tbody>
+</table>
+<h3>Nguồn học</h3>
+<ul>
+<li>✅ <a href="https://docs.docker.com/" target="_blank" rel="noopener noreferrer"><strong>Docker docs</strong></a>, <a href="https://kubernetes.io/docs/home/" target="_blank" rel="noopener noreferrer"><strong>Kubernetes docs</strong></a> (kubernetes.io), <a href="https://docs.micrometer.io/micrometer/reference/" target="_blank" rel="noopener noreferrer"><strong>Micrometer</strong></a>, <a href="https://prometheus.io/docs/" target="_blank" rel="noopener noreferrer"><strong>Prometheus</strong></a>, <a href="https://opentelemetry.io/docs/" target="_blank" rel="noopener noreferrer"><strong>OpenTelemetry</strong></a> docs.</li>
+<li>✅ <a href="https://sre.google/books/" target="_blank" rel="noopener noreferrer"><strong>Site Reliability Engineering</strong></a> (Google, đọc miễn phí ở sre.google/books).</li>
+<li>✅ <a href="https://12factor.net/" target="_blank" rel="noopener noreferrer"><strong>The Twelve-Factor App</strong></a> (12factor.net).</li>
+</ul>
+<h3>Bài tập</h3>
+<ol>
+<li><a href="i/ops-ex-dockerfile-spring">Bài tập: Dockerfile cho Spring Boot (Java 25) — multi-stage, layer jar, non-root, cache mount; đo kích thước và thời gian build trước/sau</a> — Dockerfile production cho Spring Boot.</li>
+<li><a href="i/ops-ex-github-actions">Bài tập: workflow GitHub Actions cho monorepo Angular + Spring Boot — chỉ chạy phần thay đổi, cache, bảo mật token, build image theo SHA, deploy UAT có điều kiện</a> — workflow cho monorepo Angular + Spring Boot.</li>
+<li><a href="i/ops-ex-kind-rollout-lab">Bài tập: dựng cluster kind trên máy, deploy service Spring Boot có ConfigMap, Secret, probe; đẩy một bản lỗi, quan sát rolling update kẹt và rollback bằng kubectl rollout undo</a> — cluster kind trên máy, rolling update không rớt request.</li>
+<li><a href="i/ops-ex-slo-burn-alert">Bài tập: viết SLO 99,9% cho API chuyển khoản và cảnh báo burn rate đa cửa sổ bằng Prometheus — recording rule, alert, test bằng promtool</a> — SLO 99,9% và cảnh báo burn rate.</li>
+</ol>
+<p><strong>Dự án P4:</strong> <a href="i/ops-pj-cicd-k8s">Dự án: nền tảng nhỏ đưa Angular + Spring Boot + PostgreSQL lên Kubernetes bằng GitOps — CI, ký image, Argo CD, canary, quan sát, rollback</a> — Angular + Spring Boot + PostgreSQL lên Kubernetes có CI/CD và observability.</p>
+<h3>Qua cửa</h3>
+<ul>
+<li class="ih-task-item"><span class="ih-task" data-done="false">○</span> <span class="ih-task-line ih-task-text">Một lệnh dựng toàn bộ môi trường dev; pipeline đỏ khi test hỏng.</span></li>
+<li class="ih-task-item"><span class="ih-task" data-done="false">○</span> <span class="ih-task-line ih-task-text">Deploy rolling trên kind không rớt request (có số đo).</span></li>
+<li class="ih-task-item"><span class="ih-task" data-done="false">○</span> <span class="ih-task-line ih-task-text">Dashboard RED cho service; xử lý được 3 sự cố trong phòng lab theo runbook.</span></li>
+</ul>
+<h3>Đọc sâu trong app</h3>
+<p><a href="i/java-tool-docker-image">Đóng gói Spring Boot thành image Docker cho production — multi-stage build, layered jar, non-root, JVM nhận giới hạn bộ nhớ container, CDS/AOT cache cho khởi động nhanh</a> · <a href="i/ops-dockerfile-best">Viết Dockerfile production — multi-stage, thứ tự layer cho cache, image nền nhỏ, non-root, không lộ secret, healthcheck</a> · <a href="i/ops-docker-compose-dev">Dùng Docker Compose cho môi trường phát triển cả đội — một lệnh dựng đủ DB, Kafka, Redis, dữ liệu mẫu; profile và override</a> · <a href="i/ops-ci-pipeline">Mô tả một pipeline CI/CD cho Angular + Spring Boot — các stage, cổng chất lượng, build một lần deploy nhiều nơi, và đo hiệu quả bằng DORA</a> · <a href="i/ops-cicd-bank-release-process">Quy trình phát hành ở ngân hàng — DEV, SIT, UAT, pre-prod, production; phê duyệt thay đổi (CAB), cửa sổ triển khai, đóng băng dịp Tết, hotfix khẩn cấp, kế hoạch rollback và tách nhiệm vụ</a> · <a href="i/ops-cicd-artifact-repo-airgap">Build trong mạng ngân hàng không ra Internet — kho artifact (Nexus, Artifactory, Harbor) làm proxy cho Maven/npm/Docker, cấu hình mirror, phê duyệt thư viện mới, và vì sao 'npm install chạy ở nhà nhưng không chạy ở công ty'</a> · <a href="i/ops-k8s-basics">Pod, ReplicaSet, Deployment, Service, Ingress/Gateway — một request đi từ người dùng tới container trong Kubernetes thế nào?</a> · <a href="i/ops-k8s-probes">Liveness, readiness, startup probe — mỗi cái trả lời câu hỏi gì, cấu hình cho Spring Boot, và các sự cố do cấu hình sai</a> · <a href="i/ops-k8s-graceful-shutdown">Deploy không rớt request — vòng đời pod khi bị xoá, cuộc đua giữa gỡ endpoint và SIGTERM, preStop sleep, grace period</a> · <a href="i/ops-k8s-resources-oom">Requests và limits cho CPU, bộ nhớ — QoS class, OOMKilled, CPU throttling, in-place resize, và cách đặt số dựa trên đo đạc</a> · <a href="i/ops-k8s-openshift">OpenShift cho developer ở ngân hàng — khác Kubernetes thuần ở đâu: SCC và UID ngẫu nhiên, Route, Project, oc CLI, ImageStream/BuildConfig; vì sao image chạy tốt trên máy lại lỗi quyền trên OpenShift</a> · <a href="i/ops-logs-metrics-traces">Logs, metrics, traces — mỗi loại trả lời câu hỏi gì, chi phí ra sao, và dùng theo thứ tự nào khi có sự cố</a> · <a href="i/ops-logging-structured">Log có cấu trúc — JSON, mức log, trace id, che dữ liệu nhạy cảm, nhãn Loki đúng cách, lưu giữ theo quy định và kiểm soát chi phí</a> · <a href="i/ops-prometheus-promql">Prometheus và PromQL — counter, gauge, histogram; rate, histogram_quantile, recording rule; và vấn đề cardinality</a> · <a href="i/ops-sli-slo">SLI, SLO, SLA và error budget — định nghĩa cho API chuyển khoản, đo ở đâu, và dùng error budget để quyết định</a> · <a href="i/ops-incident-process">Thiết kế quy trình xử lý sự cố cho bộ phận kỹ thuật 30 người — mức độ, vai trò, kênh, truyền thông, postmortem và đo cải tiến</a> · <a href="i/ops-postmortem">Viết postmortem không đổ lỗi — dòng thời gian, tác động, yếu tố góp phần, hành động có giá trị; vì sao "5 whys" và "lỗi con người" là bẫy</a> · <a href="i/java-ms-twelve-factor">12-factor app áp vào Spring Boot — cấu hình qua môi trường, service không trạng thái, log ra stdout, image bất biến, khởi động nhanh và tắt êm; và những chỗ hệ thống ngân hàng hay vi phạm</a></p>
+<h2 id="java-tu-con-so-0--giai-doan-11-ky-nang-senior-tuan-50-53-va-lien">Giai đoạn 11 — Kỹ năng senior (tuần 50–53 và liên tục)</h2>
+<p>Mục tiêu: ra quyết định kỹ thuật có lý do, thiết kế hệ thống tiền đúng, dẫn dắt người khác.</p>
+<h3>Chủ đề theo thứ tự</h3>
+<ol>
+<li><strong>System design:</strong> phương pháp dẫn dắt 45 phút, ước lượng tải; bài toán ngân hàng — API chuyển tiền, sổ cái, cổng thanh toán, đối soát, thông báo.</li>
+<li><strong>Ra quyết định và trade-off;</strong> ghi lại bằng <strong>ADR</strong>; đánh giá công nghệ mới.</li>
+<li><strong>Đặc thù ngân hàng/bảo hiểm:</strong> toàn vẹn giao dịch (idempotency, sổ cái kép), audit trail, đối soát, bảo vệ dữ liệu nhạy cảm (Luật BVDLCN 2025, PCI DSS), maker-checker, quy trình phát hành và kiểm toán.</li>
+<li><strong>Làm việc với code cũ:</strong> đọc codebase lạ, nâng Boot 2 → 3 → 4, tách monolith.</li>
+<li><strong>Con người:</strong> review code, mentoring, ước lượng, xử lý bất đồng, trực sự cố.</li>
+</ol>
+<p><strong>Vì sao thứ tự này:</strong> system design gom kiến thức 10 giai đoạn trước → quyết định và ADR là cách trình bày kiến thức đó → đặc thù ngân hàng là bối cảnh áp dụng → code cũ là thực tế công việc ở ngân hàng → kỹ năng con người phân biệt senior với middle giỏi.</p>
+<h3>Nguồn học</h3>
+<ul>
+<li>💰 <strong>System Design Interview</strong>, tập 1 và 2 (Alex Xu).</li>
+<li>💰 <strong>Working Effectively with Legacy Code</strong> (Michael Feathers).</li>
+<li>💰 <strong>The Staff Engineer's Path</strong> (Tanya Reilly).</li>
+<li>✅ <a href="https://adr.github.io/" target="_blank" rel="noopener noreferrer"><strong>ADR</strong></a> (adr.github.io), bài gốc "Documenting Architecture Decisions" của Michael Nygard.</li>
+</ul>
+<h3>Bài tập</h3>
+<ol>
+<li>4 buổi mock system design: API chuyển tiền, sổ cái, đối soát, thông báo đa kênh.</li>
+<li>Viết 3 ADR cho các dự án P1–P4.</li>
+<li><a href="i/java-sc-boot2-to-3-migration">Tình huống: nâng một service ngân hàng từ Java 8 + Spring Boot 2.7 lên Java 21 + Boot 3.5 (và chuẩn bị đường sang Boot 4) — thứ tự bước, javax → jakarta, Security 6, Hibernate 6, thư viện kẹt, và chứng minh không vỡ</a> — lập kế hoạch nâng cấp một service cũ.</li>
+</ol>
+<h3>Qua cửa</h3>
+<ul>
+<li class="ih-task-item"><span class="ih-task" data-done="false">○</span> <span class="ih-task-line ih-task-text">Qua 3 buổi mock system design có ước lượng tải và trade-off rõ ràng.</span></li>
+<li class="ih-task-item"><span class="ih-task" data-done="false">○</span> <span class="ih-task-line ih-task-text">Mỗi dự án có ADR cho quyết định quan trọng nhất.</span></li>
+<li class="ih-task-item"><span class="ih-task" data-done="false">○</span> <span class="ih-task-line ih-task-text">Kể được 3 câu chuyện STAR: sự cố, bất đồng kỹ thuật, kèm người khác.</span></li>
+</ul>
+<h3>Đọc sâu trong app</h3>
+<p><a href="i/sd-approach">Được hỏi một câu system design 45 phút — bạn dẫn dắt thế nào: làm rõ yêu cầu, ước lượng, API, thiết kế cao, đào sâu, tổng kết</a> · <a href="i/sd-estimation">Ước lượng nhanh (back-of-the-envelope) — QPS trung bình và cao điểm, dung lượng, băng thông, bộ nhớ cache; các con số độ trễ cần thuộc</a> · <a href="i/sd-transfer-api">Thiết kế API chuyển tiền nội bộ không bao giờ trừ tiền hai lần — idempotency key, cập nhật số dư có điều kiện, bút toán kép trong một giao dịch, thứ tự khoá, máy trạng thái</a> · <a href="i/java-ent-ledger">Thiết kế sổ cái (ledger) cho ví điện tử/ngân hàng số — bút toán kép, bất biến, số dư, tài khoản nóng, đa tiền tệ, đối soát</a> · <a href="i/sd-payment-gateway">Thiết kế cổng thanh toán tích hợp đối tác (Napas, ví, ngân hàng khác) — máy trạng thái thanh toán, trạng thái UNKNOWN khi timeout, hỏi trạng thái, callback có chữ ký, đối soát T+1</a> · <a href="i/java-ent-reconciliation-batch">Thiết kế hệ thống đối soát 10 triệu giao dịch mỗi đêm với đối tác — khớp, phân loại lệch, xử lý ngoại lệ, xong trước 6 giờ sáng</a> · <a href="i/java-ent-audit-trail">Thiết kế audit trail cho hệ thống ngân hàng — ai làm gì, lúc nào, giá trị trước/sau; chống sửa, lưu trữ lâu dài, truy vấn khi thanh tra</a> · <a href="i/java-ent-core-banking-integration">Thiết kế lớp tích hợp với core banking cũ — anti-corruption layer, giới hạn đồng thời, timeout không rõ kết quả, giờ chốt sổ, bảo trì định kỳ</a> · <a href="i/java-ent-monolith-split">Thiết kế lộ trình tách monolith Internet Banking 12 năm tuổi — strangler fig, ranh giới, dữ liệu, rủi ro và cách đo tiến độ</a> · <a href="i/java-arch-adr">Ghi quyết định kiến trúc bằng ADR — khi nào cần, cấu trúc (bối cảnh, quyết định, phương án đã loại, hệ quả), ví dụ chọn Kafka hay bảng outbox + polling; review, thay thế và giữ ADR sống cùng code</a> · <a href="i/bh-evaluate-new-technology">Bạn đánh giá và đưa một công nghệ mới vào dự án thế nào — vấn đề cần giải trước công nghệ, tiêu chí đánh giá, spike có thời hạn, ADR ghi lựa chọn bị loại, thí điểm có đường lui</a> · <a href="i/bh-decision-incomplete-data">Ra quyết định khi thiếu thông tin — phân biệt quyết định đảo ngược được và không, đặt giả định và mốc kiểm tra, quyết định đủ nhanh, điều chỉnh khi có dữ liệu mới</a> · <a href="i/java-tool-read-legacy-codebase">Nhận một codebase Spring 300 nghìn dòng không phải của mình và một ticket sửa lỗi trong 2 ngày — bốn giờ đầu bạn làm gì, đọc từ đâu, và khi nào được phép xoá đoạn code 'trông vô nghĩa'</a> · <a href="i/java-sc-boot2-to-3-migration">Tình huống: nâng một service ngân hàng từ Java 8 + Spring Boot 2.7 lên Java 21 + Boot 3.5 (và chuẩn bị đường sang Boot 4) — thứ tự bước, javax → jakarta, Security 6, Hibernate 6, thư viện kẹt, và chứng minh không vỡ</a> · <a href="i/bh-mentoring">Kèm một bạn junior đang gặp khó — tìm nguyên nhân thật, mục tiêu cụ thể, giao việc vừa sức, phản hồi thường xuyên, lùi dần để họ tự chủ</a> · <a href="i/bh-missed-estimate">Kể về lần bạn ước lượng sai nghiêm trọng — vì sao sai, báo lại thế nào, và bây giờ bạn ước lượng ra sao (khoảng, giả định, chia nhỏ, spike)</a> · <a href="i/ops-sec-compliance-audit">Đáp ứng kiểm toán (PCI DSS, quy định ngân hàng) bằng hệ thống chứ không bằng biểu mẫu — quản lý thay đổi, phân tách nhiệm vụ, log, bằng chứng tự động</a></p>
+<h2 id="java-tu-con-so-0--lo-trinh-theo-thang">Lộ trình theo tháng</h2>
+<table>
+<thead>
+<tr>
+<th>Tháng</th>
+<th>Tuần</th>
+<th>Giai đoạn</th>
+<th>Sản phẩm cuối tháng</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1–4</td>
+<td>1 · Core Java</td>
+<td>20 bài Exercism, ngân hàng mini có test</td>
+</tr>
+<tr>
+<td>2</td>
+<td>5–8</td>
+<td>1 · Core Java</td>
+<td><code>java-core-lab</code> (CSV + báo cáo); <strong>qua cửa GĐ1</strong></td>
+</tr>
+<tr>
+<td>3</td>
+<td>9–12</td>
+<td>2 · Nền tảng backend → 3 · Spring Core</td>
+<td>HTTP/Git/SQL Newbie; project Spring đầu tiên</td>
+</tr>
+<tr>
+<td>4</td>
+<td>13–16</td>
+<td>3 · Spring Core → 4 · Web/REST</td>
+<td>Cấu hình, AOP, Actuator; <strong>qua cửa GĐ3</strong>; API CRUD đầu tiên</td>
+</tr>
+<tr>
+<td>5</td>
+<td>17–20</td>
+<td>4 · Web/REST → 5 · Dữ liệu</td>
+<td>P1 InsureFlow chặng 1, Angular gọi API thật; JDBC</td>
+</tr>
+<tr>
+<td>6</td>
+<td>21–24</td>
+<td>5 · Dữ liệu</td>
+<td>JPA không N+1, Flyway, test đồng thời tiền</td>
+</tr>
+<tr>
+<td>7</td>
+<td>25–28</td>
+<td>5 · Dữ liệu → 6 · Bảo mật</td>
+<td><strong>Qua cửa GĐ5</strong> — mốc ứng tuyển Junior; Keycloak</td>
+</tr>
+<tr>
+<td>8</td>
+<td>29–32</td>
+<td>6 · Bảo mật → 7 · Testing</td>
+<td>P2 duyệt khoản vay, phân quyền chi nhánh; Testcontainers</td>
+</tr>
+<tr>
+<td>9</td>
+<td>33–36</td>
+<td>7 · Testing → 8 · Concurrency</td>
+<td>CI dưới 5 phút; race condition, thread pool</td>
+</tr>
+<tr>
+<td>10</td>
+<td>37–40</td>
+<td>8 · Concurrency → 9 · Microservices</td>
+<td>Lab quan sát 6 sự cố; Kafka cơ bản</td>
+</tr>
+<tr>
+<td>11</td>
+<td>41–45</td>
+<td>9 · Microservices</td>
+<td>P3 mini core banking với outbox; <strong>qua cửa GĐ9</strong> — đủ kiến thức Middle</td>
+</tr>
+<tr>
+<td>12</td>
+<td>46–53</td>
+<td>10 · DevOps → 11 · Senior</td>
+<td>P4 lên Kubernetes; ADR; 4 buổi mock system design</td>
+</tr>
+</tbody>
+</table>
+<h2 id="java-tu-con-so-0--bon-du-an-xuyen-suot">Bốn dự án xuyên suốt</h2>
+<table>
+<thead>
+<tr>
+<th>Dự án</th>
+<th>Giai đoạn</th>
+<th>Nội dung</th>
+<th>Bằng chứng nghiệm thu</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>P1 — InsureFlow API</strong> <a href="i/java-pj-insureflow-api">Dự án: InsureFlow chặng 1 — viết backend Spring Boot cho chính app Angular của bạn (khách hàng, sản phẩm, báo giá, hợp đồng): REST chuẩn, validation, hợp đồng lỗi, idempotency, Flyway, Testcontainers, OpenAPI sinh client TypeScript</a></td>
+<td>3–5</td>
+<td>Backend REST cho chính app Angular của bạn: khách hàng, hợp đồng, phân trang, validate, ProblemDetail, OpenAPI, PostgreSQL + Flyway</td>
+<td>Angular gọi API thật; test đếm query; client TypeScript sinh từ OpenAPI</td>
+</tr>
+<tr>
+<td><strong>P2 — Duyệt khoản vay</strong> <a href="i/java-pj-loan-workflow">Dự án: quy trình duyệt khoản vay — máy trạng thái, maker-checker, phân quyền theo chi nhánh và hạn mức, step-up MFA, audit trail</a></td>
+<td>6–7</td>
+<td>Máy trạng thái, maker-checker, phân quyền theo chi nhánh với Keycloak, audit</td>
+<td>Test 401/403/IDOR; Testcontainers trong CI; mutation score có số</td>
+</tr>
+<tr>
+<td><strong>P3 — Mini core banking</strong> <a href="i/java-pj-mini-core-banking">Dự án: mini core banking — chuyển tiền idempotent, sổ cái kép, outbox sang Kafka, đối soát và số đo tải</a></td>
+<td>8–9</td>
+<td>Chuyển tiền idempotent, sổ cái kép, outbox → Kafka, consumer idempotent, đối soát</td>
+<td>Test đồng thời 0 vi phạm bất biến; kill ở 5 điểm không mất sự kiện</td>
+</tr>
+<tr>
+<td><strong>P4 — Lên production</strong> <a href="i/ops-pj-cicd-k8s">Dự án: nền tảng nhỏ đưa Angular + Spring Boot + PostgreSQL lên Kubernetes bằng GitOps — CI, ký image, Argo CD, canary, quan sát, rollback</a> + <a href="i/java-pj-observability-lab">Dự án: phòng lab quan sát và chẩn đoán — tự gây 6 loại sự cố cho một service Spring Boot và viết runbook xử lý từng loại</a></td>
+<td>10–11</td>
+<td>Docker, CI/CD, Kubernetes, dashboard, cảnh báo, runbook, ADR</td>
+<td>Rolling update không rớt request; giải 3 sự cố theo runbook</td>
+</tr>
+</tbody>
+</table>
+<p>Ba dự án đầu dùng chung một repo lớn dần là tốt nhất: người phỏng vấn thấy được quá trình, không chỉ kết quả. Với vai trò Angular hiện tại, phần Frontend của P1 là điểm cộng — ít ứng viên backend tự làm được cả hai đầu.</p>
+<h2 id="java-tu-con-so-0--hoc-song-song-voi-sql">Học song song với SQL</h2>
+<table>
+<thead>
+<tr>
+<th>Giai đoạn Java</th>
+<th>Phần SQL tương ứng (<a href="huong-dan/sql-tu-con-so-0">SQL từ con số 0</a>)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2 · Nền tảng backend</td>
+<td>SQL giai đoạn 1–2 (nền tảng, JOIN, GROUP BY) — rút gọn còn 3 tuần</td>
+</tr>
+<tr>
+<td>4 · Web/REST</td>
+<td>SQL giai đoạn 3 (window, CTE, ngày giờ) — 1–2 giờ mỗi tuần</td>
+</tr>
+<tr>
+<td>5 · Dữ liệu</td>
+<td>SQL giai đoạn 4 và 6 (thiết kế, transaction)</td>
+</tr>
+<tr>
+<td>8 · Hiệu năng</td>
+<td>SQL giai đoạn 5 (index, EXPLAIN)</td>
+</tr>
+<tr>
+<td>10 · Vận hành</td>
+<td>SQL giai đoạn 8 (migration, backup, phân quyền)</td>
+</tr>
+</tbody>
+</table>
+<p>Học hai lộ trình nối tiếp nhau sẽ mất khoảng 18 tháng; ghép như bảng trên giữ tổng thời gian quanh 12–14 tháng (ước lượng).</p>
+<h2 id="java-tu-con-so-0--muoi-hai-loi-va-hieu-nham-pho-bien-khi-tu">Mười hai lỗi và hiểu nhầm phổ biến khi từ Frontend sang Spring Boot</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Lỗi / hiểu nhầm</th>
+<th>Dấu hiệu</th>
+<th>Cách chữa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Viết Java như JavaScript</td>
+<td><code>==</code> so chuỗi, <code>double</code> cho tiền, bắt <code>Exception</code> chung</td>
+<td><a href="i/java-nb-ts-to-java">Từ TypeScript sang Java — kiểu được kiểm tra cả lúc chạy, mọi thứ nằm trong class, number tách thành int/long/double/BigDecimal, không có undefined, == với object</a></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Giữ trạng thái trong bean singleton</td>
+<td>Dữ liệu người dùng A lẫn sang B khi tải cao</td>
+<td>Bean không trạng thái; dữ liệu theo request đi qua tham số — <a href="i/java-sp-bean-scope-lifecycle">Bean scope và vòng đời bean — singleton có thread-safe không, prototype trong singleton, và vì sao @Transactional không chạy trong @PostConstruct</a></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Nghĩ annotation tự chạy</td>
+<td><code>@Transactional</code>, <code>@Async</code> "không có tác dụng"</td>
+<td>Hiểu proxy và self-invocation — <a href="i/java-nb-annotation-vs-decorator">Annotation trong Java khác decorator trong TypeScript/Angular thế nào — dữ liệu mô tả thụ động, ai đọc nó và khi nào, vì sao @Transactional cần proxy và gọi nội bộ thì mất tác dụng</a></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Mọi thứ phải bất đồng bộ</td>
+<td>Code <code>CompletableFuture</code>/reactive khắp nơi, mất transaction</td>
+<td>Spring MVC chặn là bình thường — <a href="i/java-jr-rxjs-to-java-async">Từ RxJS sang Java bất đồng bộ — Promise/Observable so với CompletableFuture, Reactor Mono/Flux và virtual thread; vì sao Spring MVC viết code chặn vẫn ổn và khi nào mới cần reactive</a></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Tin kiểm tra ở Frontend</td>
+<td>API không validate, không kiểm quyền sở hữu</td>
+<td>Validate và phân quyền ở server — <a href="i/java-ex-ownership-check">Bài tập: vá lỗ hổng IDOR ở API sao kê — kiểm tra quyền sở hữu từ token, nhân viên chỉ xem chi nhánh mình, trả 404, test bằng jwt()</a></td>
+</tr>
+<tr>
+<td>6</td>
+<td>Trả entity ra API</td>
+<td><code>LazyInitializationException</code>, lộ field, vòng lặp JSON</td>
+<td>DTO/record — <a href="i/java-web-dto-mapping">DTO và entity — vì sao tách, ánh xạ tay, MapStruct hay ModelMapper, và cách MapStruct bắt lỗi quên field ngay lúc build</a></td>
+</tr>
+<tr>
+<td>7</td>
+<td>Không xem SQL mà JPA sinh ra</td>
+<td>Màn danh sách chạy hàng trăm query</td>
+<td>Bật log SQL, test đếm query — <a href="i/java-jpa-n-plus-one">N+1 query trong JPA/Hibernate — phát hiện bằng số đo, sửa bằng fetch join, entity graph, batch fetching hay DTO, và các bẫy đi kèm</a></td>
+</tr>
+<tr>
+<td>8</td>
+<td>Đặt <code>@Transactional</code> sai chỗ</td>
+<td>Lỗi bước 2 nhưng bước 1 vẫn được lưu</td>
+<td><a href="i/java-sc-transactional-not-working">Tình huống: method đã có @Transactional nhưng khi lỗi ở bước thứ hai, bản ghi của bước thứ nhất vẫn nằm trong DB — kể và kiểm chứng 7 nguyên nhân theo thứ tự</a></td>
+</tr>
+<tr>
+<td>9</td>
+<td>Cấu hình kiểu <code>environment.ts</code></td>
+<td>Build riêng cho từng môi trường, secret trong repo</td>
+<td>Profile + biến môi trường + secret manager — <a href="i/java-sp-profiles-config">Quản lý cấu hình dev/test/prod trong Spring Boot — thứ tự ưu tiên property, profile, và để secret ở đâu</a></td>
+</tr>
+<tr>
+<td>10</td>
+<td>Học từ tài liệu cũ</td>
+<td><code>WebSecurityConfigurerAdapter</code>, <code>javax.*</code>, <code>@MockBean</code></td>
+<td>Kiểm tra phiên bản tài liệu — <a href="i/java-sp-boot4-whats-new">Spring Boot 4 / Spring Framework 7 có gì mới — và kế hoạch nâng cấp một service Spring Boot 3 lên 4</a></td>
+</tr>
+<tr>
+<td>11</td>
+<td>Test bằng H2 và mock tràn lan</td>
+<td>Test xanh, production đỏ</td>
+<td>Testcontainers, ít mock — <a href="i/java-test-testcontainers">Testcontainers trong Spring Boot — @ServiceConnection, container dùng chung, context caching, dọn dữ liệu, chạy trong CI</a></td>
+</tr>
+<tr>
+<td>12</td>
+<td>Bỏ qua log và metric</td>
+<td>Có sự cố mà không biết bắt đầu từ đâu</td>
+<td>Log có traceId, Actuator, dashboard — <a href="i/java-sp-logging-mdc">Logging trong Spring Boot — SLF4J và Logback, chọn mức log, MDC gắn traceId, log JSON có cấu trúc, và vì sao không nối chuỗi trong câu log</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="java-tu-con-so-0--nhan-biet-minh-da-dat-level-nao">Nhận biết mình đã đạt level nào</h2>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Làm được</th>
+<th>Giải thích được</th>
+<th>Bằng chứng</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Newbie</strong></td>
+<td>Viết Java thuần có OOP, collection, stream, exception, test; chạy project Maven</td>
+<td>Khác biệt Java với TypeScript; <code>equals</code>/<code>hashCode</code>; checked/unchecked</td>
+<td><code>java-core-lab</code> có test; qua cửa giai đoạn 1–2</td>
+</tr>
+<tr>
+<td><strong>Junior</strong></td>
+<td>Viết REST API CRUD có validate, lỗi chuẩn, JPA, Flyway, bảo mật cơ bản; sửa bug theo hướng dẫn</td>
+<td>Luồng một request; bean, proxy; transaction cơ bản; N+1</td>
+<td>P1 chạy được với Angular; qua cửa giai đoạn 3–5</td>
+</tr>
+<tr>
+<td><strong>Middle</strong></td>
+<td>Tự làm một tính năng từ yêu cầu tới production; tìm và sửa bug hiệu năng, đồng thời; viết test đủ tầng</td>
+<td>Trade-off locking, isolation, cache, messaging; vì sao chọn công nghệ này</td>
+<td>P2, P3 có số đo; trả lời 6 câu trade-off theo khung; xử lý sự cố trong lab</td>
+</tr>
+<tr>
+<td><strong>Senior</strong></td>
+<td>Thiết kế hệ thống nhiều service đúng về dữ liệu tiền; dẫn dắt sự cố; review và mentor</td>
+<td>Quyết định kiến trúc có ADR, số liệu và giới hạn của nó</td>
+<td>Qua mock system design; ADR; câu chuyện STAR thật về sự cố và dẫn dắt — cần kinh nghiệm production</td>
+</tr>
+</tbody>
+</table>
+</string></object></a></p></div></article><nav aria-label="Bài trước và bài sau" class="ih-no-print mt-6 grid gap-3 sm:grid-cols-2"><a class="ih-card ih-card-link flex-col gap-1 p-4" href="/interview-hub/huong-dan/data-checklist" jsaction="click:;"><span class="flex items-center gap-1.5 text-xs text-faint"><ih-icon name="arrow-left" class="inline-flex shrink-0" ngh="0"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M19 12H5M11 6l-6 6 6 6"/><!----></svg></ih-icon> Bài trước </span><span class="font-medium">Checklist Data &amp; SQL chuyên sâu</span></a><!----><!----><a class="ih-card ih-card-link flex-col items-end gap-1 p-4 text-right" href="/interview-hub/huong-dan/java-tai-lieu-theo-level" jsaction="click:;"><span class="flex items-center gap-1.5 text-xs text-faint"> Bài sau <ih-icon name="arrow-right" class="inline-flex shrink-0" ngh="0"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/><!----></svg></ih-icon></span><span class="font-medium">Tài liệu theo level</span></a><!----></nav><!----><!----><!----><!----></div></div><!----></ih-guide-page><!----></main><nav _ngcontent-ng-c604673181 aria-label="Điều hướng chính trên điện thoại" class="ih-tabbar ih-no-print"><a _ngcontent-ng-c604673181 class="ih-tab" href="/interview-hub/" jsaction="click:;"><ih-icon _ngcontent-ng-c604673181 class="inline-flex shrink-0" ngh="2"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><!----></svg></ih-icon><span _ngcontent-ng-c604673181>Hôm nay</span></a><a _ngcontent-ng-c604673181 class="ih-tab" href="/interview-hub/ly-thuyet" jsaction="click:;"><ih-icon _ngcontent-ng-c604673181 class="inline-flex shrink-0" ngh="2"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3a3 3 0 0 1 3 3v5a3 3 0 0 1-6 0V6a3 3 0 0 1 3-3Z"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/><!----></svg></ih-icon><span _ngcontent-ng-c604673181>Luyện tập</span></a><a _ngcontent-ng-c604673181 class="ih-tab" href="/interview-hub/lo-trinh" jsaction="click:;"><ih-icon _ngcontent-ng-c604673181 class="inline-flex shrink-0" ngh="2"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2Z"/><path d="M9 4v14M15 6v14"/><!----></svg></ih-icon><span _ngcontent-ng-c604673181>Lộ trình</span></a><a _ngcontent-ng-c604673181 class="ih-tab" href="/interview-hub/huong-dan" aria-current="page" jsaction="click:;"><ih-icon _ngcontent-ng-c604673181 class="inline-flex shrink-0" ngh="2"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 5h6a3 3 0 0 1 3 3v12a2 2 0 0 0-2-2H3z"/><path d="M21 5h-6a3 3 0 0 0-3 3v12a2 2 0 0 1 2-2h7z"/><!----></svg></ih-icon><span _ngcontent-ng-c604673181>Hướng dẫn</span></a><!----></nav><!----><!----></ih-root>
+<link rel="modulepreload" href="chunk-XI763TYC.js"><link rel="modulepreload" href="chunk-EKQCVM2I.js"><link rel="modulepreload" href="chunk-2RZ4USXX.js"><link rel="modulepreload" href="chunk-GDWDA4XP.js"><script src="main-K26KT5RT.js" type="module"></script>
+<link rel="modulepreload" href="chunk-NPY5NB5I.js">
+<link rel="modulepreload" href="chunk-SOTLWFPK.js">
+
+
+<script id="ng-state" type="application/json">{"__nghData__":[{"t":{"2":"t2"},"c":{"2":[{"i":"t2","r":1}]}},{},{"t":{"2":"t2"},"c":{"2":[{"i":"t2","r":1,"x":2}]}},{"t":{"3":"t115","5":"t122","6":"t124","7":"t125","8":"t132","9":"t133","10":"t116"},"c":{"3":[{"i":"t116","r":7,"t":{"3":"t117"},"c":{"3":[{"i":"t117","r":1,"t":{"7":"t118"},"c":{"7":[]},"x":2},{"i":"t117","r":1,"t":{"7":"t118"},"c":{"7":[{"i":"t118","r":1,"t":{"2":"t119"},"c":{"2":[{"i":"t119","r":1,"t":{"3":"t120"},"c":{"3":[{"i":"t120","r":1,"t":{"2":"t121"},"c":{"2":[{"i":"t121","r":1,"x":18}]}}]}},{"i":"t119","r":1,"t":{"3":"t120"},"c":{"3":[]},"x":5}]}}]}},{"i":"t117","r":1,"t":{"7":"t118"},"c":{"7":[]},"x":2}]}}],"5":[{"i":"t122","r":1,"t":{"10":"t123"},"c":{"10":[{"i":"t116","r":7,"t":{"3":"t117"},"c":{"3":[{"i":"t117","r":1,"t":{"7":"t118"},"c":{"7":[]},"x":2},{"i":"t117","r":1,"t":{"7":"t118"},"c":{"7":[{"i":"t118","r":1,"t":{"2":"t119"},"c":{"2":[{"i":"t119","r":1,"t":{"3":"t120"},"c":{"3":[{"i":"t120","r":1,"t":{"2":"t121"},"c":{"2":[{"i":"t121","r":1,"x":18}]}}]}},{"i":"t119","r":1,"t":{"3":"t120"},"c":{"3":[]},"x":5}]}}]}},{"i":"t117","r":1,"t":{"7":"t118"},"c":{"7":[]},"x":2}]}}]}}],"6":[],"7":[{"i":"t125","r":7,"t":{"3":"t126","6":"t127","9":"t128"},"c":{"3":[{"i":"t126","r":2}],"6":[{"i":"t127","r":1}],"9":[{"i":"t128","r":1,"t":{"1":"t129","2":"t130","3":"t131"},"c":{"1":[{"i":"t129","r":1}],"2":[],"3":[{"i":"t131","r":1}]}}]}}],"8":[],"9":[],"10":[]}},{"t":{"2":"t0","3":"t1","4":"t30"},"c":{"2":[],"3":[{"i":"t1","r":3,"t":{"9":"t3","17":"t4","29":"t5","34":"t29"},"c":{"9":[{"i":"t3","r":1,"x":4}],"17":[],"29":[],"31":[{"i":"c3062323264","r":1}],"34":[{"i":"t29","r":1,"x":4}]}}],"4":[]}}]}</script></body></html>

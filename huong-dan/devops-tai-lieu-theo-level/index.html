@@ -1,0 +1,375 @@
+<!DOCTYPE html><html lang="vi" data-beasties-container><head>
+  <meta charset="utf-8">
+  <title>Tài liệu học DevOps theo level · Hướng dẫn · Interview Hub</title>
+  <base href="/interview-hub/">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Phòng tập phỏng vấn: Angular, Java/Spring Boot, DevOps, Data — tình huống thật trong dự án enterprise, bank, bảo hiểm.">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script>
+    /*
+     * Dat theme TRUOC khi paint. Trang duoc prerender thanh HTML tinh (khong co
+     * class .dark), nen neu doi ThemeService chay sau hydration thi may dat theme
+     * toi se nhay trang mot nhip. Script nay chay sync trong <head> nen khong co
+     * nhip nao bi nhay. Giu dong bo voi ThemeService (khoa 'ih.theme').
+     */
+    (function () {
+      try {
+        var mode = localStorage.getItem('ih.theme') || 'system';
+        var dark = mode === 'dark' || (mode === 'system' && matchMedia('(prefers-color-scheme: dark)').matches);
+        if (dark) document.documentElement.classList.add('dark');
+      } catch (e) {
+        /* localStorage bi chan (private mode): bo qua, mac dinh sang */
+      }
+    })();
+  </script>
+<style>@layer properties;@layer theme,base,components,utilities;@layer theme{:root{--font-sans: "Be Vietnam Pro", ui-sans-serif, system-ui, sans-serif;--font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;--color-white: #fff;--spacing: .25rem;--container-xl: 36rem;--text-xs: .75rem;--text-xs--line-height: calc(1 / .75);--text-sm: .875rem;--text-sm--line-height: calc(1.25 / .875);--text-base: 1rem;--text-base--line-height: 1.5 ;--text-lg: 1.125rem;--text-lg--line-height: calc(1.75 / 1.125);--font-weight-normal: 400;--font-weight-medium: 500;--font-weight-semibold: 600;--font-weight-bold: 700;--leading-tight: 1.25;--leading-snug: 1.375;--leading-relaxed: 1.625;--radius-md: .375rem;--radius-lg: .5rem;--radius-xl: .75rem;--radius-2xl: 1rem;--aspect-video: 16 / 9;--default-transition-duration: .15s;--default-transition-timing-function: cubic-bezier(.4, 0, .2, 1);--default-font-family: var(--font-sans);--default-mono-font-family: var(--font-mono);--font-display: "Be Vietnam Pro", ui-sans-serif, system-ui, sans-serif;--color-surface: var(--ih-surface);--color-muted: var(--ih-muted);--color-accent: var(--ih-accent)}}@layer base{*,:after,:before{box-sizing:border-box;margin:0;padding:0;border:0 solid}html{line-height:1.5;-webkit-text-size-adjust:100%;tab-size:4;font-family:var(--default-font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji");font-feature-settings:var(--default-font-feature-settings, normal);font-variation-settings:var(--default-font-variation-settings, normal);-webkit-tap-highlight-color:transparent}h1,h2,h3{font-size:inherit;font-weight:inherit}a{color:inherit;-webkit-text-decoration:inherit;text-decoration:inherit}strong{font-weight:bolder}code{font-family:var(--default-mono-font-family, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace);font-feature-settings:var(--default-mono-font-feature-settings, normal);font-variation-settings:var(--default-mono-font-variation-settings, normal);font-size:1em}table{text-indent:0;border-color:inherit;border-collapse:collapse}summary{display:list-item}ol,ul{list-style:none}svg{display:block;vertical-align:middle}button{font:inherit;font-feature-settings:inherit;font-variation-settings:inherit;letter-spacing:inherit;color:inherit;border-radius:0;background-color:transparent;opacity:1}button{appearance:button}}@layer utilities{.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border-width:0}.sticky{position:sticky}.top-6{top:calc(var(--spacing) * 6)}.mx-auto{margin-inline:auto}.mt-0\.5{margin-top:calc(var(--spacing) * .5)}.mt-1\.5{margin-top:calc(var(--spacing) * 1.5)}.mt-2{margin-top:calc(var(--spacing) * 2)}.mt-3{margin-top:calc(var(--spacing) * 3)}.mt-6{margin-top:calc(var(--spacing) * 6)}.flex{display:flex}.grid{display:grid}.hidden{display:none}.inline-flex{display:inline-flex}.max-w-\[66ch\]{max-width:66ch}.max-w-\[68ch\]{max-width:68ch}.max-w-\[1180px\]{max-width:1180px}.min-w-0{min-width:0px}.flex-1{flex:1}.shrink-0{flex-shrink:0}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-center{align-items:center}.items-end{align-items:flex-end}.gap-0\.5{gap:calc(var(--spacing) * .5)}.gap-1{gap:var(--spacing)}.gap-1\.5{gap:calc(var(--spacing) * 1.5)}.gap-3{gap:calc(var(--spacing) * 3)}.gap-8{gap:calc(var(--spacing) * 8)}.truncate{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.p-4{padding:calc(var(--spacing) * 4)}.px-4{padding-inline:calc(var(--spacing) * 4)}.py-7{padding-block:calc(var(--spacing) * 7)}.text-left{text-align:left}.text-right{text-align:right}.text-sm{font-size:var(--text-sm);line-height:var(--tw-leading, var(--text-sm--line-height))}.text-xs{font-size:var(--text-xs);line-height:var(--tw-leading, var(--text-xs--line-height))}.text-\[0\.6875rem\]{font-size:.6875rem}.text-\[1\.0625rem\]{font-size:1.0625rem}.font-medium{--tw-font-weight: var(--font-weight-medium);font-weight:var(--font-weight-medium)}.text-faint{color:var(--ih-faint)}.text-ink-2{color:var(--ih-ink-2)}.text-muted{color:var(--ih-muted)}@media(hover:hover){.hover\:text-accent:hover{color:var(--ih-accent)}}@media(width>=40rem){.sm\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.sm\:p-6{padding:calc(var(--spacing) * 6)}.sm\:px-8{padding-inline:calc(var(--spacing) * 8)}}@media(width>=64rem){.lg\:p-7{padding:calc(var(--spacing) * 7)}.lg\:px-10{padding-inline:calc(var(--spacing) * 10)}}@media(width>=80rem){.xl\:block{display:block}.xl\:hidden{display:none}.xl\:grid-cols-\[15rem_minmax\(0\,1fr\)\]{grid-template-columns:15rem minmax(0,1fr)}}}@font-face{font-family:Be Vietnam Pro;font-style:normal;font-display:swap;font-weight:400;src:url("./media/be-vietnam-pro-vietnamese-400-normal-AYP4TBQP.woff2") format("woff2"),url("./media/be-vietnam-pro-vietnamese-400-normal-XCSVBHAH.woff") format("woff");unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB}@font-face{font-family:Be Vietnam Pro;font-style:normal;font-display:swap;font-weight:400;src:url("./media/be-vietnam-pro-latin-ext-400-normal-VIXFGEVI.woff2") format("woff2"),url("./media/be-vietnam-pro-latin-ext-400-normal-H5FLM5EA.woff") format("woff");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:Be Vietnam Pro;font-style:normal;font-display:swap;font-weight:400;src:url("./media/be-vietnam-pro-latin-400-normal-GO7MVAWD.woff2") format("woff2"),url("./media/be-vietnam-pro-latin-400-normal-RVJKSZUF.woff") format("woff");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:Be Vietnam Pro;font-style:normal;font-display:swap;font-weight:500;src:url("./media/be-vietnam-pro-vietnamese-500-normal-4TYGC47D.woff2") format("woff2"),url("./media/be-vietnam-pro-vietnamese-500-normal-X6H4D6SQ.woff") format("woff");unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB}@font-face{font-family:Be Vietnam Pro;font-style:normal;font-display:swap;font-weight:500;src:url("./media/be-vietnam-pro-latin-ext-500-normal-4V547L43.woff2") format("woff2"),url("./media/be-vietnam-pro-latin-ext-500-normal-OT6QGGBR.woff") format("woff");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:Be Vietnam Pro;font-style:normal;font-display:swap;font-weight:500;src:url("./media/be-vietnam-pro-latin-500-normal-ICUK3VUJ.woff2") format("woff2"),url("./media/be-vietnam-pro-latin-500-normal-7QE332AG.woff") format("woff");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:Be Vietnam Pro;font-style:normal;font-display:swap;font-weight:600;src:url("./media/be-vietnam-pro-vietnamese-600-normal-JNWISTGY.woff2") format("woff2"),url("./media/be-vietnam-pro-vietnamese-600-normal-WRJMS4YC.woff") format("woff");unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB}@font-face{font-family:Be Vietnam Pro;font-style:normal;font-display:swap;font-weight:600;src:url("./media/be-vietnam-pro-latin-ext-600-normal-CBJZJMMX.woff2") format("woff2"),url("./media/be-vietnam-pro-latin-ext-600-normal-4EIVITBO.woff") format("woff");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:Be Vietnam Pro;font-style:normal;font-display:swap;font-weight:600;src:url("./media/be-vietnam-pro-latin-600-normal-BUKYBXKC.woff2") format("woff2"),url("./media/be-vietnam-pro-latin-600-normal-3FZKMTWI.woff") format("woff");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:Be Vietnam Pro;font-style:normal;font-display:swap;font-weight:700;src:url("./media/be-vietnam-pro-vietnamese-700-normal-2FUHI57A.woff2") format("woff2"),url("./media/be-vietnam-pro-vietnamese-700-normal-6TZDSQEZ.woff") format("woff");unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB}@font-face{font-family:Be Vietnam Pro;font-style:normal;font-display:swap;font-weight:700;src:url("./media/be-vietnam-pro-latin-ext-700-normal-O2T6GATN.woff2") format("woff2"),url("./media/be-vietnam-pro-latin-ext-700-normal-RSM77A7Z.woff") format("woff");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:Be Vietnam Pro;font-style:normal;font-display:swap;font-weight:700;src:url("./media/be-vietnam-pro-latin-700-normal-D4XLH5H5.woff2") format("woff2"),url("./media/be-vietnam-pro-latin-700-normal-T76PCEOT.woff") format("woff");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:JetBrains Mono;font-style:normal;font-display:swap;font-weight:400;src:url("./media/jetbrains-mono-cyrillic-ext-400-normal-C7IFWGF6.woff2") format("woff2"),url("./media/jetbrains-mono-cyrillic-ext-400-normal-PWXUA557.woff") format("woff");unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}@font-face{font-family:JetBrains Mono;font-style:normal;font-display:swap;font-weight:400;src:url("./media/jetbrains-mono-cyrillic-400-normal-C5JECUCT.woff2") format("woff2"),url("./media/jetbrains-mono-cyrillic-400-normal-FGCZYWMY.woff") format("woff");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}@font-face{font-family:JetBrains Mono;font-style:normal;font-display:swap;font-weight:400;src:url("./media/jetbrains-mono-greek-400-normal-O7JTTR3P.woff2") format("woff2"),url("./media/jetbrains-mono-greek-400-normal-JJNQZMPZ.woff") format("woff");unicode-range:U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF}@font-face{font-family:JetBrains Mono;font-style:normal;font-display:swap;font-weight:400;src:url("./media/jetbrains-mono-vietnamese-400-normal-KU7YLUPA.woff2") format("woff2"),url("./media/jetbrains-mono-vietnamese-400-normal-7ULXAK72.woff") format("woff");unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB}@font-face{font-family:JetBrains Mono;font-style:normal;font-display:swap;font-weight:400;src:url("./media/jetbrains-mono-latin-ext-400-normal-JVR3IR4Z.woff2") format("woff2"),url("./media/jetbrains-mono-latin-ext-400-normal-55RNMRQS.woff") format("woff");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:JetBrains Mono;font-style:normal;font-display:swap;font-weight:400;src:url("./media/jetbrains-mono-latin-400-normal-3OOWLGQ2.woff2") format("woff2"),url("./media/jetbrains-mono-latin-400-normal-WDD34GPP.woff") format("woff");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:JetBrains Mono;font-style:normal;font-display:swap;font-weight:600;src:url("./media/jetbrains-mono-cyrillic-ext-600-normal-HKBRUTLC.woff2") format("woff2"),url("./media/jetbrains-mono-cyrillic-ext-600-normal-5QNCOHRJ.woff") format("woff");unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}@font-face{font-family:JetBrains Mono;font-style:normal;font-display:swap;font-weight:600;src:url("./media/jetbrains-mono-cyrillic-600-normal-IC2P33CI.woff2") format("woff2"),url("./media/jetbrains-mono-cyrillic-600-normal-N3RL4S3I.woff") format("woff");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}@font-face{font-family:JetBrains Mono;font-style:normal;font-display:swap;font-weight:600;src:url("./media/jetbrains-mono-greek-600-normal-MQRRJYKT.woff2") format("woff2"),url("./media/jetbrains-mono-greek-600-normal-IGJJY4I4.woff") format("woff");unicode-range:U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF}@font-face{font-family:JetBrains Mono;font-style:normal;font-display:swap;font-weight:600;src:url("./media/jetbrains-mono-vietnamese-600-normal-5QHQ2LOD.woff2") format("woff2"),url("./media/jetbrains-mono-vietnamese-600-normal-GHFUHINE.woff") format("woff");unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB}@font-face{font-family:JetBrains Mono;font-style:normal;font-display:swap;font-weight:600;src:url("./media/jetbrains-mono-latin-ext-600-normal-Y3NFETVK.woff2") format("woff2"),url("./media/jetbrains-mono-latin-ext-600-normal-2YWDXQ5Z.woff") format("woff");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:JetBrains Mono;font-style:normal;font-display:swap;font-weight:600;src:url("./media/jetbrains-mono-latin-600-normal-5PVSJ4PH.woff2") format("woff2"),url("./media/jetbrains-mono-latin-600-normal-DJM6S6N3.woff") format("woff");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}:root{--ih-ground: #f4f5f8;--ih-surface: #ffffff;--ih-raised: #f7f8fb;--ih-sunken: #e9ebf1;--ih-border: #e3e6ed;--ih-border-strong: #8b92a1;--ih-ink: #12141a;--ih-ink-2: #2b2f3a;--ih-muted: #576072;--ih-faint: #646c7d;--ih-accent: #4f46e5;--ih-accent-solid: #4f46e5;--ih-accent-ink: #3b33c4;--ih-accent-soft: #eeedfd;--ih-accent-tint: #f5f4ff;--ih-accent-line: #c9c6f7;--ih-on-accent: #ffffff;--ih-done: #17804a;--ih-done-soft: #e6f4ec;--ih-done-line: #a3d3b7;--ih-warn: #a85a00;--ih-warn-ink: #8a4b00;--ih-warn-soft: #fdf1e1;--ih-warn-line: #e9be7f;--ih-bad: #b42318;--ih-bad-ink: #8f1d13;--ih-bad-soft: #fdecea;--ih-bad-tint: #fff8f7;--ih-bad-line: #f3b8b2;--ih-l1-bg: #dde3ff;--ih-l1-fg: #2e2a86;--ih-l2-bg: #b9c3fd;--ih-l2-fg: #1f1b5e;--ih-l3-bg: #8c93f5;--ih-l3-fg: #17154a;--ih-l4-bg: #5b52e8;--ih-l4-fg: #ffffff;--ih-l5-bg: #2a2577;--ih-l5-fg: #ffffff;--ih-off: #dcdfe7;--ih-hero: #2a2577;--ih-hero-ink: #ffffff;--ih-hero-muted: #c9c6f7;--ih-code-bg: #161826;--ih-code-head: #10121c;--ih-code-line: #262a3b;--ih-shadow: 0 1px 2px rgb(18 20 26 / .04);--ih-shadow-lift: 0 10px 28px -16px rgb(42 37 119 / .35);color-scheme:light}@layer base{*,:before,:after{border-color:var(--ih-border)}html{-webkit-text-size-adjust:100%}body{background:var(--ih-ground);color:var(--ih-ink);font-family:var(--font-sans);font-size:.9375rem;line-height:1.55;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}h1,h2,h3{text-wrap:balance}code{font-variant-ligatures:none;font-feature-settings:"liga" 0,"calt" 0}@media(prefers-reduced-motion:reduce){*,:before,:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}}@layer components{.ih-h1{font-family:var(--font-display);font-weight:700;font-size:clamp(1.75rem,1.4rem + 1.2vw,2rem);letter-spacing:-.015em;line-height:1.2}.ih-num{font-variant-numeric:tabular-nums}.ih-card{background:var(--ih-surface);border:1px solid var(--ih-border);border-radius:1.25rem;box-shadow:var(--ih-shadow)}a.ih-card-link{display:flex;text-align:left;color:inherit;transition:border-color .12s ease,box-shadow .12s ease}.ih-card-link:hover{border-color:var(--ih-accent-line);box-shadow:var(--ih-shadow-lift)}.ih-mono{display:inline-flex;align-items:center;justify-content:center;flex:none;width:1.75rem;height:1.75rem;border-radius:.5rem;color:#fff;font-size:.6875rem;font-weight:700;letter-spacing:.02em}.ih-mono[data-size=sm]{width:1.375rem;height:1.375rem;border-radius:.375rem;font-size:.5625rem}.ih-subnav{font-size:.875rem}aside .ih-subnav{max-height:calc(100vh - 3rem);overflow-y:auto;overscroll-behavior:contain;padding-right:.25rem}.ih-subnav-group{display:flex;align-items:center;gap:.5rem;width:100%;min-height:2.25rem;padding:0 .625rem;border-radius:.5rem;color:var(--ih-ink-2);font-size:.875rem;font-weight:600;text-align:left}.ih-subnav-group:hover{background:var(--ih-sunken);color:var(--ih-ink)}.ih-subnav-caret{transition:transform .15s ease}.ih-subnav-caret-open{transform:rotate(180deg)}.ih-subnav-link{display:block;padding:.45rem .625rem;border-radius:.5rem;color:var(--ih-ink-2);font-weight:500;line-height:1.35}.ih-subnav-link:hover{background:var(--ih-sunken);color:var(--ih-ink)}.ih-subnav-link[aria-current=page]{background:var(--ih-accent-soft);color:var(--ih-accent-ink);font-weight:600}.ih-subnav-toc{display:flex;flex-direction:column;gap:.125rem;margin:.25rem 0 .5rem .875rem;padding-left:.625rem;border-left:1px solid var(--ih-border)}.ih-subnav-toc-link{display:block;padding:.25rem .375rem;border-radius:.375rem;color:var(--ih-muted);font-size:.8125rem;line-height:1.35}.ih-subnav-toc-link:hover{background:var(--ih-sunken);color:var(--ih-accent-ink)}.ih-subnav-mobile{margin-bottom:1.5rem;padding:.25rem;border:1px solid var(--ih-border);border-radius:.875rem;background:var(--ih-surface)}.ih-subnav-mobile>summary{display:flex;align-items:center;gap:.5rem;min-height:2.75rem;padding:0 .625rem;border-radius:.625rem;cursor:pointer;font-weight:500;list-style:none}.ih-subnav-mobile>summary::-webkit-details-marker{display:none}.ih-pop{position:relative}.ih-prose{font-size:1rem;line-height:1.7;color:var(--ih-ink);overflow-wrap:anywhere}.ih-prose>*+*{margin-top:.85rem}.ih-prose>h2,.ih-prose>h3{margin-top:1.5rem;font-weight:600}.ih-prose h2{font-family:var(--font-display);font-size:1.25rem;line-height:1.3;margin-top:2rem;scroll-margin-top:4.5rem}.ih-prose h3{font-family:var(--font-display);font-size:1.0625rem}.ih-prose ul,.ih-prose ol{padding-left:1.25rem;display:flex;flex-direction:column;gap:.45rem}.ih-prose ul{list-style:disc}.ih-prose ol{list-style:decimal}.ih-prose li::marker{color:var(--ih-accent)}.ih-prose a{color:var(--ih-accent);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:2px}.ih-prose a:hover{color:var(--ih-accent-ink)}.ih-prose strong{font-weight:600}.ih-prose code:not(pre code){font-family:var(--font-mono);font-size:.86em;background:var(--ih-sunken);border-radius:.3rem;padding:.08em .35em}.ih-prose table{display:block;max-width:100%;overflow-x:auto;border-collapse:collapse;font-size:.875rem;overflow-wrap:normal}.ih-prose td,.ih-prose th{min-width:7rem}.ih-prose td:first-child,.ih-prose th:first-child{min-width:0}.ih-prose th,.ih-prose td{border:1px solid var(--ih-border);padding:.5rem .7rem;text-align:left;vertical-align:top}.ih-prose th{background:var(--ih-raised);font-weight:600}.ih-prose ul:has(>li.ih-task-item){padding-left:0;gap:0}.ih-kbd{display:inline-flex;align-items:center;min-width:1.4rem;justify-content:center;padding:.05rem .35rem;border:1px solid var(--ih-border-strong);border-bottom-width:2px;border-radius:.3rem;background:var(--ih-surface);color:var(--ih-ink-2);font-family:var(--font-mono);font-size:.6875rem;line-height:1.4}}@media print{.ih-no-print{display:none!important}body{background:#fff;color:#000;font-size:11pt}.ih-card{border-color:#ccc;box-shadow:none;break-inside:avoid}}@property --tw-translate-x{syntax: "*"; inherits: false; initial-value: 0;}@property --tw-translate-y{syntax: "*"; inherits: false; initial-value: 0;}@property --tw-translate-z{syntax: "*"; inherits: false; initial-value: 0;}@property --tw-rotate-x{syntax: "*"; inherits: false;}@property --tw-rotate-y{syntax: "*"; inherits: false;}@property --tw-rotate-z{syntax: "*"; inherits: false;}@property --tw-skew-x{syntax: "*"; inherits: false;}@property --tw-skew-y{syntax: "*"; inherits: false;}@property --tw-divide-y-reverse{syntax: "*"; inherits: false; initial-value: 0;}@property --tw-border-style{syntax: "*"; inherits: false; initial-value: solid;}@property --tw-leading{syntax: "*"; inherits: false;}@property --tw-font-weight{syntax: "*"; inherits: false;}@property --tw-ordinal{syntax: "*"; inherits: false;}@property --tw-slashed-zero{syntax: "*"; inherits: false;}@property --tw-numeric-figure{syntax: "*"; inherits: false;}@property --tw-numeric-spacing{syntax: "*"; inherits: false;}@property --tw-numeric-fraction{syntax: "*"; inherits: false;}@property --tw-shadow{syntax: "*"; inherits: false; initial-value: 0 0 #0000;}@property --tw-shadow-color{syntax: "*"; inherits: false;}@property --tw-shadow-alpha{syntax: "<percentage>"; inherits: false; initial-value: 100%;}@property --tw-inset-shadow{syntax: "*"; inherits: false; initial-value: 0 0 #0000;}@property --tw-inset-shadow-color{syntax: "*"; inherits: false;}@property --tw-inset-shadow-alpha{syntax: "<percentage>"; inherits: false; initial-value: 100%;}@property --tw-ring-color{syntax: "*"; inherits: false;}@property --tw-ring-shadow{syntax: "*"; inherits: false; initial-value: 0 0 #0000;}@property --tw-inset-ring-color{syntax: "*"; inherits: false;}@property --tw-inset-ring-shadow{syntax: "*"; inherits: false; initial-value: 0 0 #0000;}@property --tw-ring-inset{syntax: "*"; inherits: false;}@property --tw-ring-offset-width{syntax: "<length>"; inherits: false; initial-value: 0px;}@property --tw-ring-offset-color{syntax: "*"; inherits: false; initial-value: #fff;}@property --tw-ring-offset-shadow{syntax: "*"; inherits: false; initial-value: 0 0 #0000;}@property --tw-outline-style{syntax: "*"; inherits: false; initial-value: solid;}@property --tw-blur{syntax: "*"; inherits: false;}@property --tw-brightness{syntax: "*"; inherits: false;}@property --tw-contrast{syntax: "*"; inherits: false;}@property --tw-grayscale{syntax: "*"; inherits: false;}@property --tw-hue-rotate{syntax: "*"; inherits: false;}@property --tw-invert{syntax: "*"; inherits: false;}@property --tw-opacity{syntax: "*"; inherits: false;}@property --tw-saturate{syntax: "*"; inherits: false;}@property --tw-sepia{syntax: "*"; inherits: false;}@property --tw-drop-shadow{syntax: "*"; inherits: false;}@property --tw-drop-shadow-color{syntax: "*"; inherits: false;}@property --tw-drop-shadow-alpha{syntax: "<percentage>"; inherits: false; initial-value: 100%;}@property --tw-drop-shadow-size{syntax: "*"; inherits: false;}@property --tw-backdrop-blur{syntax: "*"; inherits: false;}@property --tw-backdrop-brightness{syntax: "*"; inherits: false;}@property --tw-backdrop-contrast{syntax: "*"; inherits: false;}@property --tw-backdrop-grayscale{syntax: "*"; inherits: false;}@property --tw-backdrop-hue-rotate{syntax: "*"; inherits: false;}@property --tw-backdrop-invert{syntax: "*"; inherits: false;}@property --tw-backdrop-opacity{syntax: "*"; inherits: false;}@property --tw-backdrop-saturate{syntax: "*"; inherits: false;}@property --tw-backdrop-sepia{syntax: "*"; inherits: false;}@layer properties{@supports ((-webkit-hyphens: none) and (not (margin-trim: block))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))){*,:before,:after{--tw-translate-x: 0;--tw-translate-y: 0;--tw-translate-z: 0;--tw-rotate-x: initial;--tw-rotate-y: initial;--tw-rotate-z: initial;--tw-skew-x: initial;--tw-skew-y: initial;--tw-divide-y-reverse: 0;--tw-border-style: solid;--tw-leading: initial;--tw-font-weight: initial;--tw-ordinal: initial;--tw-slashed-zero: initial;--tw-numeric-figure: initial;--tw-numeric-spacing: initial;--tw-numeric-fraction: initial;--tw-shadow: 0 0 #0000;--tw-shadow-color: initial;--tw-shadow-alpha: 100%;--tw-inset-shadow: 0 0 #0000;--tw-inset-shadow-color: initial;--tw-inset-shadow-alpha: 100%;--tw-ring-color: initial;--tw-ring-shadow: 0 0 #0000;--tw-inset-ring-color: initial;--tw-inset-ring-shadow: 0 0 #0000;--tw-ring-inset: initial;--tw-ring-offset-width: 0px;--tw-ring-offset-color: #fff;--tw-ring-offset-shadow: 0 0 #0000;--tw-outline-style: solid;--tw-blur: initial;--tw-brightness: initial;--tw-contrast: initial;--tw-grayscale: initial;--tw-hue-rotate: initial;--tw-invert: initial;--tw-opacity: initial;--tw-saturate: initial;--tw-sepia: initial;--tw-drop-shadow: initial;--tw-drop-shadow-color: initial;--tw-drop-shadow-alpha: 100%;--tw-drop-shadow-size: initial;--tw-backdrop-blur: initial;--tw-backdrop-brightness: initial;--tw-backdrop-contrast: initial;--tw-backdrop-grayscale: initial;--tw-backdrop-hue-rotate: initial;--tw-backdrop-invert: initial;--tw-backdrop-opacity: initial;--tw-backdrop-saturate: initial;--tw-backdrop-sepia: initial}}}
+</style><link rel="stylesheet" href="styles-WKOWS4ZK.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="styles-WKOWS4ZK.css"></noscript><style ng-app-id="ng">.ih-skip[_ngcontent-ng-c604673181]{position:absolute;left:-9999px;z-index:60}.ih-skip[_ngcontent-ng-c604673181]:focus{left:.75rem;top:.75rem;padding:.5rem .75rem;border-radius:.5rem;background:var(--ih-surface);border:1px solid var(--ih-border-strong)}.ih-bar[_ngcontent-ng-c604673181]{position:sticky;top:0;z-index:30;border-bottom:1px solid var(--ih-border);background:color-mix(in oklab,var(--ih-surface) 94%,transparent);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}.ih-bar-inner[_ngcontent-ng-c604673181]{max-width:1180px;margin:0 auto;min-height:3.5rem;padding:0 .75rem 0 1rem;display:flex;align-items:center;gap:1rem}@media(min-width:640px){.ih-bar-inner[_ngcontent-ng-c604673181]{padding:0 2rem}}@media(min-width:1024px){.ih-bar-inner[_ngcontent-ng-c604673181]{min-height:4rem;padding:0 2.5rem;gap:2rem}}.ih-brand[_ngcontent-ng-c604673181]{display:inline-flex;align-items:center;gap:.6rem;font-size:1rem;font-weight:700;letter-spacing:-.01em;white-space:nowrap}.ih-brand-mark[_ngcontent-ng-c604673181]{display:inline-flex;align-items:center;justify-content:center;width:2rem;height:2rem;border-radius:.5rem;background:var(--ih-hero);color:var(--ih-hero-ink)}.ih-mainnav[_ngcontent-ng-c604673181]{display:none}@media(min-width:1024px){.ih-mainnav[_ngcontent-ng-c604673181]{display:flex;align-self:stretch;gap:.25rem}}.ih-mainnav-link[_ngcontent-ng-c604673181]{display:inline-flex;align-items:center;padding:0 .75rem;border-bottom:2px solid transparent;margin-bottom:-1px;color:var(--ih-muted);font-size:.9375rem;font-weight:500;white-space:nowrap;transition:color .12s ease,border-color .12s ease}.ih-mainnav-link[_ngcontent-ng-c604673181]:hover{color:var(--ih-ink)}.ih-mainnav-link[aria-current=page][_ngcontent-ng-c604673181]{color:var(--ih-ink);font-weight:600;border-bottom-color:var(--ih-accent)}.ih-bar-tools[_ngcontent-ng-c604673181]{margin-left:auto;display:flex;align-items:center;gap:.375rem}@media(min-width:640px){.ih-bar-tools[_ngcontent-ng-c604673181]{gap:.5rem}}.ih-bar-btn[_ngcontent-ng-c604673181]{display:inline-flex;align-items:center;gap:.5rem;min-height:2.75rem;padding:0 .625rem;border:1px solid var(--ih-border);border-radius:.625rem;background:var(--ih-surface);color:var(--ih-ink);font-family:inherit;font-size:.875rem;font-weight:500;cursor:pointer;transition:border-color .12s ease}.ih-bar-btn[_ngcontent-ng-c604673181]:hover{border-color:var(--ih-border-strong)}.ih-bar-btn[aria-expanded=true][_ngcontent-ng-c604673181]{border-color:var(--ih-accent)}@media(min-width:1024px){.ih-bar-btn[_ngcontent-ng-c604673181]{min-height:2.5rem}}.ih-bar-btn-label[_ngcontent-ng-c604673181]{display:none}@media(min-width:640px){.ih-bar-btn-label[_ngcontent-ng-c604673181]{display:inline}}.ih-bar-icon[_ngcontent-ng-c604673181]{justify-content:center;width:2.75rem;padding:0}@media(min-width:1024px){.ih-bar-icon[_ngcontent-ng-c604673181]{width:2.5rem}}.ih-bar-search[_ngcontent-ng-c604673181]{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;min-height:2.75rem;min-width:2.75rem;padding:0 .75rem;border:1px solid var(--ih-border);border-radius:.625rem;background:var(--ih-raised);color:var(--ih-muted);font-family:inherit;font-size:.875rem;cursor:pointer}.ih-bar-search[_ngcontent-ng-c604673181]:hover{border-color:var(--ih-border-strong);color:var(--ih-ink)}@media(min-width:1024px){.ih-bar-search[_ngcontent-ng-c604673181]{min-height:2.5rem;min-width:13rem;justify-content:flex-start}}.ih-bar-search-label[_ngcontent-ng-c604673181], .ih-bar-search-kbd[_ngcontent-ng-c604673181]{display:none}@media(min-width:1024px){.ih-bar-search-label[_ngcontent-ng-c604673181], .ih-bar-search-kbd[_ngcontent-ng-c604673181]{display:inline-flex}}.ih-bar-search-label[_ngcontent-ng-c604673181]{flex:1}.ih-main[_ngcontent-ng-c604673181]{min-width:0;padding-bottom:calc(4.5rem + env(safe-area-inset-bottom))}@media(min-width:1024px){.ih-main[_ngcontent-ng-c604673181]{padding-bottom:0}}.ih-tabbar[_ngcontent-ng-c604673181]{position:fixed;z-index:30;inset:auto 0 0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));padding-bottom:env(safe-area-inset-bottom);border-top:1px solid var(--ih-border);background:color-mix(in oklab,var(--ih-surface) 96%,transparent);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}@media(min-width:1024px){.ih-tabbar[_ngcontent-ng-c604673181]{display:none}}.ih-tab[_ngcontent-ng-c604673181]{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.2rem;min-height:3.75rem;color:var(--ih-muted);font-size:.75rem;font-weight:500}.ih-tab[aria-current=page][_ngcontent-ng-c604673181]{color:var(--ih-accent);font-weight:600}</style></head>
+<body><!--nghm--><script type="text/javascript" id="ng-event-dispatch-contract">(()=>{function p(t,n,r,o,e,i,f,m){return{eventType:t,event:n,targetElement:r,eic:o,timeStamp:e,eia:i,eirp:f,eiack:m}}function u(t){let n=[],r=e=>{n.push(e)};return{c:t,q:n,et:[],etc:[],d:r,h:e=>{r(p(e.type,e,e.target,t,Date.now()))}}}function s(t,n,r){for(let o=0;o<n.length;o++){let e=n[o];(r?t.etc:t.et).push(e),t.c.addEventListener(e,t.h,r)}}function c(t,n,r,o,e=window){let i=u(t);e._ejsas||(e._ejsas={}),e._ejsas[n]=i,s(i,r),s(i,o,!0)}window.__jsaction_bootstrap=c;})();
+</script><script>window.__jsaction_bootstrap(document.body,"ng",["click"],[]);</script>
+  <ih-root ng-version="21.2.26" _nghost-ng-c604673181 ngh="4" ng-server-context="ssg"><a _ngcontent-ng-c604673181 href="#ih-main" class="ih-skip">Bỏ qua điều hướng</a><!----><header _ngcontent-ng-c604673181 class="ih-bar ih-no-print"><div _ngcontent-ng-c604673181 class="ih-bar-inner"><a _ngcontent-ng-c604673181 routerlink="/" class="ih-brand" href="/interview-hub/" jsaction="click:;"><span _ngcontent-ng-c604673181 class="ih-brand-mark"><ih-icon _ngcontent-ng-c604673181 name="ladder" class="inline-flex shrink-0" ngh="0"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 21V3M17 21V3M7 7h10M7 12h10M7 17h10"/><!----></svg></ih-icon></span><span _ngcontent-ng-c604673181>Interview Hub</span></a><nav _ngcontent-ng-c604673181 aria-label="Điều hướng chính" class="ih-mainnav"><a _ngcontent-ng-c604673181 class="ih-mainnav-link" href="/interview-hub/" jsaction="click:;"> Hôm nay </a><a _ngcontent-ng-c604673181 class="ih-mainnav-link" href="/interview-hub/ly-thuyet" jsaction="click:;"> Luyện tập </a><a _ngcontent-ng-c604673181 class="ih-mainnav-link" href="/interview-hub/lo-trinh" jsaction="click:;"> Lộ trình </a><a _ngcontent-ng-c604673181 class="ih-mainnav-link" href="/interview-hub/huong-dan" aria-current="page" jsaction="click:;"> Hướng dẫn </a><!----></nav><div _ngcontent-ng-c604673181 class="ih-bar-tools"><div _ngcontent-ng-c604673181 data-pop class="ih-pop"><button _ngcontent-ng-c604673181 type="button" aria-haspopup="true" aria-controls="ih-track-menu" class="ih-bar-btn" aria-expanded="false" aria-label="Đổi ngôn ngữ, đang chọn Angular" jsaction="click:;"><ih-track-mono _ngcontent-ng-c604673181 size="sm" class="inline-flex" ngh="1"><span aria-hidden="true" class="ih-mono" style="background: #D6264F;" data-size="sm">NG</span></ih-track-mono><span _ngcontent-ng-c604673181 class="ih-bar-btn-label">Angular</span><ih-icon _ngcontent-ng-c604673181 name="chevron-down" class="inline-flex shrink-0" ngh="0"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/><!----></svg></ih-icon></button><!----></div><button _ngcontent-ng-c604673181 type="button" class="ih-bar-search" jsaction="click:;"><ih-icon _ngcontent-ng-c604673181 name="search" class="inline-flex shrink-0" ngh="2"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14Z"/><path d="m20 20-3.5-3.5"/><!----></svg></ih-icon><span _ngcontent-ng-c604673181 class="ih-bar-search-label">Tìm câu hỏi</span><span _ngcontent-ng-c604673181 class="ih-kbd ih-bar-search-kbd">⌘K</span><span _ngcontent-ng-c604673181 class="sr-only">(phím tắt Command hoặc Ctrl cộng K)</span></button><div _ngcontent-ng-c604673181 data-pop class="ih-pop"><button _ngcontent-ng-c604673181 type="button" aria-haspopup="true" aria-controls="ih-settings-menu" aria-label="Giao diện sáng, tối" class="ih-bar-btn ih-bar-icon" aria-expanded="false" jsaction="click:;"><ih-icon _ngcontent-ng-c604673181 class="inline-flex shrink-0" ngh="2"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/><!----></svg></ih-icon></button><!----></div></div></div></header><main _ngcontent-ng-c604673181 id="ih-main" class="ih-main"><router-outlet _ngcontent-ng-c604673181></router-outlet><ih-guide-page ngh="3"><div class="mx-auto grid max-w-[1180px] gap-8 px-4 py-7 sm:px-8 lg:px-10 xl:grid-cols-[15rem_minmax(0,1fr)]"><aside class="ih-no-print hidden xl:block"><nav aria-label="Menu hướng dẫn" class="ih-subnav sticky top-6"><a routerlink="/huong-dan" class="ih-subnav-link" href="/interview-hub/huong-dan" jsaction="click:;"> Tổng quan </a><section class="mt-3"><button type="button" class="ih-subnav-group" aria-expanded="false" aria-controls="d-sub-cach-dung" jsaction="click:;"><span class="flex-1 text-left">Cách ôn &amp; cách dùng</span><span class="ih-num text-[0.6875rem] text-faint">5</span><ih-icon name="chevron-down" class="inline-flex shrink-0 ih-subnav-caret" ngh="0"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m6 9 6 6 6-6"/><!----></svg></ih-icon></button><!----></section><section class="mt-3"><button type="button" class="ih-subnav-group" aria-expanded="false" aria-controls="d-sub-theo-mang" jsaction="click:;"><span class="flex-1 text-left">Lộ trình &amp; checklist theo mảng</span><span class="ih-num text-[0.6875rem] text-faint">5</span><ih-icon name="chevron-down" class="inline-flex shrink-0 ih-subnav-caret" ngh="0"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m6 9 6 6 6-6"/><!----></svg></ih-icon></button><!----></section><section class="mt-3"><button type="button" class="ih-subnav-group" aria-expanded="false" aria-controls="d-sub-java" jsaction="click:;"><span class="flex-1 text-left">Java Spring Boot từ con số 0</span><span class="ih-num text-[0.6875rem] text-faint">6</span><ih-icon name="chevron-down" class="inline-flex shrink-0 ih-subnav-caret" ngh="0"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m6 9 6 6 6-6"/><!----></svg></ih-icon></button><!----></section><section class="mt-3"><button type="button" class="ih-subnav-group" aria-expanded="false" aria-controls="d-sub-sql" jsaction="click:;"><span class="flex-1 text-left">SQL từ con số 0</span><span class="ih-num text-[0.6875rem] text-faint">6</span><ih-icon name="chevron-down" class="inline-flex shrink-0 ih-subnav-caret" ngh="0"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m6 9 6 6 6-6"/><!----></svg></ih-icon></button><!----></section><section class="mt-3"><button type="button" class="ih-subnav-group" aria-expanded="true" aria-controls="d-sub-devops" jsaction="click:;"><span class="flex-1 text-left">DevOps từ Frontend</span><span class="ih-num text-[0.6875rem] text-faint">8</span><ih-icon name="chevron-down" class="inline-flex shrink-0 ih-subnav-caret ih-subnav-caret-open" ngh="0"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m6 9 6 6 6-6"/><!----></svg></ih-icon></button><ul class="mt-0.5 flex flex-col gap-0.5" id="d-sub-devops"><li><a class="ih-subnav-link" href="/interview-hub/huong-dan/devops-dinh-vi" jsaction="click:;"> Thị trường &amp; định vị </a><!----></li><li><a class="ih-subnav-link" href="/interview-hub/huong-dan/devops-tu-con-so-0" jsaction="click:;"> Lộ trình 10 giai đoạn </a><!----></li><li><a class="ih-subnav-link" aria-current="page" href="/interview-hub/huong-dan/devops-tai-lieu-theo-level" jsaction="click:;"> Tài liệu theo level </a><ul aria-label="Các mục trong bài" class="ih-subnav-toc"><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/devops-tai-lieu-theo-level#devops-tai-lieu-theo-level--cach-chon-va-dung-tai-lieu" jsaction="click:;"> Cách chọn và dùng tài liệu </a></li><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/devops-tai-lieu-theo-level#devops-tai-lieu-theo-level--newbie" jsaction="click:;"> Newbie </a></li><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/devops-tai-lieu-theo-level#devops-tai-lieu-theo-level--junior" jsaction="click:;"> Junior </a></li><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/devops-tai-lieu-theo-level#devops-tai-lieu-theo-level--middle" jsaction="click:;"> Middle </a></li><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/devops-tai-lieu-theo-level#devops-tai-lieu-theo-level--senior" jsaction="click:;"> Senior </a></li><!----></ul><!----></li><li><a class="ih-subnav-link" href="/interview-hub/huong-dan/devops-portfolio-chung-chi" jsaction="click:;"> Portfolio, chứng chỉ, CV </a><!----></li><li><a class="ih-subnav-link" href="/interview-hub/huong-dan/devops-phong-van-junior" jsaction="click:;"> Câu hỏi Junior </a><!----></li><li><a class="ih-subnav-link" href="/interview-hub/huong-dan/devops-phong-van-middle" jsaction="click:;"> Câu hỏi Middle </a><!----></li><li><a class="ih-subnav-link" href="/interview-hub/huong-dan/devops-phong-van-senior" jsaction="click:;"> Câu hỏi Senior </a><!----></li><li><a class="ih-subnav-link" href="/interview-hub/huong-dan/devops-danh-gia-lo-trinh" jsaction="click:;"> Đánh giá best practice </a><!----></li><!----></ul><!----></section><!----><!----></nav></aside><div class="min-w-0"><details class="ih-subnav-mobile ih-no-print xl:hidden"><summary><ih-icon name="menu" class="inline-flex shrink-0" ngh="0"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6h18M3 12h18M3 18h18"/><!----></svg></ih-icon><span class="min-w-0 flex-1 truncate"><span class="text-muted">Hướng dẫn:</span> Tài liệu theo level </span><ih-icon name="chevron-down" class="inline-flex shrink-0 ih-subnav-caret" ngh="0"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m6 9 6 6 6-6"/><!----></svg></ih-icon></summary><nav aria-label="Menu hướng dẫn" class="ih-subnav mt-2" jsaction="click:;"><a routerlink="/huong-dan" class="ih-subnav-link" href="/interview-hub/huong-dan" jsaction="click:;"> Tổng quan </a><section class="mt-3"><button type="button" class="ih-subnav-group" aria-expanded="false" aria-controls="m-sub-cach-dung" jsaction="click:;"><span class="flex-1 text-left">Cách ôn &amp; cách dùng</span><span class="ih-num text-[0.6875rem] text-faint">5</span><ih-icon name="chevron-down" class="inline-flex shrink-0 ih-subnav-caret" ngh="0"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m6 9 6 6 6-6"/><!----></svg></ih-icon></button><!----></section><section class="mt-3"><button type="button" class="ih-subnav-group" aria-expanded="false" aria-controls="m-sub-theo-mang" jsaction="click:;"><span class="flex-1 text-left">Lộ trình &amp; checklist theo mảng</span><span class="ih-num text-[0.6875rem] text-faint">5</span><ih-icon name="chevron-down" class="inline-flex shrink-0 ih-subnav-caret" ngh="0"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m6 9 6 6 6-6"/><!----></svg></ih-icon></button><!----></section><section class="mt-3"><button type="button" class="ih-subnav-group" aria-expanded="false" aria-controls="m-sub-java" jsaction="click:;"><span class="flex-1 text-left">Java Spring Boot từ con số 0</span><span class="ih-num text-[0.6875rem] text-faint">6</span><ih-icon name="chevron-down" class="inline-flex shrink-0 ih-subnav-caret" ngh="0"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m6 9 6 6 6-6"/><!----></svg></ih-icon></button><!----></section><section class="mt-3"><button type="button" class="ih-subnav-group" aria-expanded="false" aria-controls="m-sub-sql" jsaction="click:;"><span class="flex-1 text-left">SQL từ con số 0</span><span class="ih-num text-[0.6875rem] text-faint">6</span><ih-icon name="chevron-down" class="inline-flex shrink-0 ih-subnav-caret" ngh="0"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m6 9 6 6 6-6"/><!----></svg></ih-icon></button><!----></section><section class="mt-3"><button type="button" class="ih-subnav-group" aria-expanded="true" aria-controls="m-sub-devops" jsaction="click:;"><span class="flex-1 text-left">DevOps từ Frontend</span><span class="ih-num text-[0.6875rem] text-faint">8</span><ih-icon name="chevron-down" class="inline-flex shrink-0 ih-subnav-caret ih-subnav-caret-open" ngh="0"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m6 9 6 6 6-6"/><!----></svg></ih-icon></button><ul class="mt-0.5 flex flex-col gap-0.5" id="m-sub-devops"><li><a class="ih-subnav-link" href="/interview-hub/huong-dan/devops-dinh-vi" jsaction="click:;"> Thị trường &amp; định vị </a><!----></li><li><a class="ih-subnav-link" href="/interview-hub/huong-dan/devops-tu-con-so-0" jsaction="click:;"> Lộ trình 10 giai đoạn </a><!----></li><li><a class="ih-subnav-link" aria-current="page" href="/interview-hub/huong-dan/devops-tai-lieu-theo-level" jsaction="click:;"> Tài liệu theo level </a><ul aria-label="Các mục trong bài" class="ih-subnav-toc"><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/devops-tai-lieu-theo-level#devops-tai-lieu-theo-level--cach-chon-va-dung-tai-lieu" jsaction="click:;"> Cách chọn và dùng tài liệu </a></li><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/devops-tai-lieu-theo-level#devops-tai-lieu-theo-level--newbie" jsaction="click:;"> Newbie </a></li><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/devops-tai-lieu-theo-level#devops-tai-lieu-theo-level--junior" jsaction="click:;"> Junior </a></li><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/devops-tai-lieu-theo-level#devops-tai-lieu-theo-level--middle" jsaction="click:;"> Middle </a></li><li><a class="ih-subnav-toc-link" href="/interview-hub/huong-dan/devops-tai-lieu-theo-level#devops-tai-lieu-theo-level--senior" jsaction="click:;"> Senior </a></li><!----></ul><!----></li><li><a class="ih-subnav-link" href="/interview-hub/huong-dan/devops-portfolio-chung-chi" jsaction="click:;"> Portfolio, chứng chỉ, CV </a><!----></li><li><a class="ih-subnav-link" href="/interview-hub/huong-dan/devops-phong-van-junior" jsaction="click:;"> Câu hỏi Junior </a><!----></li><li><a class="ih-subnav-link" href="/interview-hub/huong-dan/devops-phong-van-middle" jsaction="click:;"> Câu hỏi Middle </a><!----></li><li><a class="ih-subnav-link" href="/interview-hub/huong-dan/devops-phong-van-senior" jsaction="click:;"> Câu hỏi Senior </a><!----></li><li><a class="ih-subnav-link" href="/interview-hub/huong-dan/devops-danh-gia-lo-trinh" jsaction="click:;"> Đánh giá best practice </a><!----></li><!----></ul><!----></section><!----><!----></nav></details><!----><!----><nav aria-label="Vị trí" class="flex flex-wrap items-center gap-1.5 text-sm text-muted"><a routerlink="/huong-dan" class="hover:text-accent" href="/interview-hub/huong-dan" jsaction="click:;">Hướng dẫn</a><span aria-hidden="true">›</span><span>DevOps từ Frontend</span><!----></nav><h1 class="ih-h1 mt-1.5">Tài liệu học DevOps theo level</h1><p class="mt-2 max-w-[66ch] text-[1.0625rem] text-ink-2">Bộ tài liệu miễn phí tốt nhất cho từng level Newbie → Junior → Middle → Senior của lộ trình DevOps từ con số 0 — học cái nào trước, đọc phần nào, lab ở đâu; sách trả phí chỉ để riêng cho khi có công ty tài trợ; mọi link đã kiểm tra ngày 15/11/2026.</p><!----><article class="ih-card mt-6 p-4 sm:p-6 lg:p-7"><div ihinternallinks class="ih-prose max-w-[68ch]" jsaction="click:;"><p>Trang này gom <strong>tài liệu học</strong> của lộ trình <a href="huong-dan/devops-tu-con-so-0">DevOps từ con số 0</a> theo level. Vì ngân sách là <strong>chỉ miễn phí</strong>, danh sách học chính ở mọi level đều là tài nguyên miễn phí; sách trả phí để riêng trong mục "Khi có người tài trợ". Bộ câu hỏi phỏng vấn theo level: <a href="huong-dan/devops-phong-van-junior">Junior</a> · <a href="huong-dan/devops-phong-van-middle">Middle</a> · <a href="huong-dan/devops-phong-van-senior">Senior</a>; ngoài ra mỗi giai đoạn của lộ trình có mục "Đọc sâu trong app".</p>
+<p>Ký hiệu: ✅ miễn phí · 💰 trả phí · ⚠️ cần tài khoản hoặc kiểm tra điều kiện. Link kiểm tra ngày 15/11/2026; Cloudflare, Red Hat, Linux Journey chặn công cụ kiểm tra tự động nhưng mở bằng trình duyệt bình thường.</p>
+<h2 id="devops-tai-lieu-theo-level--cach-chon-va-dung-tai-lieu">Cách chọn và dùng tài liệu</h2>
+<ol>
+<li><strong>Tài liệu chính thức là chuẩn.</strong> Thứ tự tin cậy: docs của công cụ (kubernetes.io, docs.docker.com, docs.gitlab.com) → sách miễn phí của tổ chức lớn (Google SRE, Red Hat) → nền tảng lab (Killercoda, OverTheWire) → blog có tên tuổi → video → bài tổng hợp, AI.</li>
+<li><strong>Một tài liệu chính + một nơi làm lab</strong> cho mỗi giai đoạn. Đọc 30%, làm 70%.</li>
+<li><strong>Kiểm tra ngày viết</strong> của mọi tutorial: ingress-nginx đã ngừng phát triển (3/2026), Promtail đã hết hỗ trợ (2/3/2026), image Bitnami có version đã chuyển sang <code>bitnamilegacy</code> (8/2025). Tutorial dùng những thứ này là đã cũ.</li>
+<li><strong>Video để hình dung, docs để làm.</strong> Xem video 1 lần, làm theo docs.</li>
+</ol>
+<h2 id="devops-tai-lieu-theo-level--newbie">Newbie</h2>
+<p><strong>Tương ứng:</strong> giai đoạn 0–4 của lộ trình (tuần 0–16, khoảng tháng 1–4). <strong>Mục tiêu:</strong> tự tin trên Linux, hiểu mạng đủ để debug, viết script an toàn, dùng Git đúng kiểu team, đóng gói ứng dụng bằng Docker.</p>
+<h3>Học chính, theo thứ tự</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Tài liệu</th>
+<th>Loại</th>
+<th>Học phần nào</th>
+<th>Vì sao chọn</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><a href="https://linuxupskillchallenge.org/" target="_blank" rel="noopener noreferrer">Linux Upskill Challenge</a> ✅</td>
+<td>Khoá 20 bài quản trị server</td>
+<td>Toàn bộ, giai đoạn 1</td>
+<td>Học đúng việc của người vận hành, không lan man</td>
+</tr>
+<tr>
+<td>2</td>
+<td><a href="https://linuxcommand.org/tlcl.php" target="_blank" rel="noopener noreferrer">The Linux Command Line</a> ✅</td>
+<td>Sách PDF miễn phí (William Shotts)</td>
+<td>Phần 1–3 ở giai đoạn 1; phần 4 (viết shell script) ở giai đoạn 3</td>
+<td>Sách nhập môn command line tốt nhất</td>
+</tr>
+<tr>
+<td>3</td>
+<td><a href="https://overthewire.org/wargames/bandit/" target="_blank" rel="noopener noreferrer">OverTheWire — Bandit</a> ✅</td>
+<td>Game luyện shell</td>
+<td>Level 0–20</td>
+<td>Luyện phản xạ dòng lệnh như giải đố</td>
+</tr>
+<tr>
+<td>4</td>
+<td><a href="https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/using_selinux/index" target="_blank" rel="noopener noreferrer">Red Hat — Using SELinux</a> ✅</td>
+<td>Tài liệu chính thức RHEL</td>
+<td>Phần khái niệm và xử lý lỗi</td>
+<td>Ngân hàng chạy RHEL và luôn bật SELinux</td>
+</tr>
+<tr>
+<td>5</td>
+<td><a href="https://hpbn.co/" target="_blank" rel="noopener noreferrer">High Performance Browser Networking</a> ✅</td>
+<td>Sách web miễn phí (Ilya Grigorik)</td>
+<td>Primer on Latency and Bandwidth, Building Blocks of TCP, Building Blocks of UDP, Transport Layer Security</td>
+<td>Mạng viết cho dân web — hợp người từ Frontend</td>
+</tr>
+<tr>
+<td>6</td>
+<td><a href="https://www.cloudflare.com/learning/" target="_blank" rel="noopener noreferrer">Cloudflare Learning Center</a> ✅</td>
+<td>Bài giải thích ngắn</td>
+<td>DNS, SSL/TLS, load balancing, CDN</td>
+<td>Rõ, có hình, đọc nhanh</td>
+</tr>
+<tr>
+<td>7</td>
+<td><a href="https://mywiki.wooledge.org/BashGuide" target="_blank" rel="noopener noreferrer">BashGuide</a> ✅ + <a href="https://www.shellcheck.net/" target="_blank" rel="noopener noreferrer">ShellCheck</a> ✅</td>
+<td>Hướng dẫn và công cụ</td>
+<td>Toàn bộ BashGuide; chạy ShellCheck mọi script</td>
+<td>Viết Bash đúng, tránh lỗi quote và biến</td>
+</tr>
+<tr>
+<td>8</td>
+<td><a href="https://git-scm.com/book/en/v2" target="_blank" rel="noopener noreferrer">Pro Git</a> ✅ + <a href="https://learngitbranching.js.org/" target="_blank" rel="noopener noreferrer">Learn Git Branching</a> ✅</td>
+<td>Sách và bài tập</td>
+<td>Pro Git chương 1–3 và 7; Learn Git Branching phần Main và Remote</td>
+<td>Git là nơi mọi cấu hình sống</td>
+</tr>
+<tr>
+<td>9</td>
+<td><a href="https://docs.docker.com/get-started/" target="_blank" rel="noopener noreferrer">Docker docs — Get started</a> ✅</td>
+<td>Tài liệu chính thức</td>
+<td>Get started; Building best practices; Multi-stage builds; Compose</td>
+<td>Nguồn sự thật cho Dockerfile tốt</td>
+</tr>
+</tbody>
+</table>
+<h3>Xem thêm</h3>
+<ul>
+<li><a href="https://automatetheboringstuff.com/" target="_blank" rel="noopener noreferrer">Automate the Boring Stuff with Python</a> ✅ — phần cơ bản Python, đủ cho script vận hành.</li>
+<li><a href="https://linuxjourney.com/" target="_blank" rel="noopener noreferrer">Linux Journey</a> ✅ — ôn lại khái niệm Linux theo chủ đề.</li>
+<li><a href="https://roadmap.sh/devops" target="_blank" rel="noopener noreferrer">roadmap.sh — DevOps</a> ✅ — bản đồ toàn cảnh, tự đánh dấu nút đã học.</li>
+<li><a href="https://github.com/MichaelCade/90DaysOfDevOps" target="_blank" rel="noopener noreferrer">90DaysOfDevOps</a> ✅ — loạt bài cộng đồng, dùng để ôn theo ngày.</li>
+<li>Video: <a href="https://www.youtube.com/@TechWorldwithNana" target="_blank" rel="noopener noreferrer">TechWorld with Nana</a> ✅ (Docker, Kubernetes, CI/CD cho người mới), <a href="https://www.youtube.com/@freecodecamp" target="_blank" rel="noopener noreferrer">freeCodeCamp</a> ✅ (khoá dài về Linux, Docker).</li>
+</ul>
+<h3>Chưa cần ở level này</h3>
+<p>Kubernetes, cloud, Terraform, service mesh — học trước khi vững Linux và mạng là học vẹt.</p>
+<h2 id="devops-tai-lieu-theo-level--junior">Junior</h2>
+<p><strong>Tương ứng:</strong> giai đoạn 5–8 (tuần 17–40, khoảng tháng 4–10). <strong>Mục tiêu:</strong> pipeline nhiều môi trường, Kubernetes và gỡ lỗi, observability, hạ tầng AWS bằng Terraform — đủ để ứng tuyển Junior.</p>
+<h3>Học chính, theo thứ tự</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Tài liệu</th>
+<th>Loại</th>
+<th>Học phần nào</th>
+<th>Vì sao chọn</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><a href="https://docs.gitlab.com/ci/yaml/" target="_blank" rel="noopener noreferrer">GitLab CI/CD YAML reference</a> ✅ + <a href="https://docs.gitlab.com/runner/" target="_blank" rel="noopener noreferrer">GitLab Runner</a> ✅</td>
+<td>Tài liệu chính thức</td>
+<td><code>rules</code>, <code>needs</code>, <code>cache</code>, <code>artifacts</code>, <code>environment</code>, <code>when: manual</code>; cài runner docker executor</td>
+<td>Trùng công cụ ở dự án của bạn</td>
+</tr>
+<tr>
+<td>2</td>
+<td><a href="https://www.jenkins.io/doc/book/pipeline/" target="_blank" rel="noopener noreferrer">Jenkins — Pipeline</a> ✅</td>
+<td>Tài liệu chính thức</td>
+<td>Getting started, Jenkinsfile, Pipeline Syntax, Shared Libraries</td>
+<td>Công cụ truyền thống của ngân hàng</td>
+</tr>
+<tr>
+<td>3</td>
+<td><a href="https://kubernetes.io/docs/tutorials/" target="_blank" rel="noopener noreferrer">Kubernetes Tutorials</a> ✅ + <a href="https://kind.sigs.k8s.io/" target="_blank" rel="noopener noreferrer">kind</a> ✅</td>
+<td>Tài liệu chính thức</td>
+<td>Basics, Configuration, Stateless và Stateful applications; sau đó mục Concepts theo từng chủ đề</td>
+<td>Chuẩn mực; kind để chạy cụm trên Mac</td>
+</tr>
+<tr>
+<td>4</td>
+<td><a href="https://killercoda.com/" target="_blank" rel="noopener noreferrer">Killercoda</a> ✅</td>
+<td>Lab Kubernetes trên trình duyệt</td>
+<td>Kịch bản Kubernetes, ưu tiên troubleshooting</td>
+<td>Luyện có giới hạn thời gian như đề thi</td>
+</tr>
+<tr>
+<td>5</td>
+<td><a href="https://learnk8s.io/troubleshooting-deployments" target="_blank" rel="noopener noreferrer">learnk8s — Troubleshooting deployments</a> ✅</td>
+<td>Hướng dẫn trực quan</td>
+<td>Đọc toàn bộ, in sơ đồ ra để dùng</td>
+<td>Quy trình gỡ lỗi từng bước — đúng kỹ năng nặng nhất</td>
+</tr>
+<tr>
+<td>6</td>
+<td><a href="https://helm.sh/docs/" target="_blank" rel="noopener noreferrer">Helm docs</a> ✅ + <a href="https://gateway-api.sigs.k8s.io/" target="_blank" rel="noopener noreferrer">Gateway API</a> ✅</td>
+<td>Tài liệu chính thức</td>
+<td>Helm: chart template guide; Gateway API: Concepts, Getting started</td>
+<td>Đóng gói và đưa traffic vào cụm theo chuẩn mới</td>
+</tr>
+<tr>
+<td>7</td>
+<td><a href="https://developers.redhat.com/e-books" target="_blank" rel="noopener noreferrer">Kubernetes Patterns, 2nd edition</a> ✅⚠️</td>
+<td>Sách miễn phí từ Red Hat Developer (cần tài khoản miễn phí)</td>
+<td>Foundational patterns: Health Probe, Managed Lifecycle, Predictable Demands</td>
+<td>Hiểu "vì sao" của probe, resource, lifecycle</td>
+</tr>
+<tr>
+<td>8</td>
+<td><a href="https://prometheus.io/docs/introduction/overview/" target="_blank" rel="noopener noreferrer">Prometheus</a> ✅, <a href="https://grafana.com/docs/" target="_blank" rel="noopener noreferrer">Grafana</a> ✅, <a href="https://opentelemetry.io/docs/" target="_blank" rel="noopener noreferrer">OpenTelemetry</a> ✅</td>
+<td>Tài liệu chính thức</td>
+<td>Prometheus: concepts, querying basics; Grafana: dashboards, Loki, Alloy; OTel: concepts, Collector</td>
+<td>Bộ observability chuẩn</td>
+</tr>
+<tr>
+<td>9</td>
+<td><a href="https://skillbuilder.aws/" target="_blank" rel="noopener noreferrer">AWS Skill Builder</a> ✅</td>
+<td>Khoá học chính hãng</td>
+<td>AWS Cloud Practitioner Essentials</td>
+<td>Khung kiến thức AWS trước khi làm lab</td>
+</tr>
+<tr>
+<td>10</td>
+<td><a href="https://developer.hashicorp.com/terraform/tutorials" target="_blank" rel="noopener noreferrer">HashiCorp — Terraform tutorials</a> ✅</td>
+<td>Hướng dẫn chính thức</td>
+<td>Get Started (Docker rồi AWS); State; Modules</td>
+<td>Học Terraform không tốn tiền ở phần Docker</td>
+</tr>
+<tr>
+<td>11</td>
+<td><a href="https://docs.ansible.com/" target="_blank" rel="noopener noreferrer">Ansible docs</a> ✅ + <a href="https://www.youtube.com/@JeffGeerling" target="_blank" rel="noopener noreferrer">Jeff Geerling — YouTube</a> ✅</td>
+<td>Tài liệu và video</td>
+<td>Getting started, playbook, role; loạt video Ansible 101</td>
+<td>Cấu hình VM on-premise ở ngân hàng</td>
+</tr>
+</tbody>
+</table>
+<h3>Xem thêm</h3>
+<ul>
+<li>Martin Fowler: <a href="https://martinfowler.com/bliki/BlueGreenDeployment.html" target="_blank" rel="noopener noreferrer">Blue-Green Deployment</a> ✅, <a href="https://martinfowler.com/bliki/CanaryRelease.html" target="_blank" rel="noopener noreferrer">Canary Release</a> ✅.</li>
+<li><a href="https://dora.dev/" target="_blank" rel="noopener noreferrer">DORA</a> ✅ — chỉ số đo hiệu quả delivery.</li>
+<li><a href="https://github.com/bregman-arie/devops-exercises" target="_blank" rel="noopener noreferrer">devops-exercises</a> ✅ — bộ câu hỏi và bài tập DevOps, dùng để tự kiểm tra trước phỏng vấn.</li>
+</ul>
+<h3>Chưa cần ở level này</h3>
+<p>Viết operator, service mesh, multi-cloud, Kubernetes the Hard Way.</p>
+<h2 id="devops-tai-lieu-theo-level--middle">Middle</h2>
+<p><strong>Tương ứng:</strong> giai đoạn 9–10 và <strong>năm 1–3 đi làm</strong>. <strong>Mục tiêu:</strong> GitOps, chuỗi cung ứng an toàn, vận hành có SLO, xử lý sự cố, OpenShift, quy trình ngân hàng.</p>
+<h3>Học chính, theo thứ tự</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Tài liệu</th>
+<th>Loại</th>
+<th>Học phần nào</th>
+<th>Vì sao chọn</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><a href="https://sre.google/books/" target="_blank" rel="noopener noreferrer">Google SRE books</a> ✅</td>
+<td>Sách miễn phí: <em>Site Reliability Engineering</em>, <em>The Site Reliability Workbook</em></td>
+<td>SLO, Monitoring Distributed Systems, Being On-Call, Managing Incidents, Postmortem Culture; Workbook: Alerting on SLOs</td>
+<td>Nền của mọi phỏng vấn SRE/DevOps Middle</td>
+</tr>
+<tr>
+<td>2</td>
+<td><a href="https://argo-cd.readthedocs.io/" target="_blank" rel="noopener noreferrer">Argo CD docs</a> ✅ + <a href="https://opengitops.dev/" target="_blank" rel="noopener noreferrer">OpenGitOps</a> ✅</td>
+<td>Tài liệu chính thức</td>
+<td>Getting started, core concepts, sync options; 4 nguyên tắc GitOps</td>
+<td>Mô hình triển khai đang là chuẩn</td>
+</tr>
+<tr>
+<td>3</td>
+<td><a href="https://docs.sigstore.dev/" target="_blank" rel="noopener noreferrer">Sigstore</a> ✅, <a href="https://trivy.dev/" target="_blank" rel="noopener noreferrer">Trivy</a> ✅, <a href="https://kyverno.io/docs/" target="_blank" rel="noopener noreferrer">Kyverno</a> ✅, <a href="https://slsa.dev/" target="_blank" rel="noopener noreferrer">SLSA</a> ✅</td>
+<td>Tài liệu chính thức</td>
+<td>Ký image bằng Cosign; quét image, fs, config; policy chặn image; các level của SLSA</td>
+<td>Chuỗi cung ứng — ngân hàng tuyển DevSecOps nhiều</td>
+</tr>
+<tr>
+<td>4</td>
+<td><a href="https://owasp.org/www-project-top-10-ci-cd-security-risks/" target="_blank" rel="noopener noreferrer">OWASP Top 10 CI/CD Security Risks</a> ✅</td>
+<td>Danh sách rủi ro</td>
+<td>Đọc toàn bộ</td>
+<td>Khung để rà soát pipeline</td>
+</tr>
+<tr>
+<td>5</td>
+<td><a href="https://response.pagerduty.com/" target="_blank" rel="noopener noreferrer">PagerDuty Incident Response</a> ✅</td>
+<td>Quy trình xử lý sự cố mở</td>
+<td>Vai trò, mức độ nghiêm trọng, quy trình, postmortem</td>
+<td>Mẫu quy trình dùng được ngay</td>
+</tr>
+<tr>
+<td>6</td>
+<td><a href="https://developers.redhat.com/developer-sandbox" target="_blank" rel="noopener noreferrer">Developer Sandbox for Red Hat OpenShift</a> ✅⚠️ + <a href="https://docs.redhat.com/en/documentation/openshift_container_platform/" target="_blank" rel="noopener noreferrer">OpenShift docs</a> ✅</td>
+<td>Lab và tài liệu chính thức</td>
+<td>Projects, Routes, SCC, Builds</td>
+<td>Nền tảng của nhiều ngân hàng; Sandbox mỗi lượt 30 ngày</td>
+</tr>
+<tr>
+<td>7</td>
+<td><a href="https://github.com/kelseyhightower/kubernetes-the-hard-way" target="_blank" rel="noopener noreferrer">Kubernetes the Hard Way</a> ✅</td>
+<td>Hướng dẫn dựng cụm thủ công</td>
+<td>Làm toàn bộ một lần, sau khi đã vững Junior</td>
+<td>Hiểu control plane từ bên trong</td>
+</tr>
+<tr>
+<td>8</td>
+<td><a href="https://github.com/cncf/curriculum" target="_blank" rel="noopener noreferrer">CNCF curriculum (CKA/CKAD)</a> ✅</td>
+<td>Đề cương thi chính thức</td>
+<td>Dùng như checklist kỹ năng, kể cả khi chưa thi</td>
+<td>Biết mình còn thiếu gì</td>
+</tr>
+<tr>
+<td>9</td>
+<td><a href="https://aws.amazon.com/architecture/well-architected/" target="_blank" rel="noopener noreferrer">AWS Well-Architected</a> ✅ + <a href="https://aws.amazon.com/builders-library/" target="_blank" rel="noopener noreferrer">Amazon Builders' Library</a> ✅</td>
+<td>Khung kiến trúc và bài kinh nghiệm</td>
+<td>Trụ cột bảo mật, độ tin cậy, chi phí; bài về timeout, retry, deploy an toàn</td>
+<td>Cách các hệ lớn vận hành</td>
+</tr>
+</tbody>
+</table>
+<h3>Xem thêm</h3>
+<ul>
+<li><a href="https://velero.io/docs/" target="_blank" rel="noopener noreferrer">Velero docs</a> ✅ — backup và restore cụm Kubernetes.</li>
+<li><a href="https://grafana.com/docs/k6/latest/" target="_blank" rel="noopener noreferrer">Grafana k6</a> ✅ — load test.</li>
+<li><a href="https://www.finops.org/framework/" target="_blank" rel="noopener noreferrer">FinOps Framework</a> ✅ — quản lý chi phí cloud.</li>
+<li><a href="https://tag-app-delivery.cncf.io/whitepapers/platforms/" target="_blank" rel="noopener noreferrer">CNCF Platforms White Paper</a> ✅ — Platform Engineering là gì, gồm những năng lực nào.</li>
+</ul>
+<h2 id="devops-tai-lieu-theo-level--senior">Senior</h2>
+<p><strong>Tương ứng:</strong> sau nhiều năm làm thật. <strong>Mục tiêu:</strong> thiết kế nền tảng cho nhiều team, dẫn dắt sự cố lớn, cân bằng tốc độ – độ tin cậy – chi phí – tuân thủ.</p>
+<h3>Học chính, theo thứ tự</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Tài liệu</th>
+<th>Loại</th>
+<th>Học phần nào</th>
+<th>Vì sao chọn</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><a href="https://sre.google/books/" target="_blank" rel="noopener noreferrer">Building Secure and Reliable Systems</a> ✅</td>
+<td>Sách miễn phí của Google</td>
+<td>Toàn bộ</td>
+<td>Bảo mật và độ tin cậy là một bài toán — đúng góc nhìn ngân hàng</td>
+</tr>
+<tr>
+<td>2</td>
+<td><a href="https://dora.dev/research/" target="_blank" rel="noopener noreferrer">DORA Research</a> ✅</td>
+<td>Báo cáo nghiên cứu hằng năm</td>
+<td>Báo cáo mới nhất và các capability</td>
+<td>Lập luận bằng dữ liệu khi đề xuất thay đổi</td>
+</tr>
+<tr>
+<td>3</td>
+<td><a href="https://tag-app-delivery.cncf.io/whitepapers/platforms/" target="_blank" rel="noopener noreferrer">CNCF Platforms White Paper</a> ✅</td>
+<td>Tài liệu cộng đồng</td>
+<td>Đọc toàn bộ, đối chiếu với nền tảng công ty</td>
+<td>Khung để thiết kế Internal Developer Platform</td>
+</tr>
+<tr>
+<td>4</td>
+<td><a href="https://aws.amazon.com/builders-library/" target="_blank" rel="noopener noreferrer">Amazon Builders' Library</a> ✅</td>
+<td>Bài kinh nghiệm</td>
+<td>Đọc hết, mỗi tuần một bài</td>
+<td>Quyết định vận hành ở quy mô rất lớn</td>
+</tr>
+</tbody>
+</table>
+<h3>Khi có người tài trợ (💰)</h3>
+<p>Không cần cho tới khi đi làm; đáng đề xuất công ty mua khi lên Middle/Senior:</p>
+<ul>
+<li>💰 <em>Team Topologies</em>, 2nd edition (Skelton, Pais, 9/2025) — tổ chức team và platform team.</li>
+<li>💰 <em>Platform Engineering</em> (Camille Fournier, Ian Nowland, O'Reilly, 10/2024) — xây và vận hành platform như một sản phẩm.</li>
+<li>💰 <em>The DevOps Handbook</em>, 2nd edition và <em>Accelerate</em> — nền văn hoá và đo lường.</li>
+<li>💰 <em>Implementing Service Level Objectives</em> (Alex Hidalgo) — SLO trong thực tế.</li>
+<li>💰 <em>Observability Engineering</em> (Majors, Fong-Jones, Miranda).</li>
+</ul>
+</div></article><nav aria-label="Bài trước và bài sau" class="ih-no-print mt-6 grid gap-3 sm:grid-cols-2"><a class="ih-card ih-card-link flex-col gap-1 p-4" href="/interview-hub/huong-dan/devops-tu-con-so-0" jsaction="click:;"><span class="flex items-center gap-1.5 text-xs text-faint"><ih-icon name="arrow-left" class="inline-flex shrink-0" ngh="0"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M19 12H5M11 6l-6 6 6 6"/><!----></svg></ih-icon> Bài trước </span><span class="font-medium">Lộ trình 10 giai đoạn</span></a><!----><!----><a class="ih-card ih-card-link flex-col items-end gap-1 p-4 text-right" href="/interview-hub/huong-dan/devops-portfolio-chung-chi" jsaction="click:;"><span class="flex items-center gap-1.5 text-xs text-faint"> Bài sau <ih-icon name="arrow-right" class="inline-flex shrink-0" ngh="0"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/><!----></svg></ih-icon></span><span class="font-medium">Portfolio, chứng chỉ, CV</span></a><!----></nav><!----><!----><!----><!----></div></div><!----></ih-guide-page><!----></main><nav _ngcontent-ng-c604673181 aria-label="Điều hướng chính trên điện thoại" class="ih-tabbar ih-no-print"><a _ngcontent-ng-c604673181 class="ih-tab" href="/interview-hub/" jsaction="click:;"><ih-icon _ngcontent-ng-c604673181 class="inline-flex shrink-0" ngh="2"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><!----></svg></ih-icon><span _ngcontent-ng-c604673181>Hôm nay</span></a><a _ngcontent-ng-c604673181 class="ih-tab" href="/interview-hub/ly-thuyet" jsaction="click:;"><ih-icon _ngcontent-ng-c604673181 class="inline-flex shrink-0" ngh="2"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3a3 3 0 0 1 3 3v5a3 3 0 0 1-6 0V6a3 3 0 0 1 3-3Z"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/><!----></svg></ih-icon><span _ngcontent-ng-c604673181>Luyện tập</span></a><a _ngcontent-ng-c604673181 class="ih-tab" href="/interview-hub/lo-trinh" jsaction="click:;"><ih-icon _ngcontent-ng-c604673181 class="inline-flex shrink-0" ngh="2"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2Z"/><path d="M9 4v14M15 6v14"/><!----></svg></ih-icon><span _ngcontent-ng-c604673181>Lộ trình</span></a><a _ngcontent-ng-c604673181 class="ih-tab" href="/interview-hub/huong-dan" aria-current="page" jsaction="click:;"><ih-icon _ngcontent-ng-c604673181 class="inline-flex shrink-0" ngh="2"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 5h6a3 3 0 0 1 3 3v12a2 2 0 0 0-2-2H3z"/><path d="M21 5h-6a3 3 0 0 0-3 3v12a2 2 0 0 1 2-2h7z"/><!----></svg></ih-icon><span _ngcontent-ng-c604673181>Hướng dẫn</span></a><!----></nav><!----><!----></ih-root>
+<link rel="modulepreload" href="chunk-XI763TYC.js"><link rel="modulepreload" href="chunk-EKQCVM2I.js"><link rel="modulepreload" href="chunk-2RZ4USXX.js"><link rel="modulepreload" href="chunk-GDWDA4XP.js"><script src="main-K26KT5RT.js" type="module"></script>
+<link rel="modulepreload" href="chunk-NPY5NB5I.js">
+<link rel="modulepreload" href="chunk-SOTLWFPK.js">
+
+
+<script id="ng-state" type="application/json">{"__nghData__":[{"t":{"2":"t2"},"c":{"2":[{"i":"t2","r":1}]}},{},{"t":{"2":"t2"},"c":{"2":[{"i":"t2","r":1,"x":2}]}},{"t":{"3":"t115","5":"t122","6":"t124","7":"t125","8":"t132","9":"t133","10":"t116"},"c":{"3":[{"i":"t116","r":7,"t":{"3":"t117"},"c":{"3":[{"i":"t117","r":1,"t":{"7":"t118"},"c":{"7":[]},"x":4},{"i":"t117","r":1,"t":{"7":"t118"},"c":{"7":[{"i":"t118","r":1,"t":{"2":"t119"},"c":{"2":[{"i":"t119","r":1,"t":{"3":"t120"},"c":{"3":[]},"x":2},{"i":"t119","r":1,"t":{"3":"t120"},"c":{"3":[{"i":"t120","r":1,"t":{"2":"t121"},"c":{"2":[{"i":"t121","r":1,"x":5}]}}]}},{"i":"t119","r":1,"t":{"3":"t120"},"c":{"3":[]},"x":5}]}}]}}]}}],"5":[{"i":"t122","r":1,"t":{"10":"t123"},"c":{"10":[{"i":"t116","r":7,"t":{"3":"t117"},"c":{"3":[{"i":"t117","r":1,"t":{"7":"t118"},"c":{"7":[]},"x":4},{"i":"t117","r":1,"t":{"7":"t118"},"c":{"7":[{"i":"t118","r":1,"t":{"2":"t119"},"c":{"2":[{"i":"t119","r":1,"t":{"3":"t120"},"c":{"3":[]},"x":2},{"i":"t119","r":1,"t":{"3":"t120"},"c":{"3":[{"i":"t120","r":1,"t":{"2":"t121"},"c":{"2":[{"i":"t121","r":1,"x":5}]}}]}},{"i":"t119","r":1,"t":{"3":"t120"},"c":{"3":[]},"x":5}]}}]}}]}}]}}],"6":[],"7":[{"i":"t125","r":7,"t":{"3":"t126","6":"t127","9":"t128"},"c":{"3":[{"i":"t126","r":2}],"6":[{"i":"t127","r":1}],"9":[{"i":"t128","r":1,"t":{"1":"t129","2":"t130","3":"t131"},"c":{"1":[{"i":"t129","r":1}],"2":[],"3":[{"i":"t131","r":1}]}}]}}],"8":[],"9":[],"10":[]}},{"t":{"2":"t0","3":"t1","4":"t27"},"c":{"2":[],"3":[{"i":"t1","r":3,"t":{"9":"t3","17":"t4","29":"t5","34":"t26"},"c":{"9":[{"i":"t3","r":1,"x":4}],"17":[],"29":[],"31":[{"i":"c3062323264","r":1}],"34":[{"i":"t26","r":1,"x":4}]}}],"4":[]}}]}</script></body></html>
